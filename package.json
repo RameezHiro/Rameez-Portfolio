@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "npx --yes vite build",
+    "build": "rm -rf node_modules/.bin && npm install && npx vite build",
     "preview": "vite preview"
   },
   "type": "module",
