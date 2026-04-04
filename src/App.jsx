@@ -47,7 +47,7 @@ const HeroSection = () => (
         Shaikh Rameez
       </h1>
       <p className="font-headline italic text-2xl md:text-3xl text-secondary mb-12">
-        CS-AIML Student | ML Enthusiast | Building in Public
+      First-Year CSE-AIML | Hackathon Winner (115+ teams) | 120+ Days ML Learning 
       </p>
       <p className="max-w-2xl mx-auto text-on-surface-variant font-label mb-12 leading-relaxed">
         First-year B.Tech student passionate about Machine Learning, AI, and data science. Committed to learning through discipline, consistency, and hands-on projects.
@@ -113,7 +113,7 @@ const TechnicalStackSection = () => (
         {[
           { icon: 'code', label: 'Python (Advanced)' },
           { icon: 'schema', label: 'Git & GitHub' },
-          { icon: 'api', label: 'FastAPI' },
+          { icon: 'api', label: 'FastAPI (Learning)' },
           { icon: 'database', label: 'MySQL (Learning)' },
           { icon: 'calculate', label: 'Math Foundations' },
           { icon: 'data_object', label: 'NumPy & Pandas' },
@@ -233,9 +233,15 @@ const ProjectsSection = () => (
               <span className="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-label uppercase text-secondary border border-outline-variant/20">Completed</span>
             </div>
             <p className="text-secondary/70 text-sm mb-8 leading-relaxed flex-grow">
-             AI-powered academic and career guidance is a  platform that helps institutions identify at-risk students early using machine learning (K-Means clustering) on performance data like attendance and marks.
+              Won Judge's Choice Award at UAI Hawkathon among 115+ teams in 24 hours. 
+              Built K-Means clustering model to identify at-risk students using 
+              attendance and performance data. Trained on 2,000+ student records, 
+              achieving 84% early intervention accuracy.
 
-It provides a dashboard for tracking progress, automated parent alerts, and personalized career roadmaps, enabling institutions to take proactive actions and improve student outcomes.
+              My role: Developed ML model and integrated with Django REST API for 
+              real-time predictions. Built Streamlit dashboard for insights.
+
+              Team: 4 members | Built in: 24 hours
             </p>
             <div className="flex flex-wrap gap-2 mb-8 mt-auto">
               {['Python', 'K-Means Clustering', 'Streamlit', 'Pandas', 'Matplotlib'].map((tag) => (
@@ -256,9 +262,15 @@ It provides a dashboard for tracking progress, automated parent alerts, and pers
               <span className="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-label uppercase text-secondary border border-outline-variant/20">Completed</span>
             </div>
             <p className="text-secondary/70 text-sm mb-8 leading-relaxed flex-grow">
-              LifeVault is an AI-powered digital legacy platform for securely storing important data, farewell messages (Aakhri Khat), and a digital will. It includes a dead man’s switch that grants access to trusted contacts after inactivity, ensuring data is safely passed on.
+              Digital legacy platform with dead man's switch and ML-powered farewell 
+              message analysis. Built 3 ML endpoints: sentiment classifier, readiness 
+              scoring, and TF-IDF + Naive Bayes categorization for Aakhri Khat 
+              (farewell letters).
 
-With built-in features like sentiment analysis, readiness scoring, and content categorization, it provides a smart and secure way to manage and preserve digital assets.
+              Full-stack: FastAPI backend, React frontend, SQLite database. Adapted 
+              from Laravel+React architecture to single FastAPI app.
+
+              Hackathon MVP | Complete setup documentation
             </p>
             <div className="flex flex-wrap gap-2 mb-8 mt-auto">
             {['Python', 'Scikit-learn', 'Pandas', 'NumPy'].map((tag) => (
@@ -284,8 +296,10 @@ const SystemMilestones = () => (
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div className="flex flex-col gap-4 border-l border-primary/40 pl-6 py-4">
           <span className="font-label text-primary text-[10px] uppercase tracking-widest">Hackathon Winner</span>
-          <h4 className="font-headline text-xl">Judges Award UAI</h4>
-          <p className="text-secondary/60 text-xs leading-relaxed uppercase tracking-wider">Recognized at the UAI Hackathon</p>
+          <h4 className="font-headline text-xl">Judge's Choice Award</h4>
+          <p className="text-secondary/60 text-xs leading-relaxed uppercase tracking-wider">
+            UAI Hawkathon 2026 | Won among 115+ teams
+            ₹2,500 prize | 24-hour ML competition</p>
         </div>
         <div className="flex flex-col gap-4 border-l border-outline-variant/40 pl-6 py-4">
           <span className="font-label text-secondary text-[10px] uppercase tracking-widest">Continuous Learning</span>
@@ -295,7 +309,9 @@ const SystemMilestones = () => (
         <div className="flex flex-col gap-4 border-l border-outline-variant/40 pl-6 py-4">
           <span className="font-label text-secondary text-[10px] uppercase tracking-widest">2025 Winner</span>
           <h4 className="font-headline text-xl">Hacktoberfest</h4>
-          <p className="text-secondary/60 text-xs leading-relaxed uppercase tracking-wider">Earned official swag through contributions</p>
+              <p className="text-secondary/60 text-xs leading-relaxed uppercase tracking-wider">Open Source Contributor
+              Hacktoberfest 2025 - 9+ merged pull requests
+              Contributing to Python Mini Projects</p>     
         </div>
         <div className="flex flex-col gap-4 border-l border-outline-variant/40 pl-6 py-4">
           <span className="font-label text-secondary text-[10px] uppercase tracking-widest">Community</span>
