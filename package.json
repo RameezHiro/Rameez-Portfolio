@@ -1,5 +1,5 @@
 {
-  "name": "Rameez-Portfolio",
+  "name": "rameez-portfolio",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
@@ -21,7 +21,7 @@
     "tailwindcss": "^4.2.2",
     "vite": "^5.4.0"
   },
-  "engines": {
-    "node": "18.x"
-  }
+ "engines": {
+  "node": "24.x"
+}
 }
