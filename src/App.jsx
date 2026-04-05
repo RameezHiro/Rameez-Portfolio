@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const TopNavBar = () => {
   const [activeSection, setActiveSection] = React.useState('');
@@ -467,6 +467,7 @@ function App() {
       <SystemMilestones />
       <ConnectSection />
       <Footer />
+      <Analytics />
     </div>
   );
 }
