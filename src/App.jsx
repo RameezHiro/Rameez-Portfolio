@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 const TopNavBar = () => (
   <nav className="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl border-b border-[#4d4635]/20 shadow-[0px_8px_24px_rgba(0,0,0,0.06)]">
@@ -382,6 +383,7 @@ function App() {
       <SystemMilestones />
       <ConnectSection />
       <Footer />
+      <Analytics />
     </div>
   );
 }
