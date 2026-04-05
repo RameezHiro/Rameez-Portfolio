@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 const TopNavBar = () => {
   const [activeSection, setActiveSection] = React.useState('');
