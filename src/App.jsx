@@ -122,7 +122,7 @@ const TopNavBar = () => {
 };
 
 const HeroSection = () => (
-  <section id="home" className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden">
+  <section id="home" className="relative min-h-[85vh] md:min-h-screen flex flex-col items-center justify-center pt-24 pb-12 md:pt-32 md:pb-20 overflow-hidden">
     <div className="absolute inset-0 grain-texture pointer-events-none"></div>
     {/* Decorative Background Lines */}
     <svg className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" viewBox="0 0 100 100">
@@ -130,7 +130,7 @@ const HeroSection = () => (
     </svg>
     <div className="relative z-10 text-center max-w-4xl px-4 md:px-6">
       {/* Profile with Halo */}
-      <div className="relative w-40 h-40 md:w-48 md:h-48 mx-auto mb-10 md:mb-12">
+      <div className="relative w-36 h-36 md:w-48 md:h-48 mx-auto mb-8 md:mb-12">
         <div className="absolute inset-0 rounded-full border-2 border-primary/40 animate-pulse"></div>
         <div className="absolute -inset-4 rounded-full border border-primary/20"></div>
         <div className="absolute inset-0 rounded-full bg-gradient-to-b from-primary/20 to-transparent"></div>
@@ -140,13 +140,13 @@ const HeroSection = () => (
           <span className="text-[9px] md:text-[10px] font-label uppercase tracking-wider text-primary">Day 120+ ML Learning</span>
         </div>
       </div>
-      <h1 className="font-headline text-5xl md:text-8xl tracking-tighter text-on-surface mb-4 mt-8 md:mt-0">
+      <h1 className="font-headline text-5xl md:text-8xl tracking-tighter text-on-surface mb-3 md:mb-4 mt-6 md:mt-0">
         Shaikh Rameez
       </h1>
-      <p className="font-headline italic text-lg md:text-3xl text-secondary mb-8 md:mb-12 px-4 md:px-0 leading-snug">
+      <p className="font-headline italic text-lg md:text-3xl text-secondary mb-6 md:mb-12 px-4 md:px-0 leading-snug">
       First-Year CSE-AIML | Hackathon Winner (115+ teams) | 120+ Days ML Learning 
       </p>
-      <p className="max-w-2xl mx-auto text-on-surface-variant font-label mb-10 md:mb-12 px-2 md:px-0 text-sm md:text-base leading-relaxed">
+      <p className="max-w-2xl mx-auto text-on-surface-variant font-label mb-8 md:mb-12 px-2 md:px-0 text-sm md:text-base leading-relaxed">
         First-year B.Tech student passionate about Machine Learning, AI, and data science. Committed to learning through discipline, consistency, and hands-on projects.
       </p>
       <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-6 sm:px-0">
@@ -162,31 +162,31 @@ const HeroSection = () => (
 );
 
 const AboutStatsSection = () => (
-  <section id="about" className="py-16 md:py-24 bg-surface-container-low relative">
+  <section id="about" className="py-12 md:py-24 bg-surface-container-low relative mt-[-1px]">
     <div className="max-w-7xl mx-auto px-4 md:px-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant/20 rounded-2xl overflow-hidden">
-        <div className="p-8 md:p-12 text-center border-b md:border-b-0 md:border-r border-outline-variant/20 bg-surface-container/30 hover:bg-surface-container/50 transition-colors">
-          <div className="font-headline text-4xl md:text-5xl text-primary mb-2">120+</div>
+        <div className="p-6 md:p-12 text-center border-b md:border-b-0 md:border-r border-outline-variant/20 bg-surface-container/30 hover:bg-surface-container/50 transition-colors">
+          <div className="font-headline text-3xl md:text-5xl text-primary mb-1 md:mb-2">120+</div>
           <div className="font-label uppercase tracking-[0.2em] text-[8px] md:text-[10px] text-secondary/60">Day Learning Streak</div>
         </div>
-        <div className="p-8 md:p-12 text-center border-b md:border-b-0 md:border-r border-outline-variant/20 bg-surface-container/30 hover:bg-surface-container/50 transition-colors">
-          <div className="font-headline text-4xl md:text-5xl text-primary mb-2">17</div>
+        <div className="p-6 md:p-12 text-center border-b md:border-b-0 md:border-r border-outline-variant/20 bg-surface-container/30 hover:bg-surface-container/50 transition-colors">
+          <div className="font-headline text-3xl md:text-5xl text-primary mb-1 md:mb-2">17</div>
           <div className="font-label uppercase tracking-[0.2em] text-[8px] md:text-[10px] text-secondary/60">Public Repositories</div>
         </div>
-        <div className="p-8 md:p-12 text-center bg-surface-container/30 hover:bg-surface-container/50 transition-colors">
-          <div className="font-headline text-4xl md:text-5xl text-primary mb-2">185</div>
+        <div className="p-6 md:p-12 text-center bg-surface-container/30 hover:bg-surface-container/50 transition-colors">
+          <div className="font-headline text-3xl md:text-5xl text-primary mb-1 md:mb-2">185</div>
           <div className="font-label uppercase tracking-[0.2em] text-[8px] md:text-[10px] text-secondary/60">GitHub Contributions</div>
         </div>
       </div>
-      <div className="mt-16 md:mt-20 max-w-3xl mx-auto text-center">
-       <h2 className="font-headline text-3xl md:text-4xl mb-6 md:mb-8">About Me</h2>
-        <p className="text-secondary/80 leading-relaxed text-base md:text-lg mb-6">
+      <div className="mt-12 md:mt-20 max-w-3xl mx-auto text-center">
+       <h2 className="font-headline text-3xl md:text-4xl mb-4 md:mb-8">About Me</h2>
+        <p className="text-secondary/80 leading-relaxed text-sm md:text-lg mb-5 md:mb-6">
           I'm a first-year B.Tech CSE-AIML student at Mumbai, driven by an insatiable curiosity about Artificial Intelligence and Machine Learning. What started as an interest has evolved into a 120+ day learning streak, where I dedicate myself daily to understanding the fundamentals and building practical projects.
         </p>
-        <p className="text-primary italic text-lg md:text-xl font-headline border-l-4 border-primary/40 pl-4 md:pl-6 text-left max-w-2xl mx-auto mb-6">
+        <p className="text-primary italic text-base md:text-xl font-headline border-l-4 border-primary/40 pl-4 md:pl-6 text-left max-w-2xl mx-auto mb-5 md:mb-6">
           "I believe in learning through Discipline, Consistency, Hands-on projects, and Fundamentals"
         </p>
-        <p className="text-secondary/80 leading-relaxed text-base md:text-lg">
+        <p className="text-secondary/80 leading-relaxed text-sm md:text-lg">
           Unlike many who jump straight into frameworks, I've invested significant time mastering the mathematical foundations—Linear Algebra, Calculus, Probability, and Statistics. This solid groundwork enables me to truly understand how ML algorithms work, not just use them.
         </p>
       </div>
