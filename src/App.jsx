@@ -144,7 +144,7 @@ const HeroSection = () => (
         Shaikh Rameez
       </h1>
       <p className="font-headline italic text-lg md:text-3xl text-secondary mb-6 md:mb-12 px-4 md:px-0 leading-snug">
-      First-Year CSE-AIML | Hackathon Winner (115+ teams) | 120+ Days ML Learning 
+      First-Year CSE-AIML | Hackathon Winner (115+ teams) | Building ML from Scratch
       </p>
       <p className="max-w-2xl mx-auto text-on-surface-variant font-label mb-8 md:mb-12 px-2 md:px-0 text-sm md:text-base leading-relaxed">
         First-year B.Tech student passionate about Machine Learning, AI, and data science. Committed to learning through discipline, consistency, and hands-on projects.
@@ -243,7 +243,7 @@ const ProjectsSection = () => (
           <div className="p-6 md:p-8 h-full flex flex-col">
             <div className="flex justify-between items-start mb-4 gap-4 align-top">
               <h3 className="font-headline text-xl md:text-2xl leading-tight">California Housing Price Predictor</h3>
-              <span className="px-2 py-1 bg-primary/10 rounded-full text-[8px] md:text-[10px] font-label uppercase text-primary border border-primary/20 shrink-0">Ready</span>
+              <span className="px-2 py-1 bg-primary/10 rounded-full text-[8px] md:text-[10px] font-label uppercase text-primary border border-primary/20 shrink-0">Ongoing</span>
             </div>
             <p className="text-secondary/70 text-xs md:text-sm mb-6 md:mb-8 leading-relaxed flex-grow">
               ML model predicting median house prices in California districts using census data. Features comprehensive data preprocessing, visualization, and regression modeling.
@@ -254,7 +254,7 @@ const ProjectsSection = () => (
               ))}
             </div>
             <a className="flex items-center gap-2 text-primary font-label text-[10px] md:text-xs tracking-widest uppercase group/link w-fit" href="https://github.com/RameezHiro/California-Housing-Prices" target="_blank" rel="noreferrer">
-              Inspect Code <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
+              Github Link <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
             </a>
           </div>
         </div>
@@ -275,7 +275,7 @@ const ProjectsSection = () => (
               ))}
             </div>
             <a className="flex items-center gap-2 text-primary font-label text-[10px] md:text-xs tracking-widest uppercase group/link w-fit" href="https://github.com/RameezHiro" target="_blank" rel="noreferrer">
-              Inspect Code <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
+            Github Link <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
             </a>
           </div>
         </div>
@@ -284,7 +284,7 @@ const ProjectsSection = () => (
         <div className="group relative bg-surface-container-high rounded-2xl overflow-hidden border border-outline-variant/20 transition-all hover:-translate-y-2">
           <div className="p-6 md:p-8 h-full flex flex-col">
             <div className="flex justify-between items-start mb-4 gap-4 align-top">
-              <h3 className="font-headline text-xl md:text-2xl leading-tight">Machine Learning Portfolio</h3>
+              <h3 className="font-headline text-xl md:text-2xl leading-tight">Machine Learning Pipelines & Algorithm</h3>
               <span className="px-2 py-1 bg-primary/20 rounded-full text-[8px] md:text-[10px] font-label uppercase text-primary border border-primary/40 shrink-0">Ongoing</span>
             </div>
             <p className="text-secondary/70 text-xs md:text-sm mb-6 md:mb-8 leading-relaxed flex-grow">
@@ -317,7 +317,7 @@ const ProjectsSection = () => (
               ))}
             </div>
             <a className="flex items-center gap-2 text-primary font-label text-[10px] md:text-xs tracking-widest uppercase group/link w-fit" href="https://github.com/RameezHiro/Learn-Streamlit" target="_blank" rel="noreferrer">
-              Inspect Code <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
+            Github Link <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
             </a>
           </div>
         </div>
@@ -338,9 +338,9 @@ const ProjectsSection = () => (
               ))}
             </div>
             <a className="flex items-center gap-2 text-primary font-label text-[10px] md:text-xs tracking-widest uppercase group/link w-fit" href="https://github.com/RameezHiro/AI-Powered-Academic-Career-Navigator.git" target="_blank" rel="noreferrer">
-              Inspect Code <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
+            Github Link <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
             </a>
-          </div>
+          </div>            Github Link
         </div>
         
         {/* Project 6 */}
@@ -359,7 +359,7 @@ const ProjectsSection = () => (
               ))}
             </div>
             <a className="flex items-center gap-2 text-primary font-label text-[10px] md:text-xs tracking-widest uppercase group/link w-fit" href="https://github.com/RameezHiro/LIFEVAULT.git" target="_blank" rel="noreferrer">
-              Inspect Code <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
+            Github Link <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">code</span>
             </a>
           </div>
         </div>
