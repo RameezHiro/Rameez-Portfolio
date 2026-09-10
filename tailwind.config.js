@@ -8,6 +8,11 @@ export default {
   theme: {
     extend: {
       colors: {
+        "paper": "#F7F4EF",
+        "ink": "#111111",
+        "manga-gray": "#5C5C5C",
+        "sakura": "#D96C8A",
+        "deep-ink": "#18151A",
         "on-tertiary-container": "#633c15",
         "on-error-container": "#ffdad6",
         "on-tertiary-fixed": "#2e1600",
@@ -57,9 +62,9 @@ export default {
         "surface-container": "#201f1f"
       },
       fontFamily: {
-        "headline": ["Newsreader", "serif"],
+        "display": ["Newsreader", "serif"],
         "body": ["Work Sans", "sans-serif"],
-        "label": ["Work Sans", "sans-serif"]
+        "tech": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
       }
     },
   },
