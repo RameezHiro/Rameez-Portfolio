@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
+import Home from './pages/Home';
+import Journal from './pages/Journal';
+import JournalPost from './pages/JournalPost';
+import TopNav from './components/navigation/TopNav';
+import ChapterRail from './components/navigation/ChapterRail';
+import NavigationMenu from './components/navigation/NavigationMenu'
 
 const TopNavBar = () => {
   const [activeSection, setActiveSection] = React.useState('');
@@ -459,17 +466,14 @@ const Footer = () => (
 
 function App() {
   return (
-    <div className="scroll-smooth">
-      <TopNavBar />
-      <HeroSection />
-      <AboutStatsSection />
-      <TechnicalStackSection />
-      <ProjectsSection />
-      <SystemMilestones />
-      <ConnectSection />
-      <Footer />
-      <Analytics />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/journal" element={<Journal />} />
+        <Route path="/journal/:slug" element={<JournalPost />} />
+        <Route path="*" element={<div>404<br/>CHAPTER NOT FOUND</div>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
