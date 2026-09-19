@@ -1,27 +1,40 @@
-import { motion } from 'framer-motion';
 import chaptersData from '../../data/chapters';
-import useChapterObserver from '../../hooks/useChapterObserver';
 
-const ChapterRail = () => {
+const ChapterRail = ({ activeChapterId, scrollToChapter }) => {
   const chapters = chaptersData.chapters;
-  const { activeChapterId, scrollToChapter } = useChapterObserver();
 
   return (
-    <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40 flex gap-2">
-      {chapters.map((chapter) => (
-        <button
-          key={chapter.id}
-          onClick={() => scrollToChapter(chapter.id)}
-          className={`px-3 py-1 text-xs uppercase tracking-wider font-label text-manga-gray hover:text-primary transition-colors ${
-            activeChapterId === chapter.id ? 'text-sakura font-bold border-b-2 border-sakura' : ''
-          }`}
-          aria-label={`Go to ${chapter.title} chapter`}
-          aria-current={activeChapterId === chapter.id ? 'step' : undefined}
-        >
-          {chapter.id}
-        </button>
-      ))}
-    </div>
+    <nav
+      aria-label="Chapters"
+      className="fixed bottom-5 left-1/2 z-40 hidden -translate-x-1/2 md:block"
+    >
+      <div className="flex items-center gap-1 rounded-full border border-ink/15 bg-paper/90 px-2 py-1 shadow-[0_8px_24px_rgba(17,17,17,0.08)] backdrop-blur">
+        {chapters.map((chapter) => {
+          const isActive = activeChapterId === chapter.id;
+          return (
+            <button
+              key={chapter.id}
+              onClick={() => scrollToChapter(chapter.id)}
+              className={`relative rounded-full px-2.5 py-1.5 font-body text-[11px] uppercase tracking-[0.18em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura ${
+                isActive
+                  ? 'font-semibold text-ink'
+                  : 'text-manga-gray hover:text-ink'
+              }`}
+              aria-label={`Go to ${chapter.title} chapter`}
+              aria-current={isActive ? 'step' : undefined}
+            >
+              {chapter.id}
+              {isActive && (
+                <span
+                  className="absolute inset-x-2 -bottom-0.5 h-0.5 bg-sakura"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </nav>
   );
 };
 

@@ -62,8 +62,8 @@ export default {
         "surface-container": "#201f1f"
       },
       fontFamily: {
-        "display": ["Newsreader", "serif"],
-        "body": ["Work Sans", "sans-serif"],
+        "display": ["Newsreader", "Klee One", "serif"],
+        "body": ["Work Sans", "Inter", "sans-serif"],
         "tech": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
       }
     },
