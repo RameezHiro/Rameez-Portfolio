@@ -14,7 +14,7 @@ const SakuraTree = React.lazy(() => import('../SakuraTree/SakuraTree'));
 const LINKS = [
   { label: 'GitHub', href: 'https://github.com/RameezHiro' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/shaikh-rameez-17b304336/' },
-  { label: 'Resume', href: null },
+  { label: 'Resume', href: '/resume.pdf' },
   { label: 'Contact', href: 'mailto:yellowvoid22@gmail.com' },
 ];
 

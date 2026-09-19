@@ -100,6 +100,28 @@ const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter }) =
               </div>
             </div>
 
+            {/* Recruiter quick jumps — plain-language shortcuts into the story */}
+            <div className="mb-16">
+              <h2 className="font-display text-2xl text-paper mb-8">QUICK LOOK</h2>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { label: 'Profile', chapterId: '01' },
+                  { label: 'Skills', chapterId: '03' },
+                  { label: 'Projects', chapterId: '05' },
+                  { label: 'Achievements', chapterId: '04' },
+                  { label: 'Contact', chapterId: 'final' },
+                ].map((jump) => (
+                  <button
+                    key={jump.label}
+                    onClick={() => handleChapterClick(jump.chapterId)}
+                    className="border border-paper/30 px-4 py-2 font-body text-xs uppercase tracking-[0.2em] text-paper/80 hover:text-sakura hover:border-sakura transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+                  >
+                    {jump.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Journal Link */}
             <div className="mb-16">
               <h2 className="font-display text-2xl text-paper mb-8">DEVELOPER'S JOURNAL</h2>
@@ -134,18 +156,22 @@ const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter }) =
                   <span className="material-symbols-outlined text-base">link</span>
                   LinkedIn
                 </a>
-                <button
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-paper/60 hover:text-paper transition-colors text-sm font-body uppercase tracking-wider flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura rounded"
                 >
                   <span className="material-symbols-outlined text-base">description</span>
                   Resume
-                </button>
-                <button
+                </a>
+                <a
+                  href="mailto:yellowvoid22@gmail.com"
                   className="text-paper/60 hover:text-paper transition-colors text-sm font-body uppercase tracking-wider flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura rounded"
                 >
                   <span className="material-symbols-outlined text-base">mail</span>
                   Contact
-                </button>
+                </a>
               </div>
             </div>
           </div>
