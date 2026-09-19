@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Prologue from '../manga/Prologue';
 import Chapter from './Chapter';
 import Chapter01 from './Chapter01';
 import Chapter02 from './Chapter02';
@@ -19,47 +18,32 @@ import useChapterObserver from '../../hooks/useChapterObserver';
 
 const ChapterShell = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [prologueFinished, setPrologueFinished] = useState(false);
   // Single canonical chapter state for all navigation UI.
   const { activeChapterId, scrollToChapter } = useChapterObserver({
-    defaultChapterId: 'prologue',
+    defaultChapterId: '01',
   });
 
-  const handlePrologueFinish = () => {
-    setPrologueFinished(true);
-  };
-
   const chapters = chaptersData.chapters;
-  // The cinematic Prologue owns data-chapter="prologue" (see wrapper below),
-  // so it is excluded from the generic Chapter rendering path.
   const storyChapters = chapters.filter((chapter) => chapter.id !== 'prologue');
 
   return (
     <div className="min-h-screen bg-paper text-ink overflow-x-clip">
-      {/* Top Navigation - only show after prologue */}
-      {prologueFinished && (
-        <TopNav
-          isMobileMenuOpen={isMobileMenuOpen}
-          setIsMobileMenuOpen={setIsMobileMenuOpen}
-          activeChapterId={activeChapterId}
-        />
-      )}
+      {/* Top Navigation */}
+      <TopNav
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+        activeChapterId={activeChapterId}
+      />
 
       {/* Main content */}
       <main className="relative">
-        {/* Prologue - full screen cinematic; the single data-chapter="prologue" target */}
-        <div data-chapter="prologue" id="prologue">
-          <Prologue onFinish={handlePrologueFinish} />
-        </div>
-
-        {/* Chapter content - visible after prologue */}
-        {prologueFinished && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="pt-24"
-          >
+        {/* Chapter content */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="pt-24"
+        >
             {/* Chapter Rail - desktop only */}
             <ChapterRail
               activeChapterId={activeChapterId}
@@ -74,7 +58,6 @@ const ChapterShell = () => {
                 number={chapter.number}
                 title={chapter.title}
                 description={chapter.description}
-                className={chapter.id === 'prologue' ? 'pt-0' : ''}
               >
                 {chapter.id === '01' ? (
                   <Chapter01 />
@@ -103,8 +86,7 @@ const ChapterShell = () => {
                 )}
               </Chapter>
             ))}
-          </motion.div>
-        )}
+        </motion.div>
 
         {/* Mobile Navigation Menu */}
         <NavigationMenu

@@ -4,14 +4,6 @@
 
 export const chapters = [
   {
-    id: 'prologue',
-    number: 0,
-    title: 'PROLOGUE',
-    slug: 'prologue',
-    description: 'Introduction to the portfolio',
-    type: 'introductory',
-  },
-  {
     id: '01',
     number: 1,
     title: 'THE ORIGIN',
