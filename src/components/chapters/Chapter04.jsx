@@ -77,7 +77,7 @@ const Chapter04 = () => {
           {DOCTRINE.map((rule, i) => (
             <li
               key={rule.name}
-              className="flex items-baseline gap-4 md:gap-6 border-b border-ink/15 py-4 md:py-5"
+              className="flex flex-wrap items-baseline gap-x-4 gap-y-1 md:gap-6 border-b border-ink/15 py-4 md:py-5"
             >
               <span
                 className="font-tech text-sm text-manga-gray shrink-0"

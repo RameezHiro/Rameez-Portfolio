@@ -76,7 +76,7 @@ const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter }) =
             {/* Chapter Navigation */}
             <div className="mb-16">
               <h2 className="font-display text-2xl text-paper mb-8">THE DEVELOPER'S ARC</h2>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-5 min-[420px]:gap-6">
                 {chapters.map((chapter) => {
                   const isActive = activeChapterId === chapter.id;
                   return (

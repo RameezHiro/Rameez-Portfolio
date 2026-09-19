@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import SakuraTree from '../SakuraTree/SakuraTree';
+
+// Code-split: three.js (~1MB) loads only when the Final scene mounts,
+// never blocking the initial page render.
+const SakuraTree = React.lazy(() => import('../SakuraTree/SakuraTree'));
 
 // FINAL — THE CURRENT ARC ENDS. The quiet culmination: the 2D ink sakura
 // of Chapters 01–08 becomes a real 3D tree here, followed by restrained
@@ -82,7 +85,9 @@ const Final = () => (
         role="img"
         aria-label="Three-dimensional sakura tree — the fully grown tree at the end of the arc"
       >
-        <SakuraTree />
+        <Suspense fallback={<div className="absolute inset-0" aria-hidden="true" />}>
+          <SakuraTree />
+        </Suspense>
       </div>
       <p className="mt-3 font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray text-center">
         The tree, fully grown

@@ -177,7 +177,7 @@ const Prologue = ({ onFinish }) => {
       {/* Skip button */}
       <button
         onClick={skip}
-        className="absolute top-4 right-4 z-[70] text-manga-gray bg-surface rounded-md px-3 py-1 text-sm hover:text-sakura transition-colors focus:outline-none focus:ring-2 focus:ring-sakura"
+        className="absolute top-4 right-4 z-[70] text-manga-gray bg-surface rounded-md px-4 py-2 text-sm hover:text-sakura transition-colors focus:outline-none focus:ring-2 focus:ring-sakura"
         aria-label="Skip intro"
       >
         SKIP INTRO ↗

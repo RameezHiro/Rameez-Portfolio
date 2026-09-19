@@ -887,7 +887,7 @@ export function createCherryBlossomTreeLookDevLights(
   else if (mode === 'reference') key.position.set(-4.5, 7.5, 5.0);
   else key.position.set(-4.0, 6.0, 5.5);
   key.castShadow = true;
-  key.shadow.mapSize.set(4096, 4096);
+  key.shadow.mapSize.set(2048, 2048);
   key.shadow.bias = -0.00025;
   key.shadow.normalBias = 0.018;
   key.shadow.radius = 7;

@@ -85,7 +85,7 @@ const Chapter08 = () => {
                 aria-label={`Mission ${mission.index}: ${mission.name}`}
                 className="border-b border-ink/15 py-7 md:py-9"
               >
-                <div className="flex items-baseline gap-4">
+                <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
                   <span
                     className="font-tech text-sm text-manga-gray shrink-0"
                     aria-hidden="true"

@@ -88,7 +88,28 @@ export default function SakuraTree() {
       100
     );
 
-    camera.position.set(0, 6.0, 18.5);
+    // Fit the whole canopy on narrow portrait screens: pull the camera
+    // back as the container gets narrower, so the tree is never cropped
+    // on mobile. Desktop framing is unchanged.
+    const fitCameraToContainer = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      if (width === 0 || height === 0) return;
+
+      const aspect = width / height;
+      const distance = Math.min(
+        (18.5 / Math.min(aspect, 1)) * 1.15,
+        38
+      );
+
+      camera.position.set(0, 6.0, distance);
+      camera.aspect = aspect;
+
+      camera.updateProjectionMatrix();
+    };
+
+    fitCameraToContainer();
 
     camera.lookAt(
       0,
@@ -115,16 +136,8 @@ export default function SakuraTree() {
     controls.update();
 
     // =========================================================
-    // ANIMATION
+    // ANIMATION (pauses while off-screen)
     // =========================================================
-
-    let animationFrameId;
-
-    const animate = () => {
-      animationFrameId =
-        requestAnimationFrame(animate);
-
-    controls.update();
 
     // Portfolio Final embed: the canvas must never hijack page scroll.
     // Wheel input passes through to the page and vertical touch scrolls
@@ -132,13 +145,62 @@ export default function SakuraTree() {
     controls.enableZoom = false;
     renderer.domElement.style.touchAction = 'pan-y';
 
+    let animationFrameId = 0;
+
+    const renderFrame = () => {
+      controls.update();
+
       renderer.render(
         scene,
         camera
       );
     };
 
-    animate();
+    const startLoop = () => {
+      if (animationFrameId) return;
+
+      const tick = () => {
+        animationFrameId =
+          requestAnimationFrame(tick);
+
+        renderFrame();
+      };
+
+      animationFrameId =
+        requestAnimationFrame(tick);
+    };
+
+    const stopLoop = () => {
+      if (!animationFrameId) return;
+
+      cancelAnimationFrame(
+        animationFrameId
+      );
+
+      animationFrameId = 0;
+    };
+
+    // The tree lives at the bottom of a long page. Rendering 11k+
+    // instanced blossoms with shadows every frame while nobody can see
+    // them is the main source of scroll jank — so the loop only runs
+    // while the canvas is near the viewport.
+    const visibilityObserver =
+      new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            handleResize();
+            renderFrame();
+            startLoop();
+          } else {
+            stopLoop();
+          }
+        },
+        { rootMargin: '200px' }
+      );
+
+    visibilityObserver.observe(container);
+
+    startLoop();
 
     // =========================================================
     // RESIZE
@@ -150,9 +212,7 @@ export default function SakuraTree() {
 
       if (width === 0 || height === 0) return;
 
-      camera.aspect = width / height;
-
-      camera.updateProjectionMatrix();
+      fitCameraToContainer();
 
       renderer.setSize(
         width,
@@ -174,9 +234,9 @@ export default function SakuraTree() {
     // =========================================================
 
     return () => {
-      cancelAnimationFrame(
-        animationFrameId
-      );
+      stopLoop();
+
+      visibilityObserver.disconnect();
 
       window.removeEventListener(
         "resize",
