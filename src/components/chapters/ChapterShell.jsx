@@ -13,6 +13,7 @@ import Final from './Final';
 import TopNav from '../navigation/TopNav';
 import ChapterRail from '../navigation/ChapterRail';
 import NavigationMenu from '../navigation/NavigationMenu';
+import MobileChapterNav from '../navigation/MobileChapterNav';
 import chaptersData from '../../data/chapters';
 import useChapterObserver from '../../hooks/useChapterObserver';
 
@@ -33,11 +34,20 @@ const ChapterShell = () => {
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         activeChapterId={activeChapterId}
+        scrollToChapter={scrollToChapter}
       />
 
       {/* Main content */}
-      <main className="relative">
+      <main id="main-content" className="relative">
+        {/* Skip to content link */}
+        <a
+          href="#chapter-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-sakura text-paper px-4 py-2 rounded font-body text-sm"
+        >
+          Skip to main content
+        </a>
         {/* Chapter content */}
+        <div id="chapter-content" tabIndex={-1}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -87,11 +97,18 @@ const ChapterShell = () => {
               </Chapter>
             ))}
         </motion.div>
+        </div>
 
         {/* Mobile Navigation Menu */}
         <NavigationMenu
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
+          activeChapterId={activeChapterId}
+          scrollToChapter={scrollToChapter}
+        />
+
+        {/* Mobile Chapter Navigation - fixed bottom */}
+        <MobileChapterNav
           activeChapterId={activeChapterId}
           scrollToChapter={scrollToChapter}
         />

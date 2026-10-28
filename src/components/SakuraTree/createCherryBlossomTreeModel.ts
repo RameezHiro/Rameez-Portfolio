@@ -1,9 +1,5 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 export type ProceduralModelOptions = {
@@ -624,9 +620,11 @@ export function createCherryBlossomTreeModel(options: ProceduralModelOptions = {
   growBranch(leaderStart.clone().add(new THREE.Vector3(-0.06, -0.22, 0.05)), new THREE.Vector3(range(-0.24, -0.04), 0.78, range(0.08, 0.22)), canopyHeight * 0.34, 0.13, 2);
 
   const flowerCount = Math.max(2200, Math.floor(twigTips.length * 52 * blossomDensity));
+  // Cap blossom instances for portfolio use (3000 flowers = ~15,000 petals)
+  const portfolioFlowerCount = Math.min(3000, flowerCount);
   const flowersPerCluster = 5;
-  const petalInstances = flowerMaterials.map((material) => new THREE.InstancedMesh(petalGeometry, material, flowerCount * flowersPerCluster));
-  const centerInstances = new THREE.InstancedMesh(centerGeometry, centerMaterial, flowerCount);
+  const petalInstances = flowerMaterials.map((material) => new THREE.InstancedMesh(petalGeometry, material, portfolioFlowerCount * flowersPerCluster));
+  const centerInstances = new THREE.InstancedMesh(centerGeometry, centerMaterial, portfolioFlowerCount);
   // Thousands of petals do not need individual shadow-map passes. Keep the trunk and
   // branch shadows for depth, while the blossom canopy is lit in the main color pass.
   petalInstances.forEach((mesh) => { mesh.castShadow = false; mesh.receiveShadow = false; blossomGroup.add(mesh); });
@@ -654,7 +652,7 @@ export function createCherryBlossomTreeModel(options: ProceduralModelOptions = {
     const normalized = (x / (canopyWidth * 0.52)) ** 2 + (z / (canopyWidth * 0.38)) ** 2 + ((y - (trunkHeight * 0.54 + canopyHeight * 0.45)) / (canopyHeight * 0.62)) ** 2;
     if (normalized < 1.15) anchors.push(new THREE.Vector3(x, y, z));
   }
-  for (let clusterIndex = 0; clusterIndex < flowerCount; clusterIndex += 1) {
+  for (let clusterIndex = 0; clusterIndex < portfolioFlowerCount; clusterIndex += 1) {
     const twig = choose(anchors);
     flowerCenter.copy(twig).add(new THREE.Vector3(range(-0.26, 0.26), range(-0.18, 0.22), range(-0.26, 0.26)));
     const clusterRadius = range(0.08, 0.25);
@@ -887,7 +885,7 @@ export function createCherryBlossomTreeLookDevLights(
   else if (mode === 'reference') key.position.set(-4.5, 7.5, 5.0);
   else key.position.set(-4.0, 6.0, 5.5);
   key.castShadow = true;
-  key.shadow.mapSize.set(2048, 2048);
+  key.shadow.mapSize.set(1024, 1024);
   key.shadow.bias = -0.00025;
   key.shadow.normalBias = 0.018;
   key.shadow.radius = 7;
@@ -961,28 +959,9 @@ export function frameCherryBlossomTreeCamera(
 // plain renderer with NO composer â€” bloom blows highlights and DOF blurs edges, which
 // would corrupt the deterministic IoU/DCD/edge/blowout signals. Enable dof/bloom ONLY
 // when the reference photo actually exhibits them (detect_reference_effects.py authorizes).
-export function createCherryBlossomTreePresentationComposer(
-  renderer: THREE.WebGLRenderer,
-  scene: THREE.Scene,
-  camera: THREE.Camera,
-  options: { dof?: boolean; bloom?: boolean; bloomStrength?: number; dofFocus?: number; dofAperture?: number } = {},
-): EffectComposer {
-  const composer = new EffectComposer(renderer);
-  composer.addPass(new RenderPass(scene, camera));
-  if (options.dof) {
-    composer.addPass(new BokehPass(scene, camera, {
-      focus: options.dofFocus ?? 10.0,
-      aperture: options.dofAperture ?? 0.0002,
-      maxblur: 0.01,
-    }));
-  }
-  if (options.bloom) {
-    const size = new THREE.Vector2();
-    renderer.getSize(size);
-    composer.addPass(new UnrealBloomPass(size, options.bloomStrength ?? 0.4, 0.4, 0.85));
-  }
-  return composer;
-}
+// Removed unused post-processing imports for Final scene
+// Only RoomEnvironment and OrbitControls are used in the portfolio
+// DOF and bloom are not used in the Final chapter presentation
 
 export function configureCherryBlossomTreeRenderer(renderer: THREE.WebGLRenderer): void {
   // Load-bearing for view-dependent finishes (anodized / Doppler): without ACES + sRGB

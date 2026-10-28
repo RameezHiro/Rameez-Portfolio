@@ -20,11 +20,38 @@ const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter }) =
     };
   }, [isOpen]);
 
-  // Handle Escape key
+  // Focus trap effect
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         onClose();
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const focusableElements = menuRef.current?.querySelectorAll(
+          'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+        );
+        const elements = Array.from(focusableElements || []);
+
+        if (elements.length === 0) return;
+
+        const firstElement = elements[0];
+        const lastElement = elements[elements.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
       }
     };
 
