@@ -32,7 +32,7 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
                 <span className="text-paper/60">CHAPTER</span>
                 <span className="text-sakura font-bold"> {activeChapterId} </span>
                 <span className="text-paper/60">·</span>
-                <span className="text-paper">{activeChapter.title}</span>
+                <span className="text-paper ml-1">{activeChapter.title}</span>
               </>
             ) : (
               <span className="text-paper">{activeChapter?.title || 'PROLOGUE'}</span>
