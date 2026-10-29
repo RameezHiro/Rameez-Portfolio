@@ -99,6 +99,34 @@ const RECORDS = [
       },
     ],
   },
+  {
+    index: '06',
+    name: 'ShelfScribe',
+    kind: 'FastAPI + React · local Ollama',
+    note: 'Etsy listing writer: product photos and keywords go to a local vision model, which returns a title, description, tags, and price range as JSON.',
+    links: [
+      {
+        label: 'Source',
+        href: 'https://github.com/RameezHiro/ShelfScribe',
+      },
+    ],
+  },
+  {
+    index: '07',
+    name: 'GrenMon',
+    kind: 'Three.js game · live demo',
+    note: 'Playable monster-hunter slice: low-poly habitat, four-move encounters, a capture loop, and a field log saved in the browser.',
+    links: [
+      {
+        label: 'Live demo',
+        href: 'https://grenmon.vercel.app',
+      },
+      {
+        label: 'Source',
+        href: 'https://github.com/RameezHiro/GrenMon',
+      },
+    ],
+  },
 ];
 
 const Reveal = ({ children, className = '', delay = 0 }) => {
@@ -198,7 +226,7 @@ const Chapter05 = () => {
                   <span className="font-tech text-xs text-sakura-text" aria-hidden="true">
                     03
                   </span>
-                  Three compact records
+                  Five compact records
                 </li>
               </ol>
             </div>
@@ -484,8 +512,8 @@ const Chapter05 = () => {
           ))}
         </div>
         <p className="mt-3 font-body text-xs leading-relaxed text-manga-gray">
-          Links open the public repository or, for Task Manager, the live Swagger UI.
-          Only artifacts that were found and checked are listed.
+          Links open the public repository, the Task Manager Swagger UI, or the
+          GrenMon live build. Only artifacts that were found and checked are listed.
         </p>
       </Reveal>
 
