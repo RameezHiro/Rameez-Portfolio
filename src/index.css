@@ -6,6 +6,12 @@
   body {
     @apply bg-paper text-ink font-body selection:bg-sakura/30;
   }
+
+  /* Each chapter is a page. Container query units let a full-bleed panel
+     reach the page edge without `100vw` and its scrollbar overflow. */
+  [data-chapter] {
+    container-type: inline-size;
+  }
 }
 
 @layer utilities {
@@ -26,5 +32,23 @@
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Manga spread system (Phase 1) */
+  .manga-bleed {
+    width: 100%;
+    margin-inline: -1.5rem;
+  }
+
+  @supports (container-type: inline-size) {
+    .manga-bleed {
+      width: 100cqw;
+      margin-inline: calc(50% - 50cqw);
+    }
+  }
+
+  .manga-screentone {
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1.05px);
+    background-size: 5px 5px;
   }
 }

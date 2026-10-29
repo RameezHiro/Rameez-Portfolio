@@ -241,7 +241,11 @@ const STAGE_ZERO = {
   petals: [],
 };
 
-const SakuraGrowth = ({ stage = 1, className = '', label }) => {
+// Scene crop: tightens the viewBox to the drawing so the tree can carry a
+// panel instead of sitting in whitespace. `slice` anchors the ground line.
+const SCENE_VIEWBOX = '8 74 204 178';
+
+const SakuraGrowth = ({ stage = 1, className = '', label, crop = false }) => {
   const reduceMotion = useReducedMotion();
   const config =
     stage === 0
@@ -259,7 +263,8 @@ const SakuraGrowth = ({ stage = 1, className = '', label }) => {
 
   return (
     <svg
-      viewBox="0 0 220 260"
+      viewBox={crop ? SCENE_VIEWBOX : '0 0 220 260'}
+      preserveAspectRatio={crop ? 'xMidYMax slice' : 'xMidYMid meet'}
       className={className}
       role="img"
       aria-label={ariaLabel}
