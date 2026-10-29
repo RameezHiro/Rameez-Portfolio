@@ -57,7 +57,7 @@ const Chapter06 = () => {
       {/* A. OPENING */}
       <Reveal>
         <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
-          The projects changed. <span className="text-sakura">So did I</span>.
+          The projects changed. <span className="text-sakura-text">So did I</span>.
         </p>
         <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
           The progression was never about collecting more technologies. Each
@@ -69,9 +69,9 @@ const Chapter06 = () => {
       {/* B. EVOLUTION PATH — one continuous ruled arc */}
       <div className="mt-16 md:mt-24">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             The evolution path
-          </h2>
+          </h3>
         </Reveal>
         <div className="mt-6 border-t-2 border-ink">
           {STAGES.map((stage, i) => {
@@ -85,13 +85,13 @@ const Chapter06 = () => {
                   <div className="flex items-baseline gap-4">
                     <span
                       className={`font-tech text-sm shrink-0 ${
-                        isLast ? 'text-sakura' : 'text-manga-gray'
+                        isLast ? 'text-sakura-text' : 'text-manga-gray'
                       }`}
                       aria-hidden="true"
                     >
                       {stage.index}
                     </span>
-                    <h3
+                    <h4
                       className={`font-display font-bold tracking-tight ${
                         isLast
                           ? 'text-3xl md:text-5xl text-ink'
@@ -99,7 +99,7 @@ const Chapter06 = () => {
                       }`}
                     >
                       {stage.name}
-                    </h3>
+                    </h4>
                     {isLast && (
                       <span
                         className="h-1.5 w-1.5 bg-sakura shrink-0 self-center"
@@ -128,9 +128,9 @@ const Chapter06 = () => {
       {/* C. REFLECTION — narrative transition, generous whitespace */}
       <div className="mt-20 md:mt-32">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Reflection
-          </h2>
+          </h3>
         </Reveal>
         <div className="mt-8 md:mt-10 space-y-8 md:space-y-12">
           {REFLECTION.map((line, i) => {
@@ -140,7 +140,7 @@ const Chapter06 = () => {
                 {isLast ? (
                   <p className="font-display text-2xl md:text-4xl font-bold leading-snug text-ink max-w-2xl">
                     Now I&apos;m learning how{' '}
-                    <span className="text-sakura">systems</span> behave.
+                    <span className="text-sakura-text">systems</span> behave.
                   </p>
                 ) : (
                   <p className="font-body text-base md:text-xl leading-relaxed text-manga-gray max-w-2xl">
@@ -156,9 +156,9 @@ const Chapter06 = () => {
       {/* D. THE SHIFT — restrained from/to movement */}
       <Reveal className="mt-20 md:mt-32">
         <section aria-label="The shift">
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             The shift
-          </h2>
+          </h3>
           <div className="mt-6 border-t-2 border-ink">
             {SHIFTS.map((shift) => (
               <div
@@ -174,7 +174,7 @@ const Chapter06 = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura">
+                  <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text">
                     To
                   </p>
                   <p className="mt-2 font-display text-xl md:text-2xl font-bold leading-snug text-ink">
@@ -200,7 +200,7 @@ const Chapter06 = () => {
               </p>
               <p className="mt-4 font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
                 It was to understand more than I did{' '}
-                <span className="text-sakura">yesterday</span>.
+                <span className="text-sakura-text">yesterday</span>.
               </p>
               <p className="mt-8 font-tech text-xs uppercase tracking-[0.2em] text-manga-gray">
                 Evolution · Still in progress
@@ -216,7 +216,7 @@ const Chapter06 = () => {
           <div className="mt-10 md:mt-14 flex md:justify-end">
             <button
               onClick={() => scrollToChapter('07')}
-              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
               Next — Chapter 07 · {nextTitle}
               <span aria-hidden="true">↓</span>

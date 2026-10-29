@@ -81,7 +81,7 @@ const Reveal = ({ children, className = '', delay = 0 }) => {
 // observation, thin sakura rule. Notes from the middle of training.
 const MarginNote = ({ children }) => (
   <p className="mt-4 border-l-2 border-sakura pl-3 font-body text-sm italic leading-relaxed text-manga-gray">
-    <span className="not-italic font-tech text-[11px] uppercase tracking-[0.2em] text-sakura">
+    <span className="not-italic font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text">
       Note —{' '}
     </span>
     {children}
@@ -97,7 +97,7 @@ const Chapter02 = () => {
       {/* A. OPENING */}
       <Reveal>
         <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
-          Every skill was another <span className="text-sakura">weapon</span>.
+          Every skill was another <span className="text-sakura-text">weapon</span>.
         </p>
         <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
           The path wasn’t a straight line. It was repetition.
@@ -106,9 +106,9 @@ const Chapter02 = () => {
 
       {/* LEARNING LOOP — editorial training sequence, sapling alongside */}
       <Reveal className="mt-14 md:mt-20">
-        <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+        <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
           The training cycle
-        </h2>
+        </h3>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-10 md:gap-8 items-start">
           <ol
             className="relative border-l-2 border-ink pl-6 md:pl-10 space-y-7 md:space-y-8"
@@ -132,7 +132,7 @@ const Chapter02 = () => {
                   </span>
                   <span
                     className={`mt-1 block font-display text-xl md:text-3xl font-bold tracking-wide ${
-                      isLast ? 'text-sakura' : 'text-ink'
+                      isLast ? 'text-sakura-text' : 'text-ink'
                     }`}
                   >
                     {step}
@@ -166,9 +166,9 @@ const Chapter02 = () => {
       {/* TRAINING PATH — sequential manuscript, denser as it advances */}
       <div className="mt-16 md:mt-24">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             The training path
-          </h2>
+          </h3>
         </Reveal>
         <div className="mt-6 border-t-2 border-ink">
           {STAGES.map((stage, i) => {
@@ -184,13 +184,13 @@ const Chapter02 = () => {
                   <div className="flex items-baseline gap-4">
                     <span
                       className={`font-tech text-sm shrink-0 ${
-                        late ? 'text-sakura' : 'text-manga-gray'
+                        late ? 'text-sakura-text' : 'text-manga-gray'
                       }`}
                       aria-hidden="true"
                     >
                       {stage.index}
                     </span>
-                    <h3
+                    <h4
                       className={`font-display font-bold tracking-tight text-ink ${
                         i < 2
                           ? 'text-2xl md:text-3xl'
@@ -198,7 +198,7 @@ const Chapter02 = () => {
                       }`}
                     >
                       {stage.name}
-                    </h3>
+                    </h4>
                     {late && (
                       <span
                         className="h-1.5 w-1.5 bg-sakura shrink-0 self-center"
@@ -268,7 +268,7 @@ const Chapter02 = () => {
           <div className="mt-10 md:mt-14 flex md:justify-end">
             <button
               onClick={() => scrollToChapter('03')}
-              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
               Next — Chapter 03 · {nextTitle}
               <span aria-hidden="true">↓</span>

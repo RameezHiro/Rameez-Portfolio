@@ -15,7 +15,7 @@ const ChapterRail = ({ activeChapterId, scrollToChapter }) => {
             <button
               key={chapter.id}
               onClick={() => scrollToChapter(chapter.id)}
-              className={`relative rounded-full px-2.5 py-1.5 font-body text-[11px] uppercase tracking-[0.18em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura ${
+              className={`relative rounded-full px-2.5 py-1.5 font-body text-[11px] uppercase tracking-[0.18em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text ${
                 isActive
                   ? 'font-semibold text-ink'
                   : 'text-manga-gray hover:text-ink'
@@ -26,7 +26,7 @@ const ChapterRail = ({ activeChapterId, scrollToChapter }) => {
               {chapter.id}
               {isActive && (
                 <span
-                  className="absolute inset-x-2 -bottom-0.5 h-0.5 bg-sakura"
+                  className="absolute inset-x-2 -bottom-0.5 h-0.5 bg-sakura-text"
                   aria-hidden="true"
                 />
               )}

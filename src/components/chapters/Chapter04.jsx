@@ -60,7 +60,7 @@ const Chapter04 = () => {
       <Reveal>
         <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
           The fastest way to learn is to build{' '}
-          <span className="text-sakura">under pressure</span>.
+          <span className="text-sakura-text">under pressure</span>.
         </p>
         <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
           A hackathon compresses months of learning into a weekend — problem,
@@ -70,9 +70,9 @@ const Chapter04 = () => {
 
       {/* B. BATTLE DOCTRINE — restrained numbered sequence */}
       <Reveal className="mt-14 md:mt-20">
-        <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+        <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
           Why hackathons
-        </h2>
+        </h3>
         <ol className="mt-6 border-t-2 border-ink" aria-label="Battle doctrine">
           {DOCTRINE.map((rule, i) => (
             <li
@@ -99,9 +99,9 @@ const Chapter04 = () => {
       {/* C. BATTLE RECORDS */}
       <div className="mt-16 md:mt-24">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Battle records
-          </h2>
+          </h3>
         </Reveal>
 
         {/* RECORD 01 — UAi Hawk-A-Thon: the strongest treatment */}
@@ -115,7 +115,7 @@ const Chapter04 = () => {
             </div>
             <div className="px-5 md:px-6 py-6 md:py-8">
               <p className="font-display text-2xl md:text-4xl font-bold leading-tight text-ink">
-                Judges&apos; <span className="text-sakura">Choice</span>.
+                Judges&apos; <span className="text-sakura-text">Choice</span>.
               </p>
               <p className="mt-3 font-tech text-xs uppercase tracking-[0.2em] text-manga-gray">
                 Team Algovoid · 24 hours · 115+ teams
@@ -126,7 +126,7 @@ const Chapter04 = () => {
                     key={row.label}
                     className="grid grid-cols-1 md:grid-cols-[110px_1fr] gap-1 md:gap-6 border-b border-ink/10 py-3"
                   >
-                    <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura pt-1">
+                    <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text pt-1">
                       {row.label}
                     </dt>
                     <dd className="font-body text-sm md:text-base leading-relaxed text-ink">
@@ -141,7 +141,7 @@ const Chapter04 = () => {
                   href="https://github.com/RameezHiro/AI-Powered-Academic-Career-Navigator.git"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-ink underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+                  className="text-ink underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
                 >
                   Academic Career Navigator
                 </a>
@@ -163,16 +163,16 @@ const Chapter04 = () => {
               >
                 02
               </span>
-              <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-ink">
+              <h4 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-ink">
                 Hacktoon
-              </h3>
+              </h4>
             </div>
             <p className="mt-3 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
               Entered. This record is thin — the build mattered more than the
               paperwork, and only the appearance itself is documented.
             </p>
             <p className="mt-4 border-l-2 border-sakura pl-3 font-body text-sm italic leading-relaxed text-manga-gray max-w-2xl">
-              <span className="not-italic font-tech text-[11px] uppercase tracking-[0.2em] text-sakura">
+              <span className="not-italic font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text">
                 Lesson —{' '}
               </span>
               Showing up to unfamiliar problems is its own training.
@@ -184,9 +184,9 @@ const Chapter04 = () => {
       {/* D. LOST BATTLES — smaller, reflective, no invented specifics */}
       <Reveal className="mt-16 md:mt-24">
         <section aria-label="Lost battles">
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Lost battles
-          </h2>
+          </h3>
           <p className="mt-3 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
             Not every build became a result worth framing. The unfinished ones
             taught just as much — quietly.
@@ -219,7 +219,7 @@ const Chapter04 = () => {
             <div>
               <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
                 Every battle left something{' '}
-                <span className="text-sakura">behind</span>.
+                <span className="text-sakura-text">behind</span>.
               </p>
               <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
                 Some experiments became projects.
@@ -235,7 +235,7 @@ const Chapter04 = () => {
           <div className="mt-10 md:mt-14 flex md:justify-end">
             <button
               onClick={() => scrollToChapter('05')}
-              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
               Next — Chapter 05 · {nextTitle}
               <span aria-hidden="true">↓</span>

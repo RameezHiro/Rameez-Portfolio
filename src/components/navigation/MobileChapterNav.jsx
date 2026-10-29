@@ -11,8 +11,6 @@ const MobileChapterNav = ({ activeChapterId, scrollToChapter }) => {
       <div className="px-4 py-3">
         <div
           className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-2"
-          role="tablist"
-          aria-label="Chapters"
         >
           {chapters.map((chapter) => {
             const isActive = activeChapterId === chapter.id;
@@ -20,12 +18,11 @@ const MobileChapterNav = ({ activeChapterId, scrollToChapter }) => {
               <button
                 key={chapter.id}
                 onClick={() => scrollToChapter(chapter.id)}
-                role="tab"
-                aria-selected={isActive}
+                aria-current={isActive ? 'location' : undefined}
                 aria-label={`Chapter ${chapter.id}: ${chapter.title}`}
-                className={`flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 font-body text-[10px] uppercase tracking-[0.15em] transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura ${
+                className={`flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 font-body text-[10px] uppercase tracking-[0.15em] transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text ${
                   isActive
-                    ? 'text-sakura bg-sakura/10 font-semibold'
+                    ? 'text-sakura-text font-semibold'
                     : 'text-manga-gray hover:text-ink'
                 }`}
               >
@@ -33,7 +30,7 @@ const MobileChapterNav = ({ activeChapterId, scrollToChapter }) => {
                 <span className="hidden sm:inline" aria-hidden="true">{chapter.title}</span>
                 {isActive && (
                   <span
-                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-sakura rounded-full"
+                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-sakura-text rounded-full"
                     aria-hidden="true"
                   />
                 )}

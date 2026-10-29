@@ -12,6 +12,7 @@ export default {
         "ink": "#111111",
         "manga-gray": "#5C5C5C",
         "sakura": "#D96C8A",
+        "sakura-text": "#B24E6B",
         "deep-ink": "#18151A",
         "on-tertiary-container": "#633c15",
         "on-error-container": "#ffdad6",
@@ -62,8 +63,8 @@ export default {
         "surface-container": "#201f1f"
       },
       fontFamily: {
-        "display": ["Newsreader", "Klee One", "serif"],
-        "body": ["Work Sans", "Inter", "sans-serif"],
+        "display": ["Klee One", "serif"],
+        "body": ["Inter", "system-ui", "sans-serif"],
         "tech": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
       }
     },

@@ -35,9 +35,9 @@ const Chapter = ({
               {kicker}
             </span>
           </div>
-          <h1 className="mt-5 font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ink">
+          <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ink">
             {title}
-          </h1>
+          </h2>
           {description && (
             <p className="mt-4 font-body text-base md:text-lg text-manga-gray max-w-2xl leading-relaxed">
               {description}

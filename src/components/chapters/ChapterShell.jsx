@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Chapter from './Chapter';
 import Chapter01 from './Chapter01';
@@ -19,6 +19,7 @@ import useChapterObserver from '../../hooks/useChapterObserver';
 
 const ChapterShell = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuTriggerRef = useRef(null);
   // Single canonical chapter state for all navigation UI.
   const { activeChapterId, scrollToChapter } = useChapterObserver({
     defaultChapterId: '01',
@@ -35,6 +36,7 @@ const ChapterShell = () => {
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         activeChapterId={activeChapterId}
         scrollToChapter={scrollToChapter}
+        menuTriggerRef={menuTriggerRef}
       />
 
       {/* Main content */}
@@ -42,12 +44,13 @@ const ChapterShell = () => {
         {/* Skip to content link */}
         <a
           href="#chapter-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-sakura text-paper px-4 py-2 rounded font-body text-sm"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-sakura-text text-paper px-4 py-2 rounded font-body text-sm"
         >
           Skip to main content
         </a>
         {/* Chapter content */}
         <div id="chapter-content" tabIndex={-1}>
+          <h1 className="sr-only">Rameez: The Developer&apos;s Arc</h1>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -105,6 +108,7 @@ const ChapterShell = () => {
           onClose={() => setIsMobileMenuOpen(false)}
           activeChapterId={activeChapterId}
           scrollToChapter={scrollToChapter}
+          triggerRef={menuTriggerRef}
         />
 
         {/* Mobile Chapter Navigation - fixed bottom */}

@@ -60,7 +60,7 @@ const Chapter01 = () => {
         <p className="mt-8 font-display text-4xl md:text-6xl font-bold leading-[1.1] text-ink max-w-3xl">
           Before the code,
           <br />
-          there was <span className="text-sakura">curiosity</span>.
+          there was <span className="text-sakura-text">curiosity</span>.
         </p>
       </Reveal>
 
@@ -95,9 +95,9 @@ const Chapter01 = () => {
 
       {/* C. CURIOSITY → AMBITION */}
       <Reveal className="mt-16 md:mt-24">
-        <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+        <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
           The change
-        </h2>
+        </h3>
         <ol className="mt-6 border-t-2 border-ink" aria-label="From curiosity to ambition">
           {ARC.map((stage, i) => (
             <li
@@ -106,7 +106,7 @@ const Chapter01 = () => {
             >
               <span
                 className={`font-tech text-xs w-8 shrink-0 ${
-                  i === ARC.length - 1 ? 'text-sakura' : 'text-manga-gray'
+                  i === ARC.length - 1 ? 'text-sakura-text' : 'text-manga-gray'
                 }`}
                 aria-hidden="true"
               >
@@ -135,7 +135,7 @@ const Chapter01 = () => {
       {/* D. TERMINAL MOMENT */}
       <Reveal className="mt-16 md:mt-24">
         <p className="mb-5 font-tech text-[11px] uppercase tracking-[0.25em] text-manga-gray">
-          Field note <span className="text-sakura" aria-hidden="true">—</span> the
+          Field note <span className="text-sakura-text" aria-hidden="true">—</span> the
           abstract becomes code
         </p>
         <figure>
@@ -178,9 +178,9 @@ still building...`}
 
       {/* E. IDENTITY */}
       <Reveal className="mt-16 md:mt-24">
-        <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+        <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
           The protagonist
-        </h2>
+        </h3>
         <div className="mt-6 border-2 border-ink px-6 py-8 md:px-10 md:py-10">
           <div className="flex items-center gap-3" aria-hidden="true">
             <span className="h-2 w-2 bg-sakura" />
@@ -229,7 +229,7 @@ still building...`}
           <div className="mt-10 md:mt-14 flex md:justify-end">
             <button
               onClick={() => scrollToChapter('02')}
-              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
               Next — Chapter 02 · {nextTitle}
               <span aria-hidden="true">↓</span>

@@ -63,7 +63,7 @@ const Chapter08 = () => {
       <Reveal>
         <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
           The destination isn&apos;t{' '}
-          <span className="text-sakura">finished</span>.
+          <span className="text-sakura-text">finished</span>.
         </p>
         <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
           The current arc is moving toward deeper engineering, deeper AI
@@ -74,9 +74,9 @@ const Chapter08 = () => {
       {/* B. MISSIONS — one connected forward path */}
       <div className="mt-16 md:mt-24">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             The path forward
-          </h2>
+          </h3>
         </Reveal>
         <div className="mt-6 border-t-2 border-ink">
           {MISSIONS.map((mission, i) => (
@@ -92,9 +92,9 @@ const Chapter08 = () => {
                   >
                     {mission.index}
                   </span>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-ink">
+                  <h4 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-ink">
                     {mission.name}
-                  </h3>
+                  </h4>
                 </div>
                 <p className="mt-3 font-tech text-xs uppercase tracking-[0.2em] text-manga-gray">
                   {mission.focus}
@@ -125,7 +125,7 @@ const Chapter08 = () => {
           <div className="mt-6 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-10 md:gap-8 items-start">
             <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
               Become a strong software engineer with deep{' '}
-              <span className="text-sakura">AI knowledge</span>.
+              <span className="text-sakura-text">AI knowledge</span>.
             </p>
             <figure className="w-40 md:w-full md:max-w-[200px] md:pt-2">
               <SakuraGrowth stage={8} className="w-full h-auto" />
@@ -149,7 +149,7 @@ const Chapter08 = () => {
           <div className="mt-8 flex md:justify-end">
             <button
               onClick={() => scrollToChapter('final')}
-              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
               Next — Final · {nextTitle}
               <span aria-hidden="true">↓</span>

@@ -5,7 +5,7 @@ import chaptersData from '../../data/chapters';
 import SakuraGrowth from '../shared/SakuraGrowth';
 
 // Chapter 03 — ARSENAL. Story-first: the engineering toolkit framed as
-// decisions, not a collection. Four canonical groups; every technology
+// decisions, not a collection. Six canonical groups; every technology
 // answers "why did I use this?" No percentages, no bars, no metrics,
 // no logos-as-content. Denser than Chapter 02, same manuscript grammar.
 const GROUPS = [
@@ -119,7 +119,7 @@ const Chapter03 = () => {
       <Reveal>
         <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
           The tools changed. The question stayed{' '}
-          <span className="text-sakura">the same</span>.
+          <span className="text-sakura-text">the same</span>.
         </p>
         <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
           Every stage of training added a new instrument. None of them mattered
@@ -129,9 +129,9 @@ const Chapter03 = () => {
 
       {/* B. THESIS — decision framing, young tree alongside */}
       <Reveal className="mt-14 md:mt-20">
-        <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+        <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
           Field note
-        </h2>
+        </h3>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-10 md:gap-8 items-start">
           <div>
             <p className="font-display text-2xl md:text-4xl font-bold leading-tight text-ink max-w-xl">
@@ -141,7 +141,7 @@ const Chapter03 = () => {
             <p className="mt-6 font-tech text-xs uppercase tracking-[0.2em] text-manga-gray">
               Every entry below answers one question
             </p>
-            <p className="mt-2 font-display text-xl md:text-2xl font-bold text-sakura">
+            <p className="mt-2 font-display text-xl md:text-2xl font-bold text-sakura-text">
               Why did I use this?
             </p>
           </div>
@@ -157,9 +157,9 @@ const Chapter03 = () => {
       {/* C. THE ARSENAL — four ruled groups, denser than Chapter 02 */}
       <div className="mt-16 md:mt-24">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             The arsenal
-          </h2>
+          </h3>
         </Reveal>
         <div className="mt-6 border-t-2 border-ink">
           {GROUPS.map((group, i) => (
@@ -175,9 +175,9 @@ const Chapter03 = () => {
                   >
                     {group.index}
                   </span>
-                  <h3 className="font-display text-2xl md:text-4xl font-bold tracking-tight text-ink">
+                  <h4 className="font-display text-2xl md:text-4xl font-bold tracking-tight text-ink">
                     {group.name}
-                  </h3>
+                  </h4>
                 </div>
                 <p className="mt-3 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
                   {group.narrative}
@@ -196,7 +196,7 @@ const Chapter03 = () => {
                       </dt>
                       <dd className="mt-1 font-body text-sm leading-relaxed text-manga-gray">
                         <span
-                          className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura"
+                          className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text"
                           aria-hidden="true"
                         >
                           Why —{' '}
@@ -216,7 +216,7 @@ const Chapter03 = () => {
                           href={link.href}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-ink underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+                          className="text-ink underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
                         >
                           {link.label}
                         </a>
@@ -245,7 +245,7 @@ const Chapter03 = () => {
             End of inventory
           </p>
           <p className="mt-6 font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
-            TOOLS ARE <span className="text-sakura">READY</span>.
+            TOOLS ARE <span className="text-sakura-text">READY</span>.
           </p>
           <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
             The question was never how many tools could be collected. It was
@@ -254,7 +254,7 @@ const Chapter03 = () => {
           <div className="mt-10 md:mt-14 flex md:justify-end">
             <button
               onClick={() => scrollToChapter('04')}
-              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
               Next — Chapter 04 · {nextTitle}
               <span aria-hidden="true">↓</span>

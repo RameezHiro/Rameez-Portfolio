@@ -119,7 +119,7 @@ const Chapter05 = () => {
       <Reveal>
         <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
           Ideas become real when someone{' '}
-          <span className="text-sakura">builds them</span>.
+          <span className="text-sakura-text">builds them</span>.
         </p>
         <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
           Pressure taught speed. Projects taught systems — where concepts stop
@@ -129,9 +129,9 @@ const Chapter05 = () => {
 
       {/* B. THE BUILDING LOOP — pipeline strip, wraps on mobile */}
       <Reveal className="mt-14 md:mt-20">
-        <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+        <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
           The building loop
-        </h2>
+        </h3>
         <ol
           className="mt-6 flex flex-wrap items-stretch gap-2"
           aria-label="Problem, idea, architecture, build, what broke, result, what I learned"
@@ -142,7 +142,7 @@ const Chapter05 = () => {
               <li key={stage} className="flex items-stretch">
                 <span
                   className={`flex items-center border-2 px-3 py-2 font-tech text-xs md:text-sm tracking-wide ${
-                    isLast ? 'border-sakura text-sakura' : 'border-ink text-ink'
+                    isLast ? 'border-sakura text-sakura-text' : 'border-ink text-ink'
                   }`}
                 >
                   {stage}
@@ -164,9 +164,9 @@ const Chapter05 = () => {
       {/* C. FLAGSHIP — AAROH case file */}
       <div className="mt-16 md:mt-24">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Flagship
-          </h2>
+          </h3>
         </Reveal>
         <Reveal className="mt-6">
           <figure className="border-2 border-ink">
@@ -228,7 +228,7 @@ const Chapter05 = () => {
                       <span
                         className={`border-2 px-3 py-2 text-center font-tech text-xs md:text-sm tracking-wide ${
                           i === 0
-                            ? 'border-sakura text-sakura'
+                            ? 'border-sakura text-sakura-text'
                             : 'border-ink text-ink'
                         }`}
                       >
@@ -251,7 +251,7 @@ const Chapter05 = () => {
                     key={row.label}
                     className="grid grid-cols-1 md:grid-cols-[130px_1fr] gap-1 md:gap-6 border-b border-ink/10 py-3"
                   >
-                    <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura pt-1">
+                    <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text pt-1">
                       {row.label}
                     </dt>
                     <dd className="font-body text-sm md:text-base leading-relaxed text-ink">
@@ -268,9 +268,9 @@ const Chapter05 = () => {
       {/* D. TIER 2 — meaningful builds, compact weight */}
       <div className="mt-16 md:mt-24">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Further builds
-          </h2>
+          </h3>
         </Reveal>
         <div className="mt-6 border-t-2 border-ink">
           {TIER_TWO.map((project, i) => (
@@ -279,9 +279,9 @@ const Chapter05 = () => {
                 aria-label={project.name}
                 className="border-b border-ink/15 py-6 md:py-7"
               >
-                <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight text-ink">
+                <h4 className="font-display text-xl md:text-2xl font-bold tracking-tight text-ink">
                   {project.name}
-                </h3>
+                </h4>
                 <dl className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-x-10">
                   <div className="border-t border-ink/10 py-2">
                     <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
@@ -309,9 +309,9 @@ const Chapter05 = () => {
       {/* E. TIER 3 — learning experiments with real evidence links */}
       <div className="mt-14 md:mt-20">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Learning experiments
-          </h2>
+          </h3>
         </Reveal>
         <div className="mt-6 border-t border-ink/30">
           {TIER_THREE.map((project) => (
@@ -321,14 +321,14 @@ const Chapter05 = () => {
                 className="border-b border-ink/10 py-5 md:py-6"
               >
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                  <h3 className="font-tech text-sm md:text-base tracking-wide text-ink">
+                  <h4 className="font-tech text-sm md:text-base tracking-wide text-ink">
                     {project.name}
-                  </h3>
+                  </h4>
                   <a
                     href={project.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-body text-xs uppercase tracking-[0.2em] text-manga-gray underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+                    className="font-body text-xs uppercase tracking-[0.2em] text-manga-gray underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
                   >
                     {project.linkLabel} ↗
                   </a>
@@ -352,7 +352,7 @@ const Chapter05 = () => {
             <div>
               <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
                 Every project left a{' '}
-                <span className="text-sakura">system</span> behind.
+                <span className="text-sakura-text">system</span> behind.
               </p>
               <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
                 Building changed what learning meant.
@@ -368,7 +368,7 @@ const Chapter05 = () => {
           <div className="mt-10 md:mt-14 flex md:justify-end">
             <button
               onClick={() => scrollToChapter('06')}
-              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
               Next — Chapter 06 · {nextTitle}
               <span aria-hidden="true">↓</span>

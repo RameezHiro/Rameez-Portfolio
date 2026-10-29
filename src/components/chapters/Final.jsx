@@ -1,8 +1,10 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import SakuraGrowth from '../shared/SakuraGrowth';
 
-// Code-split: three.js (~1MB) loads only when the Final scene mounts,
-// never blocking the initial page render.
+// Code-split: the three.js chunk is imported only after Final approaches
+// the viewport. Final mounts at initial render, so the lazy import must be
+// gated by visibility rather than by mount.
 const SakuraTree = React.lazy(() => import('../SakuraTree/SakuraTree'));
 
 // FINAL — THE CURRENT ARC ENDS. The quiet culmination: the 2D ink sakura
@@ -17,6 +19,35 @@ const LINKS = [
   { label: 'Resume', href: '/resume.pdf' },
   { label: 'Contact', href: 'mailto:yellowvoid22@gmail.com' },
 ];
+
+// If the lazy chunk or WebGL initialization fails, keep the page readable
+// with the fully grown 2D ink tree instead of leaving a blank panel.
+class TreeErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { failed: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  componentDidCatch(error) {
+    console.error('Sakura tree failed to initialize:', error);
+  }
+
+  render() {
+    if (this.state.failed) {
+      return (
+        <div className="flex h-full items-center justify-center" aria-hidden="true">
+          <SakuraGrowth stage={8} className="h-full w-auto" />
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 
 // Slow cinematic reveal. Reduced motion renders content immediately.
 const Cinematic = ({ children, className = '', delay = 0, duration = 1.1 }) => {
@@ -68,8 +99,37 @@ const FinalPetal = () => {
   );
 };
 
-const Final = () => (
-  <div className="text-center">
+const Final = () => {
+  const treeRef = useRef(null);
+  const [treeReady, setTreeReady] = useState(false);
+
+  useEffect(() => {
+    const node = treeRef.current;
+
+    if (!node) return undefined;
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setTreeReady(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTreeReady(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '600px 0px' }
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="text-center">
     {/* 1. Open paper space + marker */}
     <Cinematic duration={1.2}>
       <p className="font-tech text-xs uppercase tracking-[0.3em] text-manga-gray">
@@ -81,13 +141,20 @@ const Final = () => (
         parent gives the tree's absolute canvas its height. */}
     <Cinematic className="mt-10 md:mt-14" delay={0.15} duration={1.4}>
       <div
+        ref={treeRef}
         className="relative mx-auto w-full max-w-3xl overflow-hidden h-[420px] md:h-[560px]"
         role="img"
         aria-label="Three-dimensional sakura tree — the fully grown tree at the end of the arc"
       >
-        <Suspense fallback={<div className="absolute inset-0" aria-hidden="true" />}>
-          <SakuraTree />
-        </Suspense>
+        {treeReady ? (
+          <TreeErrorBoundary>
+            <Suspense fallback={<div className="absolute inset-0" aria-hidden="true" />}>
+              <SakuraTree />
+            </Suspense>
+          </TreeErrorBoundary>
+        ) : (
+          <div className="absolute inset-0" aria-hidden="true" />
+        )}
       </div>
       <p className="mt-3 font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray text-center">
         The tree, fully grown
@@ -123,7 +190,7 @@ const Final = () => (
         <p className="font-display text-xl md:text-2xl font-bold text-ink">
           STILL LEARNING.
         </p>
-        <p className="font-display text-xl md:text-2xl font-bold text-sakura">
+        <p className="font-display text-xl md:text-2xl font-bold text-sakura-text">
           STILL BUILDING.
         </p>
         <p className="font-display text-xl md:text-2xl font-bold text-ink">
@@ -145,7 +212,7 @@ const Final = () => (
               href={link.href}
               target={link.href.startsWith('mailto') ? undefined : '_blank'}
               rel={link.href.startsWith('mailto') ? undefined : 'noreferrer'}
-              className="font-body text-xs uppercase tracking-[0.25em] text-ink underline decoration-sakura decoration-2 underline-offset-8 hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="font-body text-xs uppercase tracking-[0.25em] text-ink underline decoration-sakura decoration-2 underline-offset-8 hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
               {link.label}
             </a>
@@ -179,7 +246,8 @@ const Final = () => (
       <FinalPetal />
     </div>
     <div className="h-28 md:h-40" aria-hidden="true" />
-  </div>
-);
+    </div>
+  );
+};
 
 export default Final;

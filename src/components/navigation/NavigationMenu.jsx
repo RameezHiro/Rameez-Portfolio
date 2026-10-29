@@ -2,10 +2,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import chaptersData from '../../data/chapters';
 
-const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter }) => {
+const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter, triggerRef }) => {
   const chapters = chaptersData.chapters;
   const menuRef = useRef(null);
-  const menuButtonRef = useRef(null);
+  const wasOpenRef = useRef(false);
 
   // Prevent body scrolling when menu is open
   useEffect(() => {
@@ -62,14 +62,18 @@ const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter }) =
   // Focus management
   useEffect(() => {
     if (isOpen) {
+      wasOpenRef.current = true;
       // Focus the first menu item when menu opens
       const firstMenuItem = menuRef.current?.querySelector('button, a');
       firstMenuItem?.focus();
-    } else {
-      // Return focus to the menu button when menu closes
-      menuButtonRef.current?.focus();
+    } else if (wasOpenRef.current) {
+      wasOpenRef.current = false;
+      // Return focus to the trigger that opened the menu. The close button
+      // lives inside the menu and unmounts with it, so it cannot receive
+      // focus after closing.
+      triggerRef?.current?.focus();
     }
-  }, [isOpen]);
+  }, [isOpen, triggerRef]);
 
   const handleChapterClick = (chapterId) => {
     onClose();
@@ -80,6 +84,7 @@ const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter }) =
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          id="navigation-menu"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -90,7 +95,6 @@ const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter }) =
         >
           {/* Close Button */}
           <button
-            ref={menuButtonRef}
             onClick={onClose}
             className="absolute top-6 right-6 text-paper/70 hover:text-paper p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-sakura rounded-full"
             aria-label="Close menu"

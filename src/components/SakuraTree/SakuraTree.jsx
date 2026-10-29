@@ -17,6 +17,10 @@ export default function SakuraTree() {
 
     if (!container) return;
 
+    const prefersReducedMotion =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // =========================================================
     // RENDERER
     // =========================================================
@@ -180,28 +184,6 @@ export default function SakuraTree() {
       animationFrameId = 0;
     };
 
-    // The tree lives at the bottom of a long page. Rendering 11k+
-    // instanced blossoms with shadows every frame while nobody can see
-    // them is the main source of scroll jank — so the loop only runs
-    // while the canvas is near the viewport.
-    const visibilityObserver =
-      new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            handleResize();
-            renderFrame();
-            startLoop();
-          } else {
-            stopLoop();
-          }
-        },
-        { rootMargin: '200px' }
-      );
-
-    visibilityObserver.observe(container);
-
-    startLoop();
-
     // =========================================================
     // RESIZE
     // =========================================================
@@ -222,7 +204,40 @@ export default function SakuraTree() {
       renderer.setPixelRatio(
         Math.min(window.devicePixelRatio, 1.5)
       );
+
+      if (prefersReducedMotion) {
+        renderFrame();
+      }
     };
+
+    // The tree lives at the bottom of a long page. Rendering thousands of
+    // instanced blossoms with shadows every frame while nobody can see
+    // them is the main source of scroll jank — so the loop only runs
+    // while the canvas is near the viewport. Reduced-motion users get a
+    // single still frame instead of the loop.
+    const visibilityObserver =
+      new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            handleResize();
+            renderFrame();
+            if (!prefersReducedMotion) {
+              startLoop();
+            }
+          } else {
+            stopLoop();
+          }
+        },
+        { rootMargin: '200px' }
+      );
+
+    visibilityObserver.observe(container);
+
+    if (prefersReducedMotion) {
+      renderFrame();
+    } else {
+      startLoop();
+    }
 
     window.addEventListener(
       "resize",
@@ -261,6 +276,10 @@ export default function SakuraTree() {
           }
         }
       });
+
+      if (scene.environment) {
+        scene.environment.dispose();
+      }
 
       renderer.dispose();
 

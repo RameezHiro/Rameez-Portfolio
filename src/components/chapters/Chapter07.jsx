@@ -51,7 +51,7 @@ const Chapter07 = () => {
       <Reveal>
         <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
           This is where the story{' '}
-          <span className="text-sakura">currently stands</span>.
+          <span className="text-sakura-text">currently stands</span>.
         </p>
         <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
           The current chapter isn&apos;t a finished state. It&apos;s the point
@@ -62,9 +62,9 @@ const Chapter07 = () => {
       {/* B. CURRENT FOCUS — four ruled rows */}
       <div className="mt-16 md:mt-24">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Current focus
-          </h2>
+          </h3>
         </Reveal>
         <div className="mt-6 border-t-2 border-ink">
           {FOCUS.map((row, i) => (
@@ -80,9 +80,9 @@ const Chapter07 = () => {
                   >
                     {row.index}
                   </span>
-                  <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight text-ink">
+                  <h4 className="font-display text-xl md:text-2xl font-bold tracking-tight text-ink">
                     {row.name}
-                  </h3>
+                  </h4>
                 </div>
                 <p className="mt-2 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
                   {row.line}
@@ -96,9 +96,9 @@ const Chapter07 = () => {
       {/* C. CURRENT MODE — compact loop, distinct from Chapter 02's spine */}
       <Reveal className="mt-16 md:mt-24">
         <section aria-label="Current mode">
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Current mode
-          </h2>
+          </h3>
           <ol
             className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2"
             aria-label="Learning, building, experimenting, learning again"
@@ -107,7 +107,7 @@ const Chapter07 = () => {
               <li key={`${step}-${i}`} className="flex items-center gap-3">
                 <span
                   className={`font-display text-lg md:text-2xl font-bold tracking-wide ${
-                    i === MODE.length - 1 ? 'text-sakura' : 'text-ink'
+                    i === MODE.length - 1 ? 'text-sakura-text' : 'text-ink'
                   }`}
                 >
                   {step}
@@ -130,9 +130,9 @@ const Chapter07 = () => {
       {/* D. BUILDING TOWARD — direction, not achievement */}
       <div className="mt-16 md:mt-24">
         <Reveal>
-          <h2 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
+          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Building toward
-          </h2>
+          </h3>
         </Reveal>
         <div className="mt-6 border-t-2 border-ink">
           {DIRECTION.map((row) => (
@@ -141,9 +141,9 @@ const Chapter07 = () => {
                 aria-label={row.name}
                 className="border-b border-ink/15 py-6 md:py-7"
               >
-                <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight text-ink">
+                <h4 className="font-display text-xl md:text-2xl font-bold tracking-tight text-ink">
                   {row.name}
-                </h3>
+                </h4>
                 <p className="mt-2 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
                   {row.line}
                 </p>
@@ -162,7 +162,7 @@ const Chapter07 = () => {
           <div className="mt-6 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-10 md:gap-8 items-start">
             <div>
               <p className="font-display text-4xl md:text-6xl font-bold leading-tight text-ink">
-                STILL <span className="text-sakura">BUILDING</span>.
+                STILL <span className="text-sakura-text">BUILDING</span>.
               </p>
               <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray">
                 Not finished.
@@ -189,7 +189,7 @@ const Chapter07 = () => {
           <div className="mt-8 flex md:justify-end">
             <button
               onClick={() => scrollToChapter('08')}
-              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
               Next → Chapter 08 · {nextTitle}
               <span aria-hidden="true">↓</span>
