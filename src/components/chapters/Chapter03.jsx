@@ -3,11 +3,15 @@ import { motion, useReducedMotion } from 'framer-motion';
 import useChapterObserver from '../../hooks/useChapterObserver';
 import chaptersData from '../../data/chapters';
 import SakuraGrowth from '../shared/SakuraGrowth';
+import MangaPanel from '../ui/MangaPanel';
+import MangaSpread from '../ui/MangaSpread';
+import SectionLabel from '../ui/SectionLabel';
 
 // Chapter 03 — ARSENAL. Story-first: the engineering toolkit framed as
 // decisions, not a collection. Six canonical groups; every technology
 // answers "why did I use this?" No percentages, no bars, no metrics,
-// no logos-as-content. Denser than Chapter 02, same manuscript grammar.
+// no logos-as-content. The map groups the six limbs by role:
+// foundations (01–02), interface (03), support (04–06).
 const GROUPS = [
   {
     index: '01',
@@ -91,6 +95,8 @@ const GROUPS = [
   },
 ];
 
+const [intelligence, engineering, frontend, ...supportGroups] = GROUPS;
+
 const Reveal = ({ children, className = '', delay = 0 }) => {
   const reduceMotion = useReducedMotion();
   if (reduceMotion) {
@@ -109,149 +115,220 @@ const Reveal = ({ children, className = '', delay = 0 }) => {
   );
 };
 
+// A single node on the map: the technology and the role it plays.
+const SkillNode = ({ item }) => (
+  <li className="border-t border-ink/10 pt-2.5">
+    <p className="font-tech text-sm leading-snug text-ink">{item.name}</p>
+    <p className="mt-0.5 font-body text-xs leading-relaxed text-manga-gray">{item.role}</p>
+  </li>
+);
+
+// The reasoning stays one native disclosure away — no JavaScript, no
+// hover-only content, and each group expands independently.
+const GroupWhy = ({ group }) => (
+  <details className="mt-5 border-t border-ink/15 pt-1">
+    <summary className="cursor-pointer py-2 font-tech text-xs uppercase tracking-[0.18em] text-manga-gray hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text">
+      Why I used these — {group.items.length} notes
+    </summary>
+    <dl className="mt-4 space-y-3">
+      {group.items.map((item) => (
+        <div key={item.name}>
+          <dt className="font-tech text-xs text-ink">{item.name}</dt>
+          <dd className="mt-0.5 font-body text-sm leading-relaxed text-manga-gray">
+            {item.why}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </details>
+);
+
+const Evidence = ({ links }) => (
+  <div className="mt-5">
+    <p className="font-tech text-[11px] uppercase tracking-[0.18em] text-manga-gray">
+      ↳ Field evidence
+    </p>
+    <ul className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1">
+      {links.map((link) => (
+        <li key={link.label}>
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noreferrer"
+            className="font-body text-xs text-ink underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const GroupPanel = ({
+  group,
+  variant = 'traditional',
+  className = '',
+  headingClass = 'text-2xl md:text-3xl',
+  itemGrid = 'grid-cols-1 sm:grid-cols-2',
+}) => (
+  <MangaPanel
+    as="section"
+    variant={variant}
+    padding="md"
+    className={className}
+    aria-labelledby={`arsenal-${group.index}`}
+  >
+    <div className="flex items-baseline gap-3">
+      <span className="font-tech text-xs text-sakura-text" aria-hidden="true">
+        {group.index}
+      </span>
+      <h4
+        id={`arsenal-${group.index}`}
+        className={`font-display ${headingClass} font-bold tracking-tight text-ink`}
+      >
+        {group.name}
+      </h4>
+    </div>
+    <p className="mt-2 font-body text-sm leading-relaxed text-manga-gray">
+      {group.narrative}
+    </p>
+    <ul className={`mt-5 grid ${itemGrid} gap-x-6 gap-y-4`}>
+      {group.items.map((item) => (
+        <SkillNode key={item.name} item={item} />
+      ))}
+    </ul>
+    {group.evidence && <Evidence links={group.evidence} />}
+    <GroupWhy group={group} />
+  </MangaPanel>
+);
+
 const Chapter03 = () => {
   const { scrollToChapter } = useChapterObserver();
   const nextTitle = chaptersData.getChapterById('04')?.title || 'THE BATTLE ARC';
 
   return (
     <div>
-      {/* A. OPENING */}
+      {/* A. FIELD NOTE — one opening spread, not three stacked introductions */}
       <Reveal>
-        <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
-          The tools changed. The question stayed{' '}
-          <span className="text-sakura-text">the same</span>.
-        </p>
-        <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
-          Every stage of training added a new instrument. None of them mattered
-          until there was something to build.
-        </p>
-      </Reveal>
-
-      {/* B. THESIS — decision framing, young tree alongside */}
-      <Reveal className="mt-14 md:mt-20">
-        <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
-          Field note
-        </h3>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-10 md:gap-8 items-start">
-          <div>
-            <p className="font-display text-2xl md:text-4xl font-bold leading-tight text-ink max-w-xl">
-              An engineer&apos;s arsenal isn&apos;t a list. It&apos;s a set of
-              decisions.
+        <MangaSpread gap="lg">
+          <div className="col-span-12 md:col-span-7">
+            <SectionLabel index="Scene 01" label="Field note" />
+            <p className="mt-5 max-w-xl font-display text-2xl font-bold leading-snug text-ink md:text-3xl">
+              The tools changed. The question stayed{' '}
+              <span className="text-sakura-text">the same</span>.
             </p>
-            <p className="mt-6 font-tech text-xs uppercase tracking-[0.2em] text-manga-gray">
-              Every entry below answers one question
+            <p className="mt-4 max-w-lg font-body text-sm leading-relaxed text-manga-gray md:text-base">
+              Every stage of training added a new instrument. None of them mattered
+              until there was something to build.
             </p>
-            <p className="mt-2 font-display text-xl md:text-2xl font-bold text-sakura-text">
-              Why did I use this?
-            </p>
+            <div className="mt-8 max-w-lg border-t border-ink/15 pt-5">
+              <p className="font-display text-xl font-bold leading-snug text-ink md:text-2xl">
+                An engineer&apos;s arsenal isn&apos;t a list. It&apos;s a set of
+                decisions.
+              </p>
+              <p className="mt-3 font-tech text-xs uppercase tracking-[0.18em] text-manga-gray">
+                Every entry below answers one question{' '}
+                <span className="text-sakura-text">why did I use this?</span>
+              </p>
+            </div>
           </div>
-          <figure className="w-40 md:w-full md:max-w-[200px] md:pt-2">
-            <SakuraGrowth stage={3} className="w-full h-auto" />
-            <figcaption className="mt-2 font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray text-center">
+          <figure className="col-span-12 w-full max-w-sm md:col-span-5 md:justify-self-end">
+            <div className="relative h-56 overflow-hidden border border-ink/20 bg-paper md:h-64">
+              <SakuraGrowth stage={3} crop className="h-full w-full" />
+            </div>
+            <figcaption className="mt-2 text-center font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
               Growth · Stage 03
             </figcaption>
           </figure>
-        </div>
+        </MangaSpread>
       </Reveal>
 
-      {/* C. THE ARSENAL — four ruled groups, denser than Chapter 02 */}
-      <div className="mt-16 md:mt-24">
-        <Reveal>
-          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
-            The arsenal
-          </h3>
-        </Reveal>
-        <div className="mt-6 border-t-2 border-ink">
-          {GROUPS.map((group, i) => (
-            <Reveal key={group.name} delay={Math.min(i * 0.06, 0.18)}>
-              <section
-                aria-label={`Group ${group.index}: ${group.name}`}
-                className="border-b border-ink/15 py-8 md:py-10"
-              >
-                <div className="flex items-baseline gap-4">
-                  <span
-                    className="font-tech text-sm text-manga-gray shrink-0"
-                    aria-hidden="true"
-                  >
-                    {group.index}
-                  </span>
-                  <h4 className="font-display text-2xl md:text-4xl font-bold tracking-tight text-ink">
-                    {group.name}
-                  </h4>
-                </div>
-                <p className="mt-3 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
-                  {group.narrative}
-                </p>
-                <dl className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-x-10">
-                  {group.items.map((item) => (
-                    <div
-                      key={`${group.name}-${item.name}`}
-                      className="border-t border-ink/10 py-3"
-                    >
-                      <dt className="font-tech text-sm md:text-base tracking-wide text-ink">
-                        {item.name}
-                        <span className="ml-2 font-body text-xs uppercase tracking-[0.15em] text-manga-gray">
-                          {item.role}
-                        </span>
-                      </dt>
-                      <dd className="mt-1 font-body text-sm leading-relaxed text-manga-gray">
-                        <span
-                          className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text"
-                          aria-hidden="true"
-                        >
-                          Why —{' '}
-                        </span>
-                        {item.why}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-                {group.evidence && (
-                  <p className="mt-5 font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
-                    ↳ Field evidence —{' '}
-                    {group.evidence.map((link, li) => (
-                      <React.Fragment key={link.label}>
-                        {li > 0 && <span aria-hidden="true">{' · '}</span>}
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-ink underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
-                        >
-                          {link.label}
-                        </a>
-                      </React.Fragment>
-                    ))}
-                  </p>
-                )}
-                {i < GROUPS.length - 1 && (
-                  <span
-                    className="mt-6 block text-center font-body text-xl text-manga-gray"
-                    aria-hidden="true"
-                  >
-                    ↓
-                  </span>
-                )}
-              </section>
-            </Reveal>
-          ))}
-        </div>
-      </div>
+      {/* B. THE MAP — three bands with different weight */}
+      <Reveal className="mt-14 md:mt-20">
+        <SectionLabel index="Scene 02" label="Six limbs" />
+        <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink md:text-3xl">
+          The arsenal map
+        </h3>
+      </Reveal>
 
-      {/* D. CLOSING — end of inventory, generous negative space */}
-      <Reveal className="mt-20 md:mt-32">
+      {/* FOUNDATIONS — the two framed panels carry the most weight */}
+      <Reveal className="mt-8 border-t-2 border-ink pt-6">
+        <SectionLabel label="Foundations" />
+        <MangaSpread className="mt-5" gap="md">
+          <GroupPanel
+            group={intelligence}
+            className="col-span-12 border-2 border-ink lg:col-span-6"
+          />
+          <GroupPanel
+            group={engineering}
+            className="col-span-12 border-2 border-ink lg:col-span-6"
+          />
+        </MangaSpread>
+      </Reveal>
+
+      {/* INTERFACE — an open strip between the framed bands */}
+      <Reveal className="mt-10 md:mt-12">
+        <section
+          aria-labelledby="arsenal-03"
+          className="border-y border-ink/20 py-7 md:py-9"
+        >
+          <SectionLabel label="Interface" />
+          <div className="mt-4 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <span className="font-tech text-xs text-sakura-text" aria-hidden="true">
+              03
+            </span>
+            <h4
+              id="arsenal-03"
+              className="font-display text-2xl font-bold tracking-tight text-ink md:text-4xl"
+            >
+              {frontend.name}
+            </h4>
+            <p className="w-full font-body text-sm leading-relaxed text-manga-gray md:ml-auto md:w-auto md:max-w-xs md:text-right">
+              {frontend.narrative}
+            </p>
+          </div>
+          <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 md:grid-cols-3">
+            {frontend.items.map((item) => (
+              <SkillNode key={item.name} item={item} />
+            ))}
+          </ul>
+          <GroupWhy group={frontend} />
+        </section>
+      </Reveal>
+
+      {/* SUPPORT — thinner panels, quieter than the foundations */}
+      <Reveal className="mt-10 md:mt-12">
+        <SectionLabel label="Support" />
+        <MangaSpread className="mt-5" gap="md">
+          {supportGroups.map((group) => (
+            <GroupPanel
+              key={group.name}
+              group={group}
+              variant="technical"
+              headingClass="text-xl md:text-2xl"
+              className={`col-span-12 lg:col-span-4 ${
+                group.index === '06' ? '' : 'md:col-span-6'
+              }`}
+            />
+          ))}
+        </MangaSpread>
+      </Reveal>
+
+      {/* C. CLOSING — end of inventory */}
+      <Reveal className="mt-16 md:mt-24">
         <div className="border-t-2 border-ink pt-10 md:pt-14">
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
-            End of inventory
-          </p>
-          <p className="mt-6 font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
-            TOOLS ARE <span className="text-sakura-text">READY</span>.
-          </p>
-          <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
-            The question was never how many tools could be collected. It was
-            knowing which one the work called for.
-          </p>
-          <div className="mt-10 md:mt-14 flex md:justify-end">
+          <SectionLabel index="Scene 03" label="End of inventory" />
+          <div className="mt-6 max-w-3xl">
+            <p className="font-display text-3xl font-bold leading-tight text-ink md:text-4xl">
+              TOOLS ARE <span className="text-sakura-text">READY</span>.
+            </p>
+            <p className="mt-5 font-body text-base leading-relaxed text-manga-gray md:text-lg">
+              The question was never how many tools could be collected. It was
+              knowing which one the work called for.
+            </p>
+          </div>
+          <div className="mt-10 flex md:mt-14 md:justify-end">
             <button
               onClick={() => scrollToChapter('04')}
               className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
