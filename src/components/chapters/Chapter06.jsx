@@ -3,31 +3,41 @@ import { motion, useReducedMotion } from 'framer-motion';
 import useChapterObserver from '../../hooks/useChapterObserver';
 import chaptersData from '../../data/chapters';
 import SakuraGrowth from '../shared/SakuraGrowth';
+import SectionLabel from '../ui/SectionLabel';
 
-// Chapter 06 — EVOLUTION. The character-development chapter: the arc from
-// writing code to thinking in systems. Reflective and spacious — ruled
-// editorial rows, no lists of skills, no project cards, no dates, no
-// metrics. More air than Chapter 05, same manuscript grammar.
-const STAGES = [
-  { index: '01', name: 'PROGRAMMING', line: 'Learning to make ideas executable.' },
-  { index: '02', name: 'DATA', line: 'Learning to understand what the system is working with.' },
-  { index: '03', name: 'AI / ML', line: 'Learning to build systems that learn from patterns.' },
-  { index: '04', name: 'PROJECTS', line: 'Learning what happens when theory meets reality.' },
-  { index: '05', name: 'BACKEND', line: 'Learning how software moves beyond the interface.' },
-  { index: '06', name: 'SYSTEMS', line: 'Learning how the pieces work together.' },
-];
-
-const REFLECTION = [
-  'I started by learning how to write code.',
-  'Then I learned how data moves.',
-  'Then I learned how models learn.',
-  'Then I started building.',
-  'Now I\u2019m learning how systems behave.',
-];
-
-const SHIFTS = [
-  { from: 'How do I make this work?', to: 'How does this system work?' },
-  { from: 'Can I build it?', to: 'Can I build it so the pieces work together?' },
+// Chapter 06 — EVOLUTION. The capability ledger: four shifts in how the work
+// is made, each tied to something already built. No new projects, no metrics,
+// and no claim that a project proves expertise. The loop itself belongs to
+// Chapter 02; this chapter only records where it led.
+const TURNS = [
+  {
+    index: '01',
+    title: 'SCRIPTS → SERVICES',
+    then: 'One file that runs once.',
+    now: 'Routes, schemas, and services kept apart — an API with a shape other code can depend on.',
+    evidence: 'AAROH backend · Task Manager API',
+  },
+  {
+    index: '02',
+    title: 'NOTEBOOKS → ARTIFACTS',
+    then: 'A notebook that ends at a score.',
+    now: 'A trained model committed to the repository and loaded by the service at runtime.',
+    evidence: 'AAROH · train_model.py + model.pkl',
+  },
+  {
+    index: '03',
+    title: 'DEMOS → FAILURE PATHS',
+    then: 'A demo that works when nothing goes wrong.',
+    now: 'Signature checks, a 10 MB ceiling, a validated JSON contract, a fallback model — and test suites kept in the repository.',
+    evidence: 'Decode AI · AAROH · GrenMon — tests inspected, not run',
+  },
+  {
+    index: '04',
+    title: 'SOLO → DEADLINE',
+    then: 'Building alone, at my own pace.',
+    now: 'A 24-hour team build, scoped to what could actually ship before the clock ran out.',
+    evidence: 'UAi Hawk-A-Thon · team Algovoid',
+  },
 ];
 
 const Reveal = ({ children, className = '', delay = 0 }) => {
@@ -54,151 +64,87 @@ const Chapter06 = () => {
 
   return (
     <div>
-      {/* A. OPENING */}
+      {/* A. OPENING — the claim this chapter has to support */}
       <Reveal>
-        <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
-          The projects changed. <span className="text-sakura-text">So did I</span>.
+        <SectionLabel index="Scene 01" label="What changed" />
+        <p className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
+          The stack grew. That was the{' '}
+          <span className="text-sakura-text">least interesting</span> part.
         </p>
-        <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
-          The progression was never about collecting more technologies. Each
-          stage changed how problems were approached — not just what could be
-          used against them.
+        <p className="mt-5 max-w-2xl font-body text-base leading-relaxed text-manga-gray md:text-lg">
+          The useful change was quieter: the questions got larger. Four turns,
+          each traceable to something already built.
         </p>
       </Reveal>
 
-      {/* B. EVOLUTION PATH — one continuous ruled arc */}
-      <div className="mt-16 md:mt-24">
+      {/* B. LEDGER — then/now pairs, evidence attached to every row */}
+      <div className="mt-14 md:mt-20">
         <Reveal>
           <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
-            The evolution path
+            Four turns
           </h3>
         </Reveal>
-        <div className="mt-6 border-t-2 border-ink">
-          {STAGES.map((stage, i) => {
-            const isLast = i === STAGES.length - 1;
-            return (
-              <Reveal key={stage.name} delay={Math.min(i * 0.05, 0.2)}>
-                <section
-                  aria-label={`Stage ${stage.index}: ${stage.name}`}
-                  className="border-b border-ink/15 py-7 md:py-9"
-                >
-                  <div className="flex items-baseline gap-4">
-                    <span
-                      className={`font-tech text-sm shrink-0 ${
-                        isLast ? 'text-sakura-text' : 'text-manga-gray'
-                      }`}
-                      aria-hidden="true"
-                    >
-                      {stage.index}
-                    </span>
-                    <h4
-                      className={`font-display font-bold tracking-tight ${
-                        isLast
-                          ? 'text-3xl md:text-5xl text-ink'
-                          : 'text-2xl md:text-4xl text-ink'
-                      }`}
-                    >
-                      {stage.name}
+        <ol className="mt-6 border-t-2 border-ink">
+          {TURNS.map((turn, i) => (
+            <Reveal key={turn.title} delay={Math.min(i * 0.05, 0.15)}>
+              <li className="border-b border-ink/15 py-6 md:py-8">
+                <div className="grid grid-cols-12 gap-x-4 gap-y-3">
+                  <span
+                    className="col-span-2 shrink-0 font-tech text-sm text-manga-gray md:col-span-1"
+                    aria-hidden="true"
+                  >
+                    {turn.index}
+                  </span>
+                  <div className="col-span-10 md:col-span-11">
+                    <h4 className="font-display text-xl font-bold tracking-tight text-ink md:text-3xl">
+                      {turn.title}
                     </h4>
-                    {isLast && (
-                      <span
-                        className="h-1.5 w-1.5 bg-sakura shrink-0 self-center"
-                        aria-hidden="true"
-                      />
-                    )}
+                    <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-8">
+                      <div>
+                        <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
+                          Then
+                        </p>
+                        <p className="mt-1.5 font-body text-sm leading-relaxed text-manga-gray">
+                          {turn.then}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text">
+                          Now
+                        </p>
+                        <p className="mt-1.5 font-body text-sm leading-relaxed text-ink md:text-base">
+                          {turn.now}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="mt-4 font-tech text-[11px] uppercase leading-relaxed tracking-[0.18em] text-manga-gray">
+                      <span aria-hidden="true">↳ </span>
+                      {turn.evidence}
+                    </p>
                   </div>
-                  <p className="mt-2 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
-                    {stage.line}
-                  </p>
-                  {!isLast && (
-                    <span
-                      className="mt-6 block text-center font-body text-xl text-manga-gray"
-                      aria-hidden="true"
-                    >
-                      ↓
-                    </span>
-                  )}
-                </section>
-              </Reveal>
-            );
-          })}
-        </div>
+                </div>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
+        <p className="mt-4 max-w-2xl font-body text-xs leading-relaxed text-manga-gray">
+          Not a ranking. The repositories show the work; they do not prove
+          expertise.
+        </p>
       </div>
 
-      {/* C. REFLECTION — narrative transition, generous whitespace */}
-      <div className="mt-20 md:mt-32">
-        <Reveal>
-          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
-            Reflection
-          </h3>
-        </Reveal>
-        <div className="mt-8 md:mt-10 space-y-8 md:space-y-12">
-          {REFLECTION.map((line, i) => {
-            const isLast = i === REFLECTION.length - 1;
-            return (
-              <Reveal key={line} delay={Math.min(i * 0.05, 0.2)}>
-                {isLast ? (
-                  <p className="font-display text-2xl md:text-4xl font-bold leading-snug text-ink max-w-2xl">
-                    Now I&apos;m learning how{' '}
-                    <span className="text-sakura-text">systems</span> behave.
-                  </p>
-                ) : (
-                  <p className="font-body text-base md:text-xl leading-relaxed text-manga-gray max-w-2xl">
-                    {line}
-                  </p>
-                )}
-              </Reveal>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* D. THE SHIFT — restrained from/to movement */}
-      <Reveal className="mt-20 md:mt-32">
-        <section aria-label="The shift">
-          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
-            The shift
-          </h3>
-          <div className="mt-6 border-t-2 border-ink">
-            {SHIFTS.map((shift) => (
-              <div
-                key={shift.from}
-                className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 border-b border-ink/15 py-6 md:py-8"
-              >
-                <div>
-                  <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
-                    From
-                  </p>
-                  <p className="mt-2 font-body text-base md:text-lg leading-relaxed text-manga-gray">
-                    &ldquo;{shift.from}&rdquo;
-                  </p>
-                </div>
-                <div>
-                  <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text">
-                    To
-                  </p>
-                  <p className="mt-2 font-display text-xl md:text-2xl font-bold leading-snug text-ink">
-                    &ldquo;{shift.to}&rdquo;
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      </Reveal>
-
-      {/* E. CLOSING — growth marker beside the ending */}
-      <Reveal className="mt-20 md:mt-32">
+      {/* C. CLOSING — the same growth marker, one stage further */}
+      <Reveal className="mt-16 md:mt-24">
         <div className="border-t-2 border-ink pt-10 md:pt-14">
           <p className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Still becoming
           </p>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-10 md:gap-8 items-start">
+          <div className="mt-6 grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_200px] md:gap-8">
             <div>
-              <p className="font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
+              <p className="max-w-2xl font-body text-base leading-relaxed text-manga-gray md:text-lg">
                 The goal was never to know everything.
               </p>
-              <p className="mt-4 font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
+              <p className="mt-4 max-w-3xl font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
                 It was to understand more than I did{' '}
                 <span className="text-sakura-text">yesterday</span>.
               </p>
@@ -207,13 +153,13 @@ const Chapter06 = () => {
               </p>
             </div>
             <figure className="w-40 md:w-full md:max-w-[200px] md:pt-2">
-              <SakuraGrowth stage={6} className="w-full h-auto" />
-              <figcaption className="mt-2 font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray text-center">
+              <SakuraGrowth stage={6} className="h-auto w-full" />
+              <figcaption className="mt-2 text-center font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
                 Growth · Stage 06
               </figcaption>
             </figure>
           </div>
-          <div className="mt-10 md:mt-14 flex md:justify-end">
+          <div className="mt-10 flex md:mt-14 md:justify-end">
             <button
               onClick={() => scrollToChapter('07')}
               className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"

@@ -3,24 +3,52 @@ import { motion, useReducedMotion } from 'framer-motion';
 import useChapterObserver from '../../hooks/useChapterObserver';
 import chaptersData from '../../data/chapters';
 import SakuraGrowth from '../shared/SakuraGrowth';
+import SectionLabel from '../ui/SectionLabel';
+import MangaSpread from '../ui/MangaSpread';
 
-// Chapter 07 — CURRENT ARC. The present-tense chapter: where the story
-// stands, not a trophy case. Grounded, calm, technically focused —
-// ruled rows, generous air, one strong status moment. No resume summary,
-// no progress bars, no invented outcomes.
-const FOCUS = [
-  { index: '01', name: 'SOFTWARE ENGINEERING', line: 'Building stronger foundations in software, architecture, and development.' },
-  { index: '02', name: 'AI / ML', line: 'Going deeper into machine learning and intelligent systems.' },
-  { index: '03', name: 'BACKEND & SYSTEMS', line: 'Understanding how APIs, databases, services, and systems work together.' },
-  { index: '04', name: 'PROBLEM SOLVING', line: 'Taking on harder technical problems and learning through them.' },
+// Chapter 07 — CURRENT. A present-tense status register: what is deployed,
+// what runs locally, what is still unfinished, and the three areas taking
+// the time right now. Deliberately short. Project evidence lives in
+// Chapter 05; direction lives in Chapter 08.
+const PROJECTS = [
+  {
+    name: 'Decode AI',
+    status: 'Live',
+    note: 'Frontend on Vercel, API on Render. Upload ceiling, signature check, fallback model, and tests kept in the repository.',
+  },
+  {
+    name: 'GrenMon',
+    status: 'Live',
+    note: 'Playable field-research build at grenmon.vercel.app. Ten tests cover the domain rules and the server.',
+  },
+  {
+    name: 'ShelfScribe',
+    status: 'Local',
+    note: 'FastAPI and Ollama on qwen3-vl:4b. It stays on one machine — no cloud API and no hosted demo.',
+  },
+  {
+    name: 'AAROH',
+    status: 'Open',
+    note: 'Backend and six smoke tests are in place. The frontend is not built yet.',
+  },
 ];
 
-const MODE = ['LEARNING', 'BUILDING', 'EXPERIMENTING', 'LEARNING AGAIN'];
-
-const DIRECTION = [
-  { name: 'ENGINEERING', line: 'Build stronger software and systems.' },
-  { name: 'INTELLIGENCE', line: 'Go deeper into AI and machine learning.' },
-  { name: 'PROBLEM SOLVING', line: 'Take on harder technical problems.' },
+const LEARNING = [
+  {
+    index: '01',
+    name: 'EVALUATION',
+    line: 'A score on synthetic labels is not evidence. The next honest number has to come from real data.',
+  },
+  {
+    index: '02',
+    name: 'FAILURE PATHS',
+    line: 'Wrong file types, oversized uploads, dead services. Recent work has gone into the unhappy path.',
+  },
+  {
+    index: '03',
+    name: 'LOCAL INFERENCE',
+    line: 'Running open-weight vision models on one machine: memory, speed, and what privacy costs in convenience.',
+  },
 ];
 
 const Reveal = ({ children, className = '', delay = 0 }) => {
@@ -47,132 +75,112 @@ const Chapter07 = () => {
 
   return (
     <div>
-      {/* A. OPENING */}
+      {/* A. OPENING — present tense, no autobiography */}
       <Reveal>
-        <p className="font-display text-3xl md:text-5xl font-bold leading-tight text-ink max-w-3xl">
+        <SectionLabel index="Scene 01" label="Where it stands" />
+        <p className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
           This is where the story{' '}
           <span className="text-sakura-text">currently stands</span>.
         </p>
-        <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
-          The current chapter isn&apos;t a finished state. It&apos;s the point
-          I&apos;m building from.
+        <p className="mt-5 max-w-2xl font-body text-base leading-relaxed text-manga-gray md:text-lg">
+          Not a finished state. A snapshot of what is deployed, what runs
+          locally, and what is still open.
         </p>
       </Reveal>
 
-      {/* B. CURRENT FOCUS — four ruled rows */}
+      {/* B. STATUS REGISTER — state before story */}
       <div className="mt-16 md:mt-24">
         <Reveal>
           <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
-            Current focus
+            Status register
           </h3>
         </Reveal>
-        <div className="mt-6 border-t-2 border-ink">
-          {FOCUS.map((row, i) => (
-            <Reveal key={row.name} delay={Math.min(i * 0.05, 0.15)}>
-              <section
-                aria-label={`Focus ${row.index}: ${row.name}`}
-                className="border-b border-ink/15 py-6 md:py-7"
-              >
-                <div className="flex items-baseline gap-4">
-                  <span
-                    className="font-tech text-sm text-manga-gray shrink-0"
-                    aria-hidden="true"
-                  >
-                    {row.index}
-                  </span>
-                  <h4 className="font-display text-xl md:text-2xl font-bold tracking-tight text-ink">
-                    {row.name}
+        <ol className="mt-6 border-t-2 border-ink">
+          {PROJECTS.map((project, i) => (
+            <Reveal key={project.name} delay={Math.min(i * 0.05, 0.15)}>
+              <li className="border-b border-ink/15 py-5 md:py-6">
+                <div className="grid grid-cols-12 items-baseline gap-x-4 gap-y-2">
+                  <h4 className="col-span-8 font-display text-xl font-bold tracking-tight text-ink md:col-span-4 md:text-2xl">
+                    {project.name}
                   </h4>
+                  <p className="col-span-4 justify-self-end font-tech text-[11px] uppercase tracking-[0.24em] md:col-span-2 md:justify-self-start">
+                    <span
+                      className={
+                        project.status === 'Live'
+                          ? 'text-sakura-text'
+                          : 'text-manga-gray'
+                      }
+                    >
+                      {project.status}
+                    </span>
+                  </p>
+                  <p className="col-span-12 font-body text-sm leading-relaxed text-manga-gray md:col-span-6">
+                    {project.note}
+                  </p>
                 </div>
-                <p className="mt-2 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
-                  {row.line}
-                </p>
-              </section>
+              </li>
             </Reveal>
           ))}
-        </div>
+        </ol>
+        <ul className="mt-4 flex list-none flex-wrap gap-x-4 gap-y-1 font-tech text-[10px] uppercase leading-relaxed tracking-[0.18em] text-manga-gray">
+          <li>Live — deployed</li>
+          <li>Local — one machine</li>
+          <li>Open — unfinished</li>
+        </ul>
       </div>
 
-      {/* C. CURRENT MODE — compact loop, distinct from Chapter 02's spine */}
-      <Reveal className="mt-16 md:mt-24">
-        <section aria-label="Current mode">
-          <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
-            Current mode
-          </h3>
-          <ol
-            className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2"
-            aria-label="Learning, building, experimenting, learning again"
-          >
-            {MODE.map((step, i) => (
-              <li key={`${step}-${i}`} className="flex items-center gap-3">
-                <span
-                  className={`font-display text-lg md:text-2xl font-bold tracking-wide ${
-                    i === MODE.length - 1 ? 'text-sakura-text' : 'text-ink'
-                  }`}
-                >
-                  {step}
-                </span>
-                {i < MODE.length - 1 && (
-                  <span className="font-body text-lg text-manga-gray" aria-hidden="true">
-                    ↓
-                  </span>
-                )}
-              </li>
-            ))}
-          </ol>
-          <p className="mt-6 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
-            Every build creates another question. Every question creates
-            another thing to learn.
-          </p>
-        </section>
-      </Reveal>
-
-      {/* D. BUILDING TOWARD — direction, not achievement */}
+      {/* C. LEARNING — three areas, vertical rules rather than cards */}
       <div className="mt-16 md:mt-24">
         <Reveal>
           <h3 className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
-            Building toward
+            What I&apos;m learning now
           </h3>
         </Reveal>
-        <div className="mt-6 border-t-2 border-ink">
-          {DIRECTION.map((row) => (
-            <Reveal key={row.name}>
-              <section
-                aria-label={row.name}
-                className="border-b border-ink/15 py-6 md:py-7"
-              >
-                <h4 className="font-display text-xl md:text-2xl font-bold tracking-tight text-ink">
-                  {row.name}
-                </h4>
-                <p className="mt-2 font-body text-sm md:text-base leading-relaxed text-manga-gray max-w-2xl">
-                  {row.line}
-                </p>
-              </section>
+        <MangaSpread gap="lg" className="mt-8">
+          {LEARNING.map((item, i) => (
+            <Reveal
+              key={item.name}
+              delay={Math.min(i * 0.05, 0.15)}
+              className={`col-span-12 md:col-span-4 ${
+                i > 0
+                  ? 'border-t border-ink/15 pt-6 md:border-l md:border-t-0 md:pl-6 md:pt-0'
+                  : ''
+              }`}
+            >
+              <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text">
+                {item.index}
+              </p>
+              <h4 className="mt-2 font-display text-lg font-bold tracking-tight text-ink md:text-xl">
+                {item.name}
+              </h4>
+              <p className="mt-2 font-body text-sm leading-relaxed text-manga-gray">
+                {item.line}
+              </p>
             </Reveal>
           ))}
-        </div>
+        </MangaSpread>
       </div>
 
-      {/* E. CURRENT STATUS — the chapter's visual moment, tree alongside */}
+      {/* D. CURRENT STATUS — the chapter's visual moment, tree alongside */}
       <Reveal className="mt-20 md:mt-32">
         <div className="border-t-2 border-ink pt-10 md:pt-14">
           <p className="font-body text-xs uppercase tracking-[0.3em] text-manga-gray">
             Current status
           </p>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-10 md:gap-8 items-start">
+          <div className="mt-6 grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_200px] md:gap-8">
             <div>
-              <p className="font-display text-4xl md:text-6xl font-bold leading-tight text-ink">
+              <p className="font-display text-4xl font-bold leading-tight text-ink md:text-6xl">
                 STILL <span className="text-sakura-text">BUILDING</span>.
               </p>
-              <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray">
+              <p className="mt-5 font-body text-base leading-relaxed text-manga-gray md:text-lg">
                 Not finished.
                 <br />
                 Not standing still.
               </p>
             </div>
             <figure className="w-40 md:w-full md:max-w-[200px] md:pt-2">
-              <SakuraGrowth stage={7} className="w-full h-auto" />
-              <figcaption className="mt-2 font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray text-center">
+              <SakuraGrowth stage={7} className="h-auto w-full" />
+              <figcaption className="mt-2 text-center font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
                 Growth · Stage 07
               </figcaption>
             </figure>
@@ -180,7 +188,7 @@ const Chapter07 = () => {
         </div>
       </Reveal>
 
-      {/* F. CLOSING */}
+      {/* E. CLOSING */}
       <Reveal className="mt-16 md:mt-24">
         <div className="border-t border-ink/30 pt-8 md:pt-10">
           <p className="font-tech text-xs uppercase tracking-[0.25em] text-manga-gray">
@@ -191,7 +199,7 @@ const Chapter07 = () => {
               onClick={() => scrollToChapter('08')}
               className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
-              Next → Chapter 08 · {nextTitle}
+              Next — Chapter 08 · {nextTitle}
               <span aria-hidden="true">↓</span>
             </button>
           </div>
