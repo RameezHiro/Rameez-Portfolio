@@ -7,32 +7,67 @@ import MangaPanel from '../ui/MangaPanel';
 import MangaSpread from '../ui/MangaSpread';
 import SectionLabel from '../ui/SectionLabel';
 
-// Chapter 04 — BATTLE ARC. A battle log / field report: hackathons as
-// compressed engineering education. Records follow PROBLEM → IDEA →
-// BUILD → RESULT → LESSON. Only repository-supported facts are stated;
-// unknown details are omitted, never invented. No trophy wall, no cards
-// grid, no metrics flexing.
-const DOCTRINE = [
-  { name: 'PRESSURE', note: 'a deadline that removes the option of tomorrow.' },
-  { name: 'UNFAMILIAR PROBLEMS', note: 'domains never studied, scoped in hours.' },
-  { name: 'LIMITED TIME', note: 'scope is decided by the clock, not ambition.' },
-  { name: 'TEAM DECISIONS', note: 'who builds what, decided fast and out loud.' },
-  { name: 'SOMETHING BREAKS', note: 'it always does — usually near the demo.' },
-  { name: 'BUILD ANYWAY', note: 'ship the working core, cut the rest.' },
+// Chapter 04 — BATTLE ARC. One hackathon, five beats: PROBLEM → IDEA →
+// BUILD → RESULT → LESSON. Claims are limited to the repository, the public
+// award record, and the university's event note. The prototype's gaps are
+// stated as plainly as its result. No invented metrics, teammates, or tests.
+const FLOW = [
+  {
+    index: '01',
+    name: 'COHORT',
+    note: 'A synthetic CSV standing in for LMS data.',
+  },
+  {
+    index: '02',
+    name: 'CLUSTERS',
+    note: 'StandardScaler + K-Means, k = 3.',
+  },
+  {
+    index: '03',
+    name: 'BANDS',
+    note: 'Clusters ranked by mean performance.',
+  },
+  {
+    index: '04',
+    name: 'DASHBOARD',
+    note: 'At-risk list, alert preview, career paths.',
+  },
 ];
 
-const UA_RECORD = [
-  { label: 'PROBLEM', text: 'Students falling behind go unnoticed until it is too late to intervene.' },
-  { label: 'IDEA', text: 'Cluster academic data to flag at-risk students early — the Academic Career Navigator.' },
-  { label: 'BUILD', text: 'A K-Means clustering model wired into a working demo, built in 24 hours with team Algovoid.' },
-  { label: 'RESULT', text: "Judges' Choice at the UAi Hawk-A-Thon — among 115+ teams. ₹2,500 prize." },
-  { label: 'LESSON', text: 'A working system, presented clearly under a deadline, beats a clever model nobody can run.' },
+const OWNED = [
+  {
+    index: '01',
+    name: 'MODEL',
+    note: 'StandardScaler, K-Means (k = 3), and the cluster-to-band mapping, saved to student_model.pkl.',
+  },
+  {
+    index: '02',
+    name: 'DASHBOARD',
+    note: 'A Streamlit cohort view, at-risk table, and new-student prediction form.',
+  },
+  {
+    index: '03',
+    name: 'GUIDANCE',
+    note: 'Three career paths from performance and interests — Groq or Gemini when a key is set, rule-based fallback otherwise.',
+  },
+  {
+    index: '04',
+    name: 'ALERTS',
+    note: 'A parent-alert preview assembled from the student record. Sending it was left for production.',
+  },
 ];
 
-const LOST = [
-  { label: 'WHAT BROKE', text: 'Integrations held together by hope — APIs, demos, and sleep schedules.' },
-  { label: 'WHAT WAS LEARNED', text: 'The demo path gets built first. Everything else is negotiable.' },
-  { label: 'WHAT CHANGED', text: 'Later builds started smaller, cut sooner, and kept something runnable at all times.' },
+const ESTABLISHED = [
+  'A trained three-cluster model, saved and reloaded by the app.',
+  'A local demo: cohort view, at-risk list, prediction form, alert preview, three career paths.',
+  'Judges’ Choice at UAi Hawk-A-Thon 2026, with Team Algovoid.',
+];
+
+const NOT_ESTABLISHED = [
+  'Real student data or an LMS connection — the cohort is synthetic.',
+  'Predictive accuracy — no measurement against real outcomes.',
+  'A sent alert — the email stops at a preview.',
+  'A hosted demo or automated tests — neither is in the repository.',
 ];
 
 const Reveal = ({ children, className = '', delay = 0 }) => {
@@ -74,8 +109,9 @@ const Chapter04 = () => {
                 <span className="text-sakura">under pressure</span>.
               </p>
               <p className="mt-4 max-w-lg font-body text-sm leading-relaxed text-paper/75 md:text-base">
-                A hackathon compresses months of learning into a weekend — problem,
-                decision, build, break, adapt — with no pause between them.
+                A 24-hour hackathon compresses months of learning into one day —
+                problem, decision, build, break, adapt, with no pause between
+                them.
               </p>
             </div>
             <figure className="col-span-12 w-full max-w-sm md:col-span-5 md:justify-self-end">
@@ -90,180 +126,264 @@ const Chapter04 = () => {
         </MangaPanel>
       </Reveal>
 
-      {/* B. DOCTRINE — heading in the margin, list in the field */}
+      {/* B. PROBLEM — headline with the brief and the chosen scope alongside */}
+      <Reveal className="mt-16 md:mt-24">
+        <SectionLabel index="Scene 02" label="Problem" />
+        <MangaSpread gap="lg" className="mt-5">
+          <div className="col-span-12 md:col-span-7">
+            <h3 className="max-w-2xl font-display text-2xl font-bold leading-tight text-ink md:text-4xl">
+              A student can fall behind for a semester before anyone{' '}
+              <span className="text-sakura-text">acts</span>.
+            </h3>
+            <p className="mt-5 max-w-2xl font-body text-sm leading-relaxed text-manga-gray md:text-base">
+              Institutions work from fragmented spreadsheets and late manual
+              reports. By the time a student is flagged as at risk, a semester
+              can be gone, parents find out after the fact, and career guidance
+              stays generic.
+            </p>
+          </div>
+          <dl className="col-span-12 border-t-2 border-ink pt-4 md:col-span-5">
+            <div>
+              <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text">
+                The brief
+              </dt>
+              <dd className="mt-1 font-body text-sm leading-relaxed text-ink md:text-base">
+                An academic and career navigator for an EdTech track.
+              </dd>
+            </div>
+            <div className="mt-5 border-t border-ink/15 pt-4">
+              <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
+                Our scope
+              </dt>
+              <dd className="mt-1 font-body text-sm leading-relaxed text-manga-gray md:text-base">
+                A 24-hour local prototype over a synthetic cohort. We could not
+                replace an LMS; we could make one cohort’s risk visible.
+              </dd>
+            </div>
+          </dl>
+        </MangaSpread>
+      </Reveal>
+
+      {/* C. IDEA — margin heading, the trade-off, then the real workflow */}
       <Reveal className="mt-16 md:mt-24">
         <MangaSpread gap="lg">
           <div className="col-span-12 md:col-span-4">
-            <SectionLabel index="Scene 02" label="Doctrine" />
+            <SectionLabel index="Scene 03" label="Idea" />
             <h3 className="mt-4 font-display text-2xl font-bold tracking-tight text-ink md:text-3xl">
-              Why hackathons
+              Segment the cohort. Don’t pretend to predict it.
             </h3>
           </div>
           <div className="col-span-12 md:col-span-8">
-            <ol className="border-t-2 border-ink" aria-label="Battle doctrine">
-              {DOCTRINE.map((rule, i) => (
+            <p className="max-w-2xl font-body text-sm leading-relaxed text-manga-gray md:text-base">
+              The dataset carried marks, attendance, assignments, and interests
+              — but no outcome label to train against. The team used K-Means to
+              group students into three clusters, ranked those clusters by mean
+              performance, and mapped them to{' '}
+              <span className="text-ink">At Risk</span>,{' '}
+              <span className="text-ink">Average</span>, and{' '}
+              <span className="text-ink">Top Performer</span>.
+            </p>
+            <p className="mt-4 max-w-2xl font-body text-sm leading-relaxed text-manga-gray md:text-base">
+              That choice bought a working model in hours. It also set the
+              limit: a band is relative to this cohort, not a validated
+              prediction.
+            </p>
+          </div>
+        </MangaSpread>
+        <ol
+          className="mt-10 grid grid-cols-1 gap-6 border-t-2 border-ink pt-5 sm:grid-cols-2 md:grid-cols-4"
+          aria-label="One path through the prototype"
+        >
+          {FLOW.map((step) => (
+            <li key={step.index}>
+              <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text">
+                {step.index}
+              </p>
+              <p className="mt-2 font-display text-lg font-bold tracking-tight text-ink md:text-xl">
+                {step.name}
+              </p>
+              <p className="mt-1 font-body text-sm leading-relaxed text-manga-gray">
+                {step.note}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </Reveal>
+
+      {/* D. BUILD — owned work on the left, the record panel on the right */}
+      <Reveal className="mt-16 md:mt-24">
+        <SectionLabel index="Scene 04" label="Build" />
+        <h3 className="mt-4 max-w-3xl font-display text-2xl font-bold tracking-tight text-ink md:text-4xl">
+          Twenty-four hours. One runnable path.
+        </h3>
+        <MangaSpread gap="lg" className="mt-6">
+          <div className="col-span-12 lg:col-span-8">
+            <p className="max-w-2xl font-body text-sm leading-relaxed text-manga-gray md:text-base">
+              Team Algovoid built the demo during a 24-hour event. I led the
+              team and owned the repository; all five commits are mine — the
+              K-Means model, the Streamlit app, the career-roadmap flow, and the
+              folder structure. The history records those commits, not everyone’s
+              hours, so I claim only what it shows and credit the team for the
+              result.
+            </p>
+            <ol className="mt-8 border-t-2 border-ink">
+              {OWNED.map((item) => (
                 <li
-                  key={rule.name}
-                  className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-ink/15 py-4 md:gap-6 md:py-5"
+                  key={item.index}
+                  className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-ink/15 py-4 md:grid-cols-[3.5rem_1fr] md:gap-x-6 md:py-5"
                 >
                   <span
-                    className="shrink-0 font-tech text-sm text-manga-gray"
+                    className="font-tech text-sm text-manga-gray"
                     aria-hidden="true"
                   >
-                    {String(i + 1).padStart(2, '0')}
+                    {item.index}
                   </span>
-                  <span className="shrink-0 font-display text-lg font-bold tracking-wide text-ink md:text-2xl">
-                    {rule.name}
-                  </span>
-                  <span className="font-body text-sm leading-relaxed text-manga-gray">
-                    {rule.note}
-                  </span>
+                  <div>
+                    <h4 className="font-display text-base font-bold tracking-wide text-ink md:text-lg">
+                      {item.name}
+                    </h4>
+                    <p className="mt-1 font-body text-sm leading-relaxed text-manga-gray">
+                      {item.note}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ol>
           </div>
+          <div className="col-span-12 lg:col-span-4">
+            <MangaPanel variant="technical" tone="muted" padding="md">
+              <dl className="space-y-4">
+                <div>
+                  <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
+                    Role
+                  </dt>
+                  <dd className="mt-1 font-body text-sm leading-relaxed text-ink">
+                    Team lead · repository owner
+                  </dd>
+                </div>
+                <div className="border-t border-ink/15 pt-4">
+                  <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
+                    Time
+                  </dt>
+                  <dd className="mt-1 font-body text-sm leading-relaxed text-ink">
+                    24-hour event · Team Algovoid
+                  </dd>
+                </div>
+                <div className="border-t border-ink/15 pt-4">
+                  <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
+                    Stack
+                  </dt>
+                  <dd className="mt-1 font-body text-sm leading-relaxed text-ink">
+                    Python · scikit-learn · pandas · Streamlit
+                  </dd>
+                </div>
+                <div className="border-t border-ink/15 pt-4">
+                  <dt className="font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
+                    Source
+                  </dt>
+                  <dd className="mt-1">
+                    <a
+                      href="https://github.com/RameezHiro/AI-Powered-Academic-Career-Navigator"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-body text-sm leading-relaxed text-ink underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
+                    >
+                      Academic Career Navigator
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </MangaPanel>
+          </div>
         </MangaSpread>
       </Reveal>
 
-      {/* C. BATTLE RECORDS — one dominant record, one narrow record */}
-      <div className="mt-16 md:mt-24">
-        <Reveal>
-          <SectionLabel index="Scene 03" label="Engagements" />
-          <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink md:text-3xl">
-            Battle records
-          </h3>
-        </Reveal>
-
-        <MangaSpread className="mt-8" gap="md">
-          {/* RECORD 01 — UAi Hawk-A-Thon: the strongest treatment */}
-          <Reveal className="col-span-12 lg:col-span-8">
-            <MangaPanel as="figure" variant="traditional" padding="none">
-              <div className="flex items-center justify-between gap-4 border-b border-ink/15 px-4 py-2 md:px-5">
-                <span className="font-body text-[11px] uppercase tracking-[0.2em] text-manga-gray">
-                  Battle record 01 — UAi Hawk-A-Thon
-                </span>
-                <span className="h-2 w-2 shrink-0 bg-sakura" aria-hidden="true" />
-              </div>
-              <div className="px-5 py-6 md:px-6 md:py-8">
-                <p className="font-display text-2xl font-bold leading-tight text-ink md:text-4xl">
-                  Judges&apos; <span className="text-sakura-text">Choice</span>.
-                </p>
-                <p className="mt-3 font-tech text-xs uppercase tracking-[0.2em] text-manga-gray">
-                  Team Algovoid · 24 hours · 115+ teams
-                </p>
-                <dl className="mt-6 border-t border-ink/15">
-                  {UA_RECORD.map((row) => (
-                    <div
-                      key={row.label}
-                      className="grid grid-cols-1 gap-1 border-b border-ink/10 py-3 md:grid-cols-[110px_1fr] md:gap-6"
-                    >
-                      <dt className="pt-1 font-tech text-[11px] uppercase tracking-[0.2em] text-sakura-text">
-                        {row.label}
-                      </dt>
-                      <dd className="font-body text-sm leading-relaxed text-ink md:text-base">
-                        {row.text}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-                <p className="mt-5 font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
-                  ↳{' '}
-                  <a
-                    href="https://github.com/RameezHiro/AI-Powered-Academic-Career-Navigator.git"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-ink underline decoration-sakura decoration-2 underline-offset-4 hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
-                  >
-                    Academic Career Navigator
-                  </a>
-                </p>
-              </div>
-            </MangaPanel>
-          </Reveal>
-
-          {/* RECORD 02 — Hacktoon: only the name is documented */}
-          <Reveal className="col-span-12 lg:col-span-4 lg:mt-16" delay={0.1}>
-            <MangaPanel
-              as="section"
-              variant="technical"
-              tone="muted"
-              padding="md"
-              aria-label="Battle record 02: Hacktoon"
-            >
-              <div className="flex items-baseline gap-4">
-                <span
-                  className="shrink-0 font-tech text-sm text-manga-gray"
-                  aria-hidden="true"
-                >
-                  02
-                </span>
-                <h4 className="font-display text-2xl font-bold tracking-tight text-ink">
-                  Hacktoon
-                </h4>
-              </div>
-              <p className="mt-3 font-body text-sm leading-relaxed text-manga-gray">
-                Entered. This record is thin — the build mattered more than the
-                paperwork, and only the appearance itself is documented.
-              </p>
-              <p className="mt-4 border-l-2 border-sakura pl-3 font-body text-sm italic leading-relaxed text-manga-gray">
-                <span className="font-tech text-[11px] uppercase not-italic tracking-[0.2em] text-sakura-text">
-                  Lesson —{' '}
-                </span>
-                Showing up to unfamiliar problems is its own training.
-              </p>
-            </MangaPanel>
-          </Reveal>
-        </MangaSpread>
-      </div>
-
-      {/* D. LOST BATTLES — impact panel, the chapter's tonal cut */}
+      {/* E. RESULT — the award and the limits, given equal weight */}
       <Reveal className="mt-16 md:mt-24">
         <MangaPanel
           as="section"
           variant="cinematic"
           tone="ink"
           padding="lg"
-          aria-label="Lost battles"
+          aria-label="Result"
         >
-          <SectionLabel index="Scene 04" label="Aftermath" tone="paper" />
-          <h3 className="mt-4 font-display text-3xl font-bold tracking-tight text-paper md:text-5xl">
-            Lost battles
+          <SectionLabel index="Scene 05" label="Result" tone="paper" />
+          <h3 className="mt-4 font-display text-4xl font-bold tracking-tight text-paper md:text-6xl">
+            Judges’ <span className="text-sakura">Choice</span>.
           </h3>
-          <p className="mt-4 max-w-2xl font-body text-sm leading-relaxed text-paper/75 md:text-base">
-            Not every build became a result worth framing. The unfinished ones
-            taught just as much — quietly.
+          <p className="mt-4 font-tech text-[11px] uppercase leading-relaxed tracking-[0.2em] text-paper/60 md:text-xs">
+            UAi Hawk-A-Thon 2026 · Team Algovoid · 114 shortlisted teams
           </p>
-          <dl className="mt-8 border-t border-paper/20">
-            {LOST.map((row) => (
-              <div
-                key={row.label}
-                className="grid grid-cols-1 gap-1 border-b border-paper/15 py-4 md:grid-cols-[170px_1fr] md:gap-6"
-              >
-                <dt
-                  className={`pt-1 font-tech text-[11px] uppercase tracking-[0.2em] ${
-                    row.label === 'WHAT BROKE' ? 'text-sakura' : 'text-paper/60'
-                  }`}
-                >
-                  {row.label}
-                </dt>
-                <dd className="font-body text-sm leading-relaxed text-paper/85 md:text-base">
-                  {row.text}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <div className="mt-8 grid grid-cols-1 gap-8 border-t border-paper/20 pt-8 md:grid-cols-2 md:gap-12">
+            <div>
+              <h4 className="font-tech text-[11px] uppercase tracking-[0.2em] text-sakura">
+                Established
+              </h4>
+              <ul className="mt-4 space-y-3">
+                {ESTABLISHED.map((item) => (
+                  <li
+                    key={item}
+                    className="border-b border-paper/15 pb-3 font-body text-sm leading-relaxed text-paper/85 last:border-b-0 last:pb-0 md:text-base"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-tech text-[11px] uppercase tracking-[0.2em] text-paper/60">
+                Not established
+              </h4>
+              <ul className="mt-4 space-y-3">
+                {NOT_ESTABLISHED.map((item) => (
+                  <li
+                    key={item}
+                    className="border-b border-paper/15 pb-3 font-body text-sm leading-relaxed text-paper/75 last:border-b-0 last:pb-0 md:text-base"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="mt-8 font-body text-xs leading-relaxed text-paper/60">
+            The same team was shortlisted for Hacktoon 1.0. No result is
+            recorded.
+          </p>
         </MangaPanel>
       </Reveal>
 
-      {/* E. CLOSING — quiet panel, a held breath before the next arc */}
+      {/* F. LESSON — the specific engineering takeaway */}
+      <Reveal className="mt-16 md:mt-24">
+        <SectionLabel index="Scene 06" label="Lesson" />
+        <div className="mt-5 grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
+          <h3 className="font-display text-2xl font-bold leading-tight text-ink md:col-span-5 md:text-4xl">
+            Name every <span className="text-sakura-text">substitute</span>.
+          </h3>
+          <div className="md:col-span-7">
+            <p className="max-w-2xl font-body text-sm leading-relaxed text-manga-gray md:text-base">
+              The demo held together because each gap had a label: a CSV for an
+              LMS, a preview for SMTP, rules for an LLM without a key. That
+              honesty made the demo defensible and turned the next build into a
+              list instead of a guess.
+            </p>
+            <p className="mt-4 max-w-2xl font-body text-sm leading-relaxed text-ink md:text-base">
+              A working system, presented clearly, still beats a clever model
+              nobody can run — as long as the seams are visible.
+            </p>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* G. CLOSING — quiet panel, a held breath before the next arc */}
       <Reveal className="mt-16 md:mt-24">
         <div className="border-t-2 border-ink pt-10 md:pt-14">
-          <SectionLabel index="Scene 05" label="End of battles" />
+          <SectionLabel label="End of battles" />
           <div className="mt-6 max-w-3xl">
-            <p className="font-display text-3xl font-bold leading-tight text-ink md:text-4xl">
+            <h3 className="font-display text-3xl font-bold leading-tight text-ink md:text-4xl">
               Every battle left something{' '}
               <span className="text-sakura-text">behind</span>.
-            </p>
+            </h3>
             <p className="mt-5 font-body text-base leading-relaxed text-manga-gray md:text-lg">
               Some experiments became projects.
             </p>
