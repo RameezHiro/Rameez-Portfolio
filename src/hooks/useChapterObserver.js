@@ -1,4 +1,22 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
+import { DEFAULT_CHAPTER_ID, getChapterIdFromUrl, writeChapterUrl } from '../lib/chapterUrl';
+
+// Clearance between the fixed top navigation and a chapter's top edge when
+// jumping to it. Measured at click time because the nav changes height between
+// breakpoints (one row on mobile, two around the tablet widths).
+const NAV_CLEARANCE = 12;
+
+const scrollToChapterElement = (chapterId, behavior) => {
+  const chapterElement = document.querySelector(`[data-chapter="${chapterId}"]`);
+  if (!chapterElement) return false;
+
+  const nav = document.querySelector('nav.fixed.top-0');
+  const offset = (nav ? nav.offsetHeight : 0) + NAV_CLEARANCE;
+  const top = chapterElement.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({ top: Math.max(0, top), behavior });
+  return true;
+};
 
 // Observe the rendered chapter sections and expose the currently active one.
 //
@@ -6,12 +24,106 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 // The active chapter is the section overlapping the viewport's focus band
 // (a horizontal band around the vertical center of the viewport) the most,
 // which maps naturally to the chapter a reader is currently looking at.
-const useChapterObserver = ({ defaultChapterId = '01' } = {}) => {
-  const [activeChapterId, setActiveChapterId] = useState(defaultChapterId);
+//
+// `manageUrl` is enabled once, by the shell: it owns the initial deep link,
+// the Back/Forward listener and scroll-driven URL updates. Chapter components
+// call this hook only for `scrollToChapter`, which still writes the URL on a
+// deliberate jump so every chapter control stays addressable.
+const useChapterObserver = ({ defaultChapterId = DEFAULT_CHAPTER_ID, manageUrl = false } = {}) => {
+  const initialChapterIdRef = useRef(null);
+  if (initialChapterIdRef.current === null) {
+    initialChapterIdRef.current = manageUrl
+      ? getChapterIdFromUrl() || defaultChapterId
+      : defaultChapterId;
+  }
+
+  const [activeChapterId, setActiveChapterId] = useState(initialChapterIdRef.current);
   const observerRef = useRef(null);
   const elementsRef = useRef([]);
   const rafRef = useRef(0);
   const settleTimerRef = useRef(0);
+
+  const scrollToChapter = useCallback((chapterId, { push = true, behavior } = {}) => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motion = behavior || (prefersReduced ? 'auto' : 'smooth');
+    const didScroll = scrollToChapterElement(chapterId, motion);
+
+    if (push) writeChapterUrl(chapterId, 'push');
+    if (didScroll) setActiveChapterId(chapterId);
+  }, []);
+
+  // A directly opened chapter should land on that chapter, below the fixed
+  // navigation, before the observer's first paint-level evaluation.
+  useLayoutEffect(() => {
+    if (!manageUrl) return undefined;
+    const targetId = initialChapterIdRef.current;
+    if (targetId === defaultChapterId) return undefined;
+
+    let cancelled = false;
+    const startedAt = Date.now();
+    const cancel = () => {
+      cancelled = true;
+    };
+
+    scrollToChapter(targetId, { push: false, behavior: 'auto' });
+    const frame = requestAnimationFrame(() => {
+      if (!cancelled) scrollToChapter(targetId, { push: false, behavior: 'auto' });
+    });
+
+    // Late-loading images and web fonts shift the document after first paint,
+    // which moves the target. Re-align after each finishes, but only while the
+    // reader is still where the deep link put them: any pointer, wheel, touch
+    // or key input cancels it, and it gives up after a few seconds, so a slow
+    // font can never pull someone back out of a chapter they chose.
+    window.addEventListener('pointerdown', cancel, { once: true, passive: true });
+    window.addEventListener('wheel', cancel, { once: true, passive: true });
+    window.addEventListener('touchstart', cancel, { once: true, passive: true });
+    window.addEventListener('keydown', cancel, { once: true });
+
+    const align = () => {
+      if (cancelled || Date.now() - startedAt > 8000) return;
+      scrollToChapter(targetId, { push: false, behavior: 'auto' });
+    };
+
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', align, { once: true });
+    }
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(align);
+    }
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(frame);
+      window.removeEventListener('pointerdown', cancel);
+      window.removeEventListener('wheel', cancel);
+      window.removeEventListener('touchstart', cancel);
+      window.removeEventListener('keydown', cancel);
+      window.removeEventListener('load', align);
+    };
+  }, [manageUrl, defaultChapterId, scrollToChapter]);
+
+  // Keep the URL in step with the chapter being read. Replace, never push, so
+  // ordinary scrolling cannot flood the history stack. This is a layout effect
+  // so the address bar can never be observed disagreeing with the highlighted
+  // chapter for even one frame.
+  useLayoutEffect(() => {
+    if (!manageUrl) return;
+    writeChapterUrl(activeChapterId, 'replace');
+  }, [activeChapterId, manageUrl]);
+
+  // Back/Forward restore the chapter recorded in the URL.
+  useEffect(() => {
+    if (!manageUrl) return undefined;
+
+    const handlePopState = () => {
+      const chapterId = getChapterIdFromUrl() || defaultChapterId;
+      scrollToChapter(chapterId, { push: false });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [manageUrl, defaultChapterId, scrollToChapter]);
 
   useEffect(() => {
     if (typeof IntersectionObserver === 'undefined') return undefined;
@@ -94,17 +206,6 @@ const useChapterObserver = ({ defaultChapterId = '01' } = {}) => {
       if (observerRef.current) observerRef.current.disconnect();
       elementsRef.current = [];
     };
-  }, []);
-
-  const scrollToChapter = useCallback((chapterId) => {
-    const chapterElement = document.querySelector(`[data-chapter="${chapterId}"]`);
-    if (chapterElement) {
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      chapterElement.scrollIntoView({
-        behavior: prefersReduced ? 'auto' : 'smooth',
-        block: 'start',
-      });
-    }
   }, []);
 
   return { activeChapterId, scrollToChapter };

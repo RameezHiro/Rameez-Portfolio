@@ -195,6 +195,7 @@ const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter, tri
                 >
                   <span className="material-symbols-outlined text-base">description</span>
                   Resume
+                  <span className="sr-only"> (PDF, opens in a new tab)</span>
                 </a>
                 <a
                   href="mailto:yellowvoid22@gmail.com"
