@@ -6,24 +6,26 @@ import SakuraGrowth from '../shared/SakuraGrowth';
 import MangaPanel from '../ui/MangaPanel';
 import MangaSpread from '../ui/MangaSpread';
 import SectionLabel from '../ui/SectionLabel';
+import TechIcon from '../ui/TechIcon';
 
 // Chapter 03 — ARSENAL. Story-first: the engineering toolkit framed as
 // decisions, not a collection. Six canonical groups; every technology
-// answers "why did I use this?" No percentages, no bars, no metrics,
-// no logos-as-content. The map groups the six limbs by role:
-// foundations (01–02), interface (03), support (04–06).
+// answers "why did I use this?" No percentages, no bars, no metrics. Marks
+// are recognition cues only; the name and role remain the content. The map
+// groups the six limbs by role: foundations (01–02), interface (03), support
+// (04–06).
 const GROUPS = [
   {
     index: '01',
     name: 'INTELLIGENCE',
     narrative: 'Teaching machines to find patterns.',
     items: [
-      { name: 'Machine Learning', role: 'pattern-finding toolkit', why: 'used to turn data into predictions in ML experiments.' },
-      { name: 'Scikit-learn', role: 'classical ML', why: 'used for regression, classification, and clustering experiments.' },
-      { name: 'NumPy', role: 'numerical arrays', why: 'used for the array math underneath every data experiment.' },
-      { name: 'Pandas', role: 'tabular data', why: 'used to clean, slice, and question datasets.' },
-      { name: 'Statistics', role: 'distributions & uncertainty', why: 'used to read evidence in data before modeling it.' },
-      { name: 'Data Analysis', role: 'visualization & inquiry', why: 'used to make data visible before making it predictive.' },
+      { name: 'Machine Learning', role: 'pattern-finding toolkit', icon: 'lucide-brain', why: 'used to turn data into predictions in ML experiments.' },
+      { name: 'Scikit-learn', role: 'classical ML', icon: 'scikitlearn', why: 'used for regression, classification, and clustering experiments.' },
+      { name: 'NumPy', role: 'numerical arrays', icon: 'numpy', why: 'used for the array math underneath every data experiment.' },
+      { name: 'Pandas', role: 'tabular data', icon: 'pandas', why: 'used to clean, slice, and question datasets.' },
+      { name: 'Statistics', role: 'distributions & uncertainty', icon: 'lucide-sigma', why: 'used to read evidence in data before modeling it.' },
+      { name: 'Data Analysis', role: 'visualization & inquiry', icon: 'lucide-chartline', why: 'used to make data visible before making it predictive.' },
     ],
     evidence: [
       { label: 'California Housing', href: 'https://github.com/RameezHiro/California-Housing-Prices' },
@@ -36,12 +38,12 @@ const GROUPS = [
     name: 'ENGINEERING',
     narrative: 'Where software keeps its memory — and how pieces talk to each other.',
     items: [
-      { name: 'Python', role: 'primary language', why: 'used across backend, scripting, and ML work — one language everywhere.' },
-      { name: 'FastAPI', role: 'API framework', why: 'used to turn Python functions into HTTP endpoints.' },
-      { name: 'SQL / MySQL', role: 'relational data', why: 'used for structured storage and real queries.' },
-      { name: 'REST APIs', role: 'interface contract', why: 'used as the way application pieces talk to each other.' },
-      { name: 'Git / GitHub', role: 'version control', why: 'used for history on every experiment, shared in public.' },
-      { name: 'Backend Architecture', role: 'systems thinking', why: 'used to decide where logic, data, and interfaces live.' },
+      { name: 'Python', role: 'primary language', icon: 'python', why: 'used across backend, scripting, and ML work — one language everywhere.' },
+      { name: 'FastAPI', role: 'API framework', icon: 'fastapi', why: 'used to turn Python functions into HTTP endpoints.' },
+      { name: 'SQL / MySQL', role: 'relational data', icon: 'mysql', why: 'used for structured storage and real queries.' },
+      { name: 'REST APIs', role: 'interface contract', icon: 'lucide-webhook', why: 'used as the way application pieces talk to each other.' },
+      { name: 'Git / GitHub', role: 'version control', icon: 'github', why: 'used for history on every experiment, shared in public.' },
+      { name: 'Backend Architecture', role: 'systems thinking', icon: 'lucide-layers', why: 'used to decide where logic, data, and interfaces live.' },
     ],
     evidence: null,
   },
@@ -50,12 +52,12 @@ const GROUPS = [
     name: 'FRONTEND',
     narrative: 'What the reader touches.',
     items: [
-      { name: 'HTML', role: 'structure', why: 'used for the bones of every page.' },
-      { name: 'CSS', role: 'presentation', why: 'used for how those bones carry weight.' },
-      { name: 'JavaScript', role: 'interactivity', why: 'used for behavior in the browser.' },
-      { name: 'React', role: 'component UI', why: 'used to build interfaces from pieces — including this portfolio.' },
-      { name: 'Vite', role: 'build tooling', why: 'used for fast builds — including this portfolio.' },
-      { name: 'Tailwind', role: 'utility styling', why: 'used for styling in the markup — including this page.' },
+      { name: 'HTML', role: 'structure', icon: 'html5', why: 'used for the bones of every page.' },
+      { name: 'CSS', role: 'presentation', icon: 'css', why: 'used for how those bones carry weight.' },
+      { name: 'JavaScript', role: 'interactivity', icon: 'javascript', why: 'used for behavior in the browser.' },
+      { name: 'React', role: 'component UI', icon: 'react', why: 'used to build interfaces from pieces — including this portfolio.' },
+      { name: 'Vite', role: 'build tooling', icon: 'vite', why: 'used for fast builds — including this portfolio.' },
+      { name: 'Tailwind', role: 'utility styling', icon: 'tailwindcss', why: 'used for styling in the markup — including this page.' },
     ],
     evidence: null,
   },
@@ -64,10 +66,10 @@ const GROUPS = [
     name: 'TOOLS',
     narrative: 'The bench the work happens on.',
     items: [
-      { name: 'Claude Code', role: 'AI pair-programming', why: 'used to draft, debug, and reason through code faster.' },
-      { name: 'Antigravity', role: 'agentic environment', why: 'used for building with AI agents in the loop.' },
-      { name: 'VS Code', role: 'editor', why: 'used as the place where the code gets written.' },
-      { name: 'Firebase', role: 'managed backend', why: 'used for backend services without running servers.' },
+      { name: 'Claude Code', role: 'AI pair-programming', icon: 'claudecode', why: 'used to draft, debug, and reason through code faster.' },
+      { name: 'Antigravity', role: 'agentic environment', icon: 'lucide-orbit', why: 'used for building with AI agents in the loop.' },
+      { name: 'VS Code', role: 'editor', icon: 'lucide-code', why: 'used as the place where the code gets written.' },
+      { name: 'Firebase', role: 'managed backend', icon: 'firebase', why: 'used for backend services without running servers.' },
     ],
     evidence: null,
   },
@@ -76,10 +78,10 @@ const GROUPS = [
     name: 'DEPLOYMENT',
     narrative: 'How the work leaves the machine.',
     items: [
-      { name: 'Vercel', role: 'frontend hosting', why: 'used to deploy and host frontend applications.' },
-      { name: 'Railway', role: 'backend hosting', why: 'used to deploy backend and API services.' },
-      { name: 'Render', role: 'backend hosting', why: 'used to deploy and host backend and API services.' },
-      { name: 'Firebase Hosting', role: 'app hosting', why: 'used for hosting and deployment on Firebase-based applications.' },
+      { name: 'Vercel', role: 'frontend hosting', icon: 'vercel', why: 'used to deploy and host frontend applications.' },
+      { name: 'Railway', role: 'backend hosting', icon: 'railway', why: 'used to deploy backend and API services.' },
+      { name: 'Render', role: 'backend hosting', icon: 'render', why: 'used to deploy and host backend and API services.' },
+      { name: 'Firebase Hosting', role: 'app hosting', icon: 'firebase', why: 'used for hosting and deployment on Firebase-based applications.' },
     ],
     evidence: null,
   },
@@ -88,8 +90,8 @@ const GROUPS = [
     name: 'AI INTEGRATION',
     narrative: 'Borrowed intelligence, wired in.',
     items: [
-      { name: 'Gemini', role: 'AI model API', why: 'used to integrate AI model capabilities via API.' },
-      { name: 'Groq', role: 'LLM inference API', why: 'used for fast LLM inference via API.' },
+      { name: 'Gemini', role: 'AI model API', icon: 'googlegemini', why: 'used to integrate AI model capabilities via API.' },
+      { name: 'Groq', role: 'LLM inference API', icon: 'lucide-zap', why: 'used for fast LLM inference via API.' },
     ],
     evidence: null,
   },
@@ -115,11 +117,20 @@ const Reveal = ({ children, className = '', delay = 0 }) => {
   );
 };
 
-// A single node on the map: the technology and the role it plays.
+// A single node on the map: the technology and the role it plays. The mark
+// is decorative; the name stays the readable, primary element.
 const SkillNode = ({ item }) => (
-  <li className="border-t border-ink/10 pt-2.5">
-    <p className="font-tech text-sm leading-snug text-ink">{item.name}</p>
-    <p className="mt-0.5 font-body text-xs leading-relaxed text-manga-gray">{item.role}</p>
+  <li className="group border-t border-ink/10 pt-2.5">
+    <div className="flex items-start gap-2.5">
+      <TechIcon
+        name={item.icon}
+        className="mt-0.5 opacity-60 transition-opacity duration-150 group-hover:opacity-100 motion-reduce:transition-none"
+      />
+      <div className="min-w-0">
+        <p className="font-tech text-sm leading-snug text-ink">{item.name}</p>
+        <p className="mt-0.5 font-body text-xs leading-relaxed text-manga-gray">{item.role}</p>
+      </div>
+    </div>
   </li>
 );
 
