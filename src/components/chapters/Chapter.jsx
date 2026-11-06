@@ -18,10 +18,14 @@ const Chapter = ({
   return (
     <section
       data-chapter={id}
-      className={`min-h-screen w-full ${className}`}
+      className={`w-full ${className}`}
       id={id}
     >
-      <div className="flex flex-col w-full max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-32">
+      {/* Chapters flow into each other. The top padding opens a chapter; the
+          bottom padding is the deliberate pause before the next one. Neither
+          uses a viewport-height minimum, so a tall screen cannot stretch a
+          short chapter into empty space. */}
+      <div className="flex flex-col w-full max-w-6xl mx-auto px-6 md:px-12 pt-20 md:pt-32 pb-12 md:pb-20">
         <motion.header
           className="mb-12 md:mb-16"
           initial={reduceMotion ? false : { opacity: 0, y: 14 }}

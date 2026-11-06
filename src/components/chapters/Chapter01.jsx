@@ -237,9 +237,6 @@ still building...`}
           </div>
         </div>
       </Reveal>
-
-      {/* Bottom clearance so the fixed ChapterRail never covers content */}
-      <div className="h-24 md:h-32" aria-hidden="true" />
     </div>
   );
 };
