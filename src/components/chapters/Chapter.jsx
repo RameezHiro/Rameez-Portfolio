@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import ChapterEmblem, { hasChapterEmblem } from '../ui/ChapterEmblem';
 
 const Chapter = ({
   id,
@@ -14,6 +15,12 @@ const Chapter = ({
   const kicker = isBookend
     ? id.toUpperCase()
     : `CHAPTER ${String(number).padStart(2, '0')}`;
+
+  // The emblem replaces the old "CHAPTER NN" kicker. Unknown ids (such as a
+  // future prologue) keep the text kicker rather than rendering nothing.
+  const emblemChapter = id === 'final' ? 'FINAL' : id;
+  const showEmblem = hasChapterEmblem(emblemChapter);
+  const headingMargin = showEmblem ? 'mt-2' : 'mt-5';
 
   return (
     <section
@@ -33,13 +40,19 @@ const Chapter = ({
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          <div className="flex items-center gap-3">
-            <span className="h-px w-10 bg-ink/70" aria-hidden="true" />
-            <span className="font-body text-xs md:text-sm uppercase tracking-[0.3em] text-manga-gray">
-              {kicker}
-            </span>
-          </div>
-          <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ink">
+          {showEmblem ? (
+            <ChapterEmblem chapter={emblemChapter} />
+          ) : (
+            <div className="flex items-center gap-3">
+              <span className="h-px w-10 bg-ink/70" aria-hidden="true" />
+              <span className="font-body text-xs md:text-sm uppercase tracking-[0.3em] text-manga-gray">
+                {kicker}
+              </span>
+            </div>
+          )}
+          <h2
+            className={`${headingMargin} font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ink`}
+          >
             {title}
           </h2>
           {description && (
