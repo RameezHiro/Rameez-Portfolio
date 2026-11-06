@@ -29,7 +29,16 @@ const scrollToChapterElement = (chapterId, behavior) => {
 // the Back/Forward listener and scroll-driven URL updates. Chapter components
 // call this hook only for `scrollToChapter`, which still writes the URL on a
 // deliberate jump so every chapter control stays addressable.
-const useChapterObserver = ({ defaultChapterId = DEFAULT_CHAPTER_ID, manageUrl = false } = {}) => {
+//
+// `observe` likewise belongs to the shell. Chapter components pass no option,
+// so they do not each build their own IntersectionObserver, scroll/resize
+// listeners and body MutationObserver for a value they never read — that used
+// to multiply every scroll measurement by the number of chapters on the page.
+const useChapterObserver = ({
+  defaultChapterId = DEFAULT_CHAPTER_ID,
+  manageUrl = false,
+  observe = false,
+} = {}) => {
   const initialChapterIdRef = useRef(null);
   if (initialChapterIdRef.current === null) {
     initialChapterIdRef.current = manageUrl
@@ -126,7 +135,7 @@ const useChapterObserver = ({ defaultChapterId = DEFAULT_CHAPTER_ID, manageUrl =
   }, [manageUrl, defaultChapterId, scrollToChapter]);
 
   useEffect(() => {
-    if (typeof IntersectionObserver === 'undefined') return undefined;
+    if (!observe || typeof IntersectionObserver === 'undefined') return undefined;
 
     const evaluate = () => {
       const vh = window.innerHeight;
@@ -206,7 +215,7 @@ const useChapterObserver = ({ defaultChapterId = DEFAULT_CHAPTER_ID, manageUrl =
       if (observerRef.current) observerRef.current.disconnect();
       elementsRef.current = [];
     };
-  }, []);
+  }, [observe]);
 
   return { activeChapterId, scrollToChapter };
 };

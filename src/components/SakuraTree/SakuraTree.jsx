@@ -140,7 +140,7 @@ export default function SakuraTree() {
     controls.update();
 
     // =========================================================
-    // ANIMATION (pauses while off-screen)
+    // RENDERING (on demand, paused while off-screen)
     // =========================================================
 
     // Portfolio Final embed: the canvas must never hijack page scroll.
@@ -149,40 +149,50 @@ export default function SakuraTree() {
     controls.enableZoom = false;
     renderer.domElement.style.touchAction = 'pan-y';
 
-    let animationFrameId = 0;
+    // The scene is static (no time-based uniforms, autoRotate off), so a
+    // continuous loop only redraws the same image. Render when something
+    // actually changes instead: a control interaction, the damping tail
+    // after it, a resize, or the canvas entering the viewport.
+    let settleFrameId = 0;
+    let settling = false;
 
     const renderFrame = () => {
-      controls.update();
-
-      renderer.render(
-        scene,
-        camera
-      );
+      renderer.render(scene, camera);
     };
 
-    const startLoop = () => {
-      if (animationFrameId) return;
+    // Damping keeps moving the camera after the pointer is released. Follow
+    // it only while OrbitControls reports movement, then stop for good.
+    const settle = () => {
+      settleFrameId = 0;
+      settling = true;
+      const stillMoving = controls.update();
+      settling = false;
+      renderFrame();
 
-      const tick = () => {
-        animationFrameId =
-          requestAnimationFrame(tick);
-
-        renderFrame();
-      };
-
-      animationFrameId =
-        requestAnimationFrame(tick);
+      if (stillMoving && !prefersReducedMotion) {
+        settleFrameId = requestAnimationFrame(settle);
+      }
     };
 
-    const stopLoop = () => {
-      if (!animationFrameId) return;
-
-      cancelAnimationFrame(
-        animationFrameId
-      );
-
-      animationFrameId = 0;
+    const startSettling = () => {
+      if (settleFrameId || prefersReducedMotion) return;
+      settleFrameId = requestAnimationFrame(settle);
     };
+
+    const stopSettling = () => {
+      if (!settleFrameId) return;
+      cancelAnimationFrame(settleFrameId);
+      settleFrameId = 0;
+    };
+
+    // OrbitControls updates the camera and dispatches 'change' itself, so
+    // drawing here shows the latest position without stepping damping twice.
+    const handleControlsChange = () => {
+      if (!settling) renderFrame();
+    };
+
+    controls.addEventListener('change', handleControlsChange);
+    controls.addEventListener('end', startSettling);
 
     // =========================================================
     // RESIZE
@@ -205,27 +215,20 @@ export default function SakuraTree() {
         Math.min(window.devicePixelRatio, 1.5)
       );
 
-      if (prefersReducedMotion) {
-        renderFrame();
-      }
+      renderFrame();
     };
 
-    // The tree lives at the bottom of a long page. Rendering thousands of
-    // instanced blossoms with shadows every frame while nobody can see
-    // them is the main source of scroll jank — so the loop only runs
-    // while the canvas is near the viewport. Reduced-motion users get a
-    // single still frame instead of the loop.
+    // The tree lives at the bottom of a long page. Nothing is drawn while it
+    // is far off-screen; entering the viewport produces one frame, and any
+    // orbit interaction draws on demand.
     const visibilityObserver =
       new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
             handleResize();
-            renderFrame();
-            if (!prefersReducedMotion) {
-              startLoop();
-            }
+            startSettling();
           } else {
-            stopLoop();
+            stopSettling();
           }
         },
         { rootMargin: '200px' }
@@ -233,11 +236,9 @@ export default function SakuraTree() {
 
     visibilityObserver.observe(container);
 
-    if (prefersReducedMotion) {
-      renderFrame();
-    } else {
-      startLoop();
-    }
+    // First paint. The observer callback above handles later visibility
+    // changes; this guarantees the canvas is not blank if that is delayed.
+    handleResize();
 
     window.addEventListener(
       "resize",
@@ -249,7 +250,10 @@ export default function SakuraTree() {
     // =========================================================
 
     return () => {
-      stopLoop();
+      stopSettling();
+
+      controls.removeEventListener('change', handleControlsChange);
+      controls.removeEventListener('end', startSettling);
 
       visibilityObserver.disconnect();
 

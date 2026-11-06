@@ -26,6 +26,7 @@ const ChapterShell = () => {
   const { activeChapterId, scrollToChapter } = useChapterObserver({
     defaultChapterId: '01',
     manageUrl: true,
+    observe: true,
   });
 
   const chapters = chaptersData.chapters;
