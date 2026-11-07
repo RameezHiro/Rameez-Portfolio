@@ -16,7 +16,7 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-deep-ink text-paper backdrop-blur-xl border-b border-manga-gray/20 shadow-[0px_8px_24px_rgba(0,0,0,0.06)]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F9D5E0] text-deep-ink backdrop-blur-xl border-b border-manga-gray/20 shadow-[0px_8px_24px_rgba(0,0,0,0.06)]">
       {/* Hand-drawn sakura ink annotation. The frame is purely decorative and
           absolutely positioned so it never affects the bar's layout or size. */}
       <svg
@@ -32,7 +32,7 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
         <path
           d="M99.1 6.5 C86 4.2 72 8 58 5.8 C44 4 30 7.8 16 5.6 C8.4 4.4 2.2 6.8 0.8 7.2 C1.2 22 0.4 38 0.9 54 C1.4 70 0.5 84 0.8 93.2 C14 94.2 28 92.9 42 94.6 C56 96 70 93.6 84 95.2 C91 95.9 96.8 94.4 99 94"
           fill="none"
-          stroke="#F9D5E0"
+          stroke="#D96C8A"
           strokeOpacity="1"
           strokeWidth="2.6"
           strokeLinecap="round"
@@ -42,7 +42,7 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
         <path
           d="M99 6.6 C98.5 22 99.4 40 98.8 58 C98.4 74 99.3 86 99 94.4"
           fill="none"
-          stroke="#F9D5E0"
+          stroke="#D96C8A"
           strokeOpacity="1"
           strokeWidth="2.6"
           strokeLinecap="round"
@@ -58,7 +58,7 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
         {/* Top row: Brand, chapter label and resume */}
         <div className="flex justify-between items-center w-full xl:w-auto gap-4">
           {/* Left: RAMEEZ */}
-          <div className="font-display text-xl md:text-2xl font-bold tracking-tight text-paper">
+          <div className="font-display text-xl md:text-2xl font-bold tracking-tight text-deep-ink">
             RAMEEZ
           </div>
 
@@ -67,13 +67,13 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
             <div className="hidden md:flex items-center gap-2 text-sm font-body uppercase tracking-wider">
               {isNumberedChapter ? (
                 <>
-                  <span className="text-paper/60">CHAPTER</span>
+                  <span className="text-[#5C5C5C]">CHAPTER</span>
                   <span className="text-sakura font-bold"> {activeChapterId} </span>
-                  <span className="text-paper/60">·</span>
-                  <span className="text-paper ml-1">{activeChapter.title}</span>
+                  <span className="text-[#5C5C5C]">·</span>
+                  <span className="text-[#5C5C5C] ml-1">{activeChapter.title}</span>
                 </>
               ) : (
-                <span className="text-paper">{activeChapter?.title || 'PROLOGUE'}</span>
+                <span className="text-[#5C5C5C]">{activeChapter?.title || 'PROLOGUE'}</span>
               )}
             </div>
 
@@ -82,7 +82,7 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
               href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 font-body text-xs uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-sakura/40 text-paper/80 hover:text-sakura hover:border-sakura/70 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
+              className="hidden md:inline-flex items-center gap-1.5 font-body text-xs uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-sakura text-deep-ink hover:text-sakura transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
             >
               Resume
               <span className="material-symbols-outlined text-[14px]" aria-hidden="true">description</span>
@@ -93,7 +93,7 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
             <button
               ref={menuTriggerRef}
               onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden text-paper/80 hover:text-paper p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-sakura rounded"
+              className="md:hidden text-deep-ink hover:text-sakura p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-sakura rounded"
               aria-label="Open menu"
               aria-expanded={isMobileMenuOpen}
               aria-controls="navigation-menu"
@@ -111,8 +111,8 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
               onClick={() => scrollToChapter(link.chapterId)}
               className={`font-body text-xs uppercase tracking-[0.2em] px-3 py-1.5 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura ${
                 activeChapterId === link.chapterId
-                  ? 'bg-sakura/20 text-paper border border-sakura'
-                  : 'text-[#B8B0B2] hover:text-sakura hover:border-sakura/30 border border-transparent'
+                  ? 'bg-deep-ink text-paper border border-deep-ink'
+                  : 'text-[#5C5C5C] hover:text-sakura hover:border-sakura/30 border border-transparent'
               }`}
               aria-current={activeChapterId === link.chapterId ? 'page' : undefined}
             >
