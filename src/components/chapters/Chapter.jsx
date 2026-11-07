@@ -20,7 +20,9 @@ const Chapter = ({
   // future prologue) keep the text kicker rather than rendering nothing.
   const emblemChapter = id === 'final' ? 'FINAL' : id;
   const showEmblem = hasChapterEmblem(emblemChapter);
-  const headingMargin = showEmblem ? 'mt-2' : 'mt-5';
+  // The emblem sits beside the title on every chapter opening, so the heading
+  // margin is only needed for text-kicker fallbacks.
+  const headingMargin = showEmblem ? '' : 'mt-5';
 
   return (
     <section
@@ -40,26 +42,30 @@ const Chapter = ({
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          {showEmblem ? (
-            <ChapterEmblem chapter={emblemChapter} />
-          ) : (
-            <div className="flex items-center gap-3">
-              <span className="h-px w-10 bg-ink/70" aria-hidden="true" />
-              <span className="font-body text-xs md:text-sm uppercase tracking-[0.3em] text-manga-gray">
-                {kicker}
-              </span>
+          <div className={showEmblem ? 'flex items-center gap-5 md:gap-6' : ''}>
+            {showEmblem ? (
+              <ChapterEmblem chapter={emblemChapter} />
+            ) : (
+              <div className="flex items-center gap-3">
+                <span className="h-px w-10 bg-ink/70" aria-hidden="true" />
+                <span className="font-body text-xs md:text-sm uppercase tracking-[0.3em] text-manga-gray">
+                  {kicker}
+                </span>
+              </div>
+            )}
+            <div className={showEmblem ? 'min-w-0 flex-1' : ''}>
+              <h2
+                className={`${headingMargin} font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ink`}
+              >
+                {title}
+              </h2>
+              {description && (
+                <p className={`${showEmblem ? 'mt-1.5' : 'mt-4'} font-body text-base md:text-lg text-manga-gray max-w-2xl leading-relaxed`}>
+                  {description}
+                </p>
+              )}
             </div>
-          )}
-          <h2
-            className={`${headingMargin} font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ink`}
-          >
-            {title}
-          </h2>
-          {description && (
-            <p className="mt-4 font-body text-base md:text-lg text-manga-gray max-w-2xl leading-relaxed">
-              {description}
-            </p>
-          )}
+          </div>
           <div className="mt-8 h-px w-full bg-ink/10" aria-hidden="true" />
         </motion.header>
         <div className="flex-1">
