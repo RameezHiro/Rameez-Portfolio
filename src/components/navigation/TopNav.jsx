@@ -16,11 +16,33 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-deep-ink/95 text-paper backdrop-blur-xl border-b border-manga-gray/20 shadow-[0px_8px_24px_rgba(0,0,0,0.06)]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-deep-ink text-paper backdrop-blur-xl border-b border-manga-gray/20 shadow-[0px_8px_24px_rgba(0,0,0,0.06)]">
+      {/* Hand-drawn sakura ink annotation. The frame is purely decorative and
+          absolutely positioned so it never affects the bar's layout or size. */}
+      <svg
+        data-nav-outline
+        aria-hidden="true"
+        focusable="false"
+        className="pointer-events-none absolute inset-[5px] z-0 h-[calc(100%-10px)] w-[calc(100%-10px)] overflow-visible"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0.5 4.8 C13 3.6 26 5.4 39 4.2 C52 3.2 65 5.2 78 4 C88 3.2 96.5 4.4 99.4 5.1 C98.9 21 99.3 37 99 53 C98.7 69 99.4 84 99.2 95 C86 96 72 94.7 58 95.8 C44 96.8 30 95.3 16 96.3 C9 96.9 3 96 0.5 94.9 C1 79 0.4 63 0.8 47 C1.2 32 0.5 18 0.5 4.8 Z"
+          fill="none"
+          stroke="#D96C8A"
+          strokeOpacity="0.6"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+
       {/* The two groups sit side by side only once the quick links, chapter
           label, resume and brand genuinely fit. Around 768 px the label needs
           the full row, so the layout stacks below 1280 px. */}
-      <div className="flex flex-col xl:flex-row justify-between items-center px-6 md:px-8 py-4 max-w-full mx-auto gap-4">
+      <div className="relative z-10 flex flex-col xl:flex-row justify-between items-center px-6 md:px-8 py-4 max-w-full mx-auto gap-4">
         {/* Top row: Brand, chapter label and resume */}
         <div className="flex justify-between items-center w-full xl:w-auto gap-4">
           {/* Left: RAMEEZ */}
@@ -77,8 +99,8 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
               onClick={() => scrollToChapter(link.chapterId)}
               className={`font-body text-xs uppercase tracking-[0.2em] px-3 py-1.5 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura ${
                 activeChapterId === link.chapterId
-                  ? 'bg-sakura/20 text-paper border border-sakura/40'
-                  : 'text-paper/70 hover:text-sakura hover:border-sakura/30 border border-transparent'
+                  ? 'bg-sakura/20 text-paper border border-sakura'
+                  : 'text-[#B8B0B2] hover:text-sakura hover:border-sakura/30 border border-transparent'
               }`}
               aria-current={activeChapterId === link.chapterId ? 'page' : undefined}
             >
