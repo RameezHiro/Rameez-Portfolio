@@ -27,12 +27,24 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
+        {/* Three sides in one loose pen pass; the right edge is a separate
+            overlapping stroke so the corners read as ink, not a CSS box. */}
         <path
-          d="M0.5 4.8 C13 3.6 26 5.4 39 4.2 C52 3.2 65 5.2 78 4 C88 3.2 96.5 4.4 99.4 5.1 C98.9 21 99.3 37 99 53 C98.7 69 99.4 84 99.2 95 C86 96 72 94.7 58 95.8 C44 96.8 30 95.3 16 96.3 C9 96.9 3 96 0.5 94.9 C1 79 0.4 63 0.8 47 C1.2 32 0.5 18 0.5 4.8 Z"
+          d="M99.1 6.5 C86 4.2 72 8 58 5.8 C44 4 30 7.8 16 5.6 C8.4 4.4 2.2 6.8 0.8 7.2 C1.2 22 0.4 38 0.9 54 C1.4 70 0.5 84 0.8 93.2 C14 94.2 28 92.9 42 94.6 C56 96 70 93.6 84 95.2 C91 95.9 96.8 94.4 99 94"
           fill="none"
           stroke="#D96C8A"
-          strokeOpacity="0.6"
-          strokeWidth="1.2"
+          strokeOpacity="0.95"
+          strokeWidth="2.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
+        />
+        <path
+          d="M99 6.6 C98.5 22 99.4 40 98.8 58 C98.4 74 99.3 86 99 94.4"
+          fill="none"
+          stroke="#D96C8A"
+          strokeOpacity="0.95"
+          strokeWidth="2.6"
           strokeLinecap="round"
           strokeLinejoin="round"
           vectorEffect="non-scaling-stroke"
