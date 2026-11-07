@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import ChapterEmblem, { hasChapterEmblem } from '../ui/ChapterEmblem';
+import SakuraPetals from '../ui/SakuraPetals';
 
 const Chapter = ({
   id,
@@ -27,9 +28,10 @@ const Chapter = ({
   return (
     <section
       data-chapter={id}
-      className={`w-full ${className}`}
+      className={`w-full ${id === '01' ? 'relative isolate' : ''} ${className}`}
       id={id}
     >
+      {id === '01' && <SakuraPetals />}
       {/* Chapters flow into each other. The top padding opens a chapter; the
           bottom padding is the deliberate pause before the next one. Neither
           uses a viewport-height minimum, so a tall screen cannot stretch a

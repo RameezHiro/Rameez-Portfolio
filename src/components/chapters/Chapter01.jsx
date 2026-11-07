@@ -12,6 +12,7 @@ import {
 import MangaSpread from '../ui/MangaSpread';
 import SectionLabel from '../ui/SectionLabel';
 import TechIcon from '../ui/TechIcon';
+import SakuraPetals from '../ui/SakuraPetals';
 
 // Chapter 01 — PROFILE. The professional entry point: one portrait, one clear
 // positioning statement, the facts a recruiter needs, four directions of work,
@@ -42,7 +43,7 @@ const Portrait = () => {
 
   return (
     <figure className="mx-auto w-full max-w-sm md:max-w-none">
-      <div className="relative aspect-[4/5] overflow-hidden border-2 border-ink bg-ink/[0.04]">
+      <div className="portrait-sakura-scene relative aspect-[4/5] overflow-hidden border-2 border-ink bg-ink/[0.04]">
         {photo ? (
           <img
             src={photo}
@@ -74,6 +75,7 @@ const Portrait = () => {
             </div>
           </>
         )}
+        {photo && <SakuraPetals variant="portrait" />}
         <span
           className="absolute left-3 top-3 font-tech text-[10px] uppercase tracking-[0.24em] text-manga-gray"
           aria-hidden="true"

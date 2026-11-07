@@ -22,9 +22,9 @@ export const profileData = {
   introduction:
     "I'm Rameez, a second-year Computer Science student focused on the intersection of software engineering and artificial intelligence. I enjoy understanding how systems work beneath the surface, building practical solutions, and exploring how intelligent technologies can solve meaningful problems.",
 
-  photo: '/images/profile.jpeg',
-  photoAlt: 'Rameez, wearing a black suit, against a white background',
-  photoCaption: 'Rameez — profile portrait',
+  photo: '/images/profile-manga-sakura.png',
+  photoAlt: 'Manga illustration of Rameez overlooking hills and a city, framed by pink sakura blossoms',
+  photoCaption: 'Rameez — Sakura Blessing',
 
   // GitHub, LinkedIn, email and X destinations already used elsewhere in this
   // portfolio. Resume points at the PDF committed in public/.

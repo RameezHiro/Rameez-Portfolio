@@ -2,6 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Confined to the opening screen of Chapter 01, never a fixed page overlay. */
+.sakura-petals {
+  position: absolute;
+  inset: 0 0 auto;
+  height: min(100%, 100svh);
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  contain: paint;
+}
+
+.sakura-petal {
+  position: absolute;
+  top: -18px;
+  opacity: 0;
+  animation: sakura-diagonal-fall var(--petal-duration) linear var(--petal-delay) infinite;
+  animation-play-state: paused;
+}
+
+.sakura-petals[data-active='true'] .sakura-petal {
+  animation-play-state: running;
+}
+
+/* This shower starts along the illustrated branch and scales with the frame. */
+.portrait-sakura-scene {
+  container-type: size;
+}
+
+.sakura-petals--portrait {
+  height: 100%;
+}
+
+.sakura-petals--portrait .sakura-petal {
+  animation-name: sakura-portrait-fall;
+}
+
+@keyframes sakura-portrait-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(var(--petal-rotation));
+  }
+  5%, 80% { opacity: var(--petal-opacity); }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--petal-drift), calc(100cqh + 36px), 0) rotate(var(--petal-turn));
+  }
+}
+
+.sakura-petal svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: sakura-petal-flutter 1.8s ease-in-out var(--petal-delay) infinite alternate;
+  animation-play-state: inherit;
+}
+
+@keyframes sakura-diagonal-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(var(--petal-rotation));
+  }
+  10%, 80% {
+    opacity: var(--petal-opacity);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--petal-drift), calc(100svh + 36px), 0) rotate(var(--petal-turn));
+  }
+}
+
+@keyframes sakura-petal-flutter {
+  0% { transform: translateX(-2px) rotateY(0deg) rotate(-8deg); }
+  100% { transform: translateX(2px) rotateY(35deg) rotate(8deg); }
+}
+
+@media (max-width: 640px) {
+  .sakura-petal:nth-child(n + 49) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sakura-petals { display: none; }
+  .sakura-petal, .sakura-petal svg { animation: none; }
+}
+
 @layer base {
   body {
     @apply bg-paper text-ink font-body selection:bg-sakura/30;
