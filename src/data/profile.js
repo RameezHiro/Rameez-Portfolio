@@ -4,13 +4,13 @@
 // Any value left as `null` is unavailable and its link is not rendered, rather
 // than pointing at a broken or placeholder URL.
 //
-// `university` is intentionally empty until the real institution is supplied.
-// `photo` may be set to a path such as '/images/profile-placeholder.webp'; the
-// chapter keeps an editorial placeholder frame until then.
+// `university` is filled from supplied information; `photo` points at the
+// portrait in public/images. Setting either to `null` falls back to the
+// editorial placeholder treatment.
 export const profileData = {
   name: 'Rameez',
   degree: 'B.Tech CSE-AIML',
-  university: null,
+  university: 'Mumbai University',
   location: 'Mumbai, India',
   academicYear: 'Second Year',
 
@@ -22,9 +22,9 @@ export const profileData = {
   introduction:
     "I'm Rameez, a second-year Computer Science student focused on the intersection of software engineering and artificial intelligence. I enjoy understanding how systems work beneath the surface, building practical solutions, and exploring how intelligent technologies can solve meaningful problems.",
 
-  photo: null,
-  photoAlt: 'Portrait of Rameez',
-  photoCaption: 'Profile portrait',
+  photo: '/images/profile.jpg',
+  photoAlt: 'Rameez, wearing a black suit, against a white background',
+  photoCaption: 'Rameez — profile portrait',
 
   // GitHub, LinkedIn, email and X destinations already used elsewhere in this
   // portfolio. Resume points at the PDF committed in public/.
