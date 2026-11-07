@@ -532,7 +532,7 @@ const Chapter05 = () => {
               </p>
             </div>
             <figure className="col-span-12 w-full max-w-xs md:col-span-5 md:justify-self-end">
-              <div className="relative h-32 overflow-hidden border border-ink/20 bg-paper md:h-44">
+              <div className="relative h-52 overflow-hidden border border-ink/20 bg-paper md:h-60">
                 <SakuraGrowth stage={5} crop className="h-full w-full" />
               </div>
               <figcaption className="mt-2 text-center font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
