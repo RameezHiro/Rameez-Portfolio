@@ -29,7 +29,7 @@ const STAGES = [
     index: '02',
     name: 'DATA',
     items: ['NumPy', 'Pandas', 'Visualization'],
-    text: 'Learning to read data the way you learn to read a new language — slowly, then all at once.',
+    text: 'Learning to read data like a new language — slowly, then all at once.',
     note: 'Then the problem became understanding.',
     evidence: 'Streamlit Learning Projects',
   },
@@ -37,7 +37,7 @@ const STAGES = [
     index: '03',
     name: 'MACHINE LEARNING',
     items: ['Regression', 'Classification', 'Pipelines'],
-    text: 'Watching theory survive contact with real code — models that train, fail, and teach.',
+    text: 'Watching theory meet real code — models that train, fail, and teach.',
     note: null,
     evidence: 'California Housing · ML Pipelines & Algorithms',
   },
@@ -45,7 +45,7 @@ const STAGES = [
     index: '04',
     name: 'BACKEND',
     items: ['SQL', 'APIs', 'FastAPI', 'Databases'],
-    text: 'Learning where software keeps its memory — and how pieces talk to each other.',
+    text: 'Learning where software keeps its memory — how pieces talk to each other.',
     note: 'Then understanding became systems.',
     evidence: 'FastAPI · MySQL',
   },
@@ -100,7 +100,7 @@ const Chapter02 = () => {
           Every skill was another <span className="text-sakura-text">weapon</span>.
         </p>
         <p className="mt-5 font-body text-base md:text-lg leading-relaxed text-manga-gray max-w-2xl">
-          The path wasn’t a straight line. It was repetition.
+          The path wasn&apos;t a straight line. It was repetition — learn, build, break, fix, understand, build again.
         </p>
       </Reveal>
 
@@ -230,9 +230,25 @@ const Chapter02 = () => {
                   <p className="mt-4 font-tech text-[11px] uppercase tracking-[0.2em] text-manga-gray">
                     ↳ Evidence
                   </p>
-                  <p className="mt-1 font-body text-sm text-manga-gray">
-                    {stage.evidence}
-                  </p>
+                  {(() => {
+                    const items = stage.evidence.split(' · ');
+                    if (items.length <= 1) {
+                      return <p className="mt-1 font-body text-sm text-manga-gray">{stage.evidence}</p>;
+                    }
+                    return (
+                      <>
+                        <p className="mt-1 font-body text-sm text-manga-gray">{items[0]}</p>
+                        <details className="mt-1">
+                          <summary className="font-body text-sm underline decoration-sakura decoration-2 underline-offset-2 text-manga-gray hover:text-sakura-text cursor-pointer">
+                            Explore more learning evidence
+                          </summary>
+                          <p className="mt-2 font-body text-sm text-manga-gray">
+                            {items.slice(1).join(' · ')}
+                          </p>
+                        </details>
+                      </>
+                    );
+                  })()}
                   {i < STAGES.length - 1 && (
                     <span
                       className="mt-6 block text-center font-body text-xl text-manga-gray"

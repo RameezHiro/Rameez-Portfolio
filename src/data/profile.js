@@ -22,7 +22,7 @@ export const profileData = {
   introduction:
     "I'm Rameez, a second-year Computer Science student focused on the intersection of software engineering and artificial intelligence. I enjoy understanding how systems work beneath the surface, building practical solutions, and exploring how intelligent technologies can solve meaningful problems.",
 
-  photo: '/images/profile.jpg',
+  photo: '/images/profile.jpeg',
   photoAlt: 'Rameez, wearing a black suit, against a white background',
   photoCaption: 'Rameez — profile portrait',
 
