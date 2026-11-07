@@ -32,8 +32,8 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
         <path
           d="M99.1 6.5 C86 4.2 72 8 58 5.8 C44 4 30 7.8 16 5.6 C8.4 4.4 2.2 6.8 0.8 7.2 C1.2 22 0.4 38 0.9 54 C1.4 70 0.5 84 0.8 93.2 C14 94.2 28 92.9 42 94.6 C56 96 70 93.6 84 95.2 C91 95.9 96.8 94.4 99 94"
           fill="none"
-          stroke="#D96C8A"
-          strokeOpacity="0.95"
+          stroke="#F9D5E0"
+          strokeOpacity="1"
           strokeWidth="2.6"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -42,8 +42,8 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
         <path
           d="M99 6.6 C98.5 22 99.4 40 98.8 58 C98.4 74 99.3 86 99 94.4"
           fill="none"
-          stroke="#D96C8A"
-          strokeOpacity="0.95"
+          stroke="#F9D5E0"
+          strokeOpacity="1"
           strokeWidth="2.6"
           strokeLinecap="round"
           strokeLinejoin="round"
