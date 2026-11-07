@@ -6,9 +6,9 @@ export const chapters = [
   {
     id: '01',
     number: 1,
-    title: 'THE ORIGIN',
-    slug: 'the-origin',
-    description: 'Before the code, there was curiosity',
+    title: 'PROFILE',
+    slug: 'profile',
+    description: 'Software engineering, AI/ML, and research',
     type: 'story',
   },
   {
