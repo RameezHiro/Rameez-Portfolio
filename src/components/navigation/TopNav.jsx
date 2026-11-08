@@ -47,6 +47,13 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
     { label: 'Contact', chapterId: 'final' },
   ];
 
+  // The brand returns to the start of the story; the anchor href keeps it a
+  // real link, the handler keeps the SPA's chapter state and URL in sync.
+  const handleBrandClick = (event) => {
+    event.preventDefault();
+    scrollToChapter('01');
+  };
+
   return (
     <nav
       data-nav-visible={isAtStart ? 'true' : 'false'}
@@ -98,10 +105,25 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
       <div className="relative z-10 flex flex-col xl:flex-row justify-between items-center px-6 md:px-8 py-4 max-w-full mx-auto gap-4">
         {/* Top row: Brand and chapter label */}
         <div className="flex justify-between items-center w-full xl:w-auto gap-4">
-          {/* Left: RAMEEZ */}
-          <div className="font-display text-xl md:text-2xl font-bold tracking-tight text-deep-ink">
-            RAMEEZ
-          </div>
+          {/* Left: emblem + RAMEEZ, one interactive brand lockup */}
+          <a
+            href="/"
+            onClick={handleBrandClick}
+            aria-label="Rameez home"
+            className="inline-flex items-center gap-2.5 sm:gap-3 rounded-sm transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-deep-ink focus-visible:ring-offset-2 focus-visible:ring-offset-[#F9D5E0]"
+          >
+            <img
+              src="/android-chrome-192x192.png"
+              alt=""
+              aria-hidden="true"
+              width="192"
+              height="192"
+              className="h-7 w-7 sm:h-8 sm:w-8 xl:h-9 xl:w-9 object-contain shrink-0"
+            />
+            <span className="font-display text-xl md:text-2xl font-bold tracking-tight text-deep-ink">
+              RAMEEZ
+            </span>
+          </a>
 
           <div className="flex items-center gap-3 md:gap-4">
             {/* Center: Chapter Label */}
