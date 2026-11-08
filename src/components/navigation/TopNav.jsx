@@ -1,10 +1,42 @@
+import { useEffect, useState } from 'react';
 import chaptersData from '../../data/chapters';
+
+// The bar belongs to the top of the page only. A small hysteresis band keeps
+// it from flickering when the reader settles exactly on the threshold.
+const HIDE_AFTER = 32;
+const SHOW_AT = 8;
 
 const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scrollToChapter, menuTriggerRef }) => {
   const chapters = chaptersData.chapters;
   const activeChapter = chapters.find((chapter) => chapter.id === activeChapterId);
   const isNumberedChapter =
     activeChapter && activeChapter.id !== 'prologue' && activeChapter.id !== 'final';
+
+  // Start visible (the common first paint) and flip only when the reader
+  // crosses a threshold. The listener is passive and coalesced into one rAF.
+  const [isAtStart, setIsAtStart] = useState(true);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const y = window.scrollY;
+      setIsAtStart((visible) => (visible ? y <= HIDE_AFTER : y <= SHOW_AT));
+    };
+
+    const handleScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   // Quick links for recruiter/visitor escape hatch
   const quickLinks = [
@@ -16,7 +48,16 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F9D5E0] text-deep-ink backdrop-blur-xl border-b border-manga-gray/20 shadow-[0px_8px_24px_rgba(0,0,0,0.06)]">
+    <nav
+      data-nav-visible={isAtStart ? 'true' : 'false'}
+      aria-hidden={isAtStart ? undefined : 'true'}
+      inert={isAtStart ? undefined : ''}
+      className={`fixed top-0 left-0 right-0 z-50 bg-[#F9D5E0] text-deep-ink backdrop-blur-xl border-b border-manga-gray/20 shadow-[0px_8px_24px_rgba(0,0,0,0.06)] transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none ${
+        isAtStart
+          ? 'translate-y-0 opacity-100'
+          : '-translate-y-8 opacity-0 pointer-events-none'
+      }`}
+    >
       {/* Hand-drawn sakura ink annotation. The frame is purely decorative and
           absolutely positioned so it never affects the bar's layout or size. */}
       <svg

@@ -1,18 +1,22 @@
 import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { DEFAULT_CHAPTER_ID, getChapterIdFromUrl, writeChapterUrl } from '../lib/chapterUrl';
 
-// Clearance between the fixed top navigation and a chapter's top edge when
-// jumping to it. Measured at click time because the nav changes height between
-// breakpoints (one row on mobile, two around the tablet widths).
+// Clearance between the top edge of the viewport and a chapter's top edge when
+// jumping to it. The top bar now lives only at the start of the page, so jumps
+// to later chapters land against the viewport edge; returning to the first
+// chapter goes to the very top, where the bar is visible again.
 const NAV_CLEARANCE = 12;
 
 const scrollToChapterElement = (chapterId, behavior) => {
   const chapterElement = document.querySelector(`[data-chapter="${chapterId}"]`);
   if (!chapterElement) return false;
 
-  const nav = document.querySelector('nav.fixed.top-0');
-  const offset = (nav ? nav.offsetHeight : 0) + NAV_CLEARANCE;
-  const top = chapterElement.getBoundingClientRect().top + window.scrollY - offset;
+  if (chapterId === DEFAULT_CHAPTER_ID) {
+    window.scrollTo({ top: 0, behavior });
+    return true;
+  }
+
+  const top = chapterElement.getBoundingClientRect().top + window.scrollY - NAV_CLEARANCE;
 
   window.scrollTo({ top: Math.max(0, top), behavior });
   return true;
