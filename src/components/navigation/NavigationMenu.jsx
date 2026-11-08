@@ -188,16 +188,6 @@ const NavigationMenu = ({ isOpen, onClose, activeChapterId, scrollToChapter, tri
                   LinkedIn
                 </a>
                 <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-paper/60 hover:text-paper transition-colors text-sm font-body uppercase tracking-wider flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura rounded"
-                >
-                  <span className="material-symbols-outlined text-base">description</span>
-                  Resume
-                  <span className="sr-only"> (PDF, opens in a new tab)</span>
-                </a>
-                <a
                   href="mailto:yellowvoid22@gmail.com"
                   className="text-paper/60 hover:text-paper transition-colors text-sm font-body uppercase tracking-wider flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura rounded"
                 >

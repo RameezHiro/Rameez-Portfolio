@@ -52,10 +52,10 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
       </svg>
 
       {/* The two groups sit side by side only once the quick links, chapter
-          label, resume and brand genuinely fit. Around 768 px the label needs
-          the full row, so the layout stacks below 1280 px. */}
+          label and brand genuinely fit. Around 768 px the label needs the full
+          row, so the layout stacks below 1280 px. */}
       <div className="relative z-10 flex flex-col xl:flex-row justify-between items-center px-6 md:px-8 py-4 max-w-full mx-auto gap-4">
-        {/* Top row: Brand, chapter label and resume */}
+        {/* Top row: Brand and chapter label */}
         <div className="flex justify-between items-center w-full xl:w-auto gap-4">
           {/* Left: RAMEEZ */}
           <div className="font-display text-xl md:text-2xl font-bold tracking-tight text-deep-ink">
@@ -76,18 +76,6 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
                 <span className="text-[#5C5C5C]">{activeChapter?.title || 'PROLOGUE'}</span>
               )}
             </div>
-
-            {/* Resume: one click from every width and chapter */}
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 font-body text-xs uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-sakura text-deep-ink hover:text-sakura transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura"
-            >
-              Resume
-              <span className="material-symbols-outlined text-[14px]" aria-hidden="true">description</span>
-              <span className="sr-only">(PDF, opens in a new tab)</span>
-            </a>
 
             {/* Right: Menu Button */}
             <button
@@ -111,7 +99,7 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
               onClick={() => scrollToChapter(link.chapterId)}
               className={`font-body text-xs uppercase tracking-[0.2em] px-3 py-1.5 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura ${
                 activeChapterId === link.chapterId
-                  ? 'bg-deep-ink text-paper border border-deep-ink'
+                  ? 'bg-white text-deep-ink border border-white'
                   : 'text-[#5C5C5C] hover:text-sakura hover:border-sakura/30 border border-transparent'
               }`}
               aria-current={activeChapterId === link.chapterId ? 'page' : undefined}
