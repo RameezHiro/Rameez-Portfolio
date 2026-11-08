@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import chaptersData from '../../data/chapters';
 
 // The bar belongs to the top of the page only. A small hysteresis band keeps
 // it from flickering when the reader settles exactly on the threshold.
@@ -7,11 +6,6 @@ const HIDE_AFTER = 32;
 const SHOW_AT = 8;
 
 const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scrollToChapter, menuTriggerRef }) => {
-  const chapters = chaptersData.chapters;
-  const activeChapter = chapters.find((chapter) => chapter.id === activeChapterId);
-  const isNumberedChapter =
-    activeChapter && activeChapter.id !== 'prologue' && activeChapter.id !== 'final';
-
   // Start visible (the common first paint) and flip only when the reader
   // crosses a threshold. The listener is passive and coalesced into one rAF.
   const [isAtStart, setIsAtStart] = useState(true);
@@ -99,11 +93,10 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
         />
       </svg>
 
-      {/* The two groups sit side by side only once the quick links, chapter
-          label and brand genuinely fit. Around 768 px the label needs the full
-          row, so the layout stacks below 1280 px. */}
+      {/* The brand and menu own the first row; the quick links join them on
+          the same line only once there is room at 1280 px. */}
       <div className="relative z-10 flex flex-col xl:flex-row justify-between items-center px-6 md:px-8 py-4 max-w-full mx-auto gap-4">
-        {/* Top row: Brand and chapter label */}
+        {/* Top row: brand and mobile menu */}
         <div className="flex justify-between items-center w-full xl:w-auto gap-4">
           {/* Left: emblem + RAMEEZ, one interactive brand lockup */}
           <a
@@ -125,33 +118,17 @@ const TopNav = ({ isMobileMenuOpen, setIsMobileMenuOpen, activeChapterId, scroll
             </span>
           </a>
 
-          <div className="flex items-center gap-3 md:gap-4">
-            {/* Center: Chapter Label */}
-            <div className="hidden md:flex items-center gap-2 text-sm font-body uppercase tracking-wider">
-              {isNumberedChapter ? (
-                <>
-                  <span className="text-[#5C5C5C]">CHAPTER</span>
-                  <span className="text-sakura font-bold"> {activeChapterId} </span>
-                  <span className="text-[#5C5C5C]">·</span>
-                  <span className="text-[#5C5C5C] ml-1">{activeChapter.title}</span>
-                </>
-              ) : (
-                <span className="text-[#5C5C5C]">{activeChapter?.title || 'PROLOGUE'}</span>
-              )}
-            </div>
-
-            {/* Right: Menu Button */}
-            <button
-              ref={menuTriggerRef}
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden text-deep-ink hover:text-sakura p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-sakura rounded"
-              aria-label="Open menu"
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="navigation-menu"
-            >
-              <span className="material-symbols-outlined text-2xl">menu</span>
-            </button>
-          </div>
+          {/* Right: Menu Button */}
+          <button
+            ref={menuTriggerRef}
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="md:hidden text-deep-ink hover:text-sakura p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-sakura rounded"
+            aria-label="Open menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="navigation-menu"
+          >
+            <span className="material-symbols-outlined text-2xl">menu</span>
+          </button>
         </div>
 
         {/* Bottom row: Quick Links (stacked under the brand until 1280 px) */}
