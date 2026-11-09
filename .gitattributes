@@ -1,0 +1,6 @@
+# Certificate assets are binary; never apply line-ending conversion.
+*.pdf binary
+*.webp binary
+*.png binary
+*.jpg binary
+*.jpeg binary
