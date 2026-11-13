@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09",
+  "generatedAt": "2026-11-13",
   "source": "docs/achievements/achievements.json",
   "note": "Sanitised gallery derivative. Verification URLs, certificate IDs, badge IDs, private notes and manual-verification data are intentionally excluded.",
   "counts": {
@@ -52,8 +52,8 @@
       "team": "Not specified",
       "role": "Award recipient",
       "description": "Received the Judges' Choice Award at UAi Hawkathon 2026.",
-      "fileName": "Not provided (chat image)",
-      "source": "chat_image",
+      "fileName": "Judges Choice Award UAI Hawkathon.jpg",
+      "source": "drive",
       "displayOrder": 1,
       "portfolioVisible": true,
       "featured": true,
@@ -63,15 +63,18 @@
       "privacyFlags": [
         "full_name"
       ],
-      "caveat": "Award is printed on the certificate. The event date and original file were not supplied.",
-      "alt": null,
+      "caveat": "Award is printed on the certificate. The event date was not printed on the certificate.",
+      "alt": "UAi Hawkathon 2026 — Judges' Choice Award — award certificate",
       "asset": {
-        "status": "missing",
-        "preview": null,
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/uai-hawkathon-2026-judges-choice.webp",
+          "width": 1269,
+          "height": 895,
+          "bytes": 63374
+        },
         "document": null,
-        "redacted": false,
-        "expectedPreview": "/achievements/previews/uai-hawkathon-2026-judges-choice.webp",
-        "expectedDocument": "/achievements/docs/uai-hawkathon-2026-judges-choice.jpg"
+        "redacted": false
       }
     },
     {
@@ -634,8 +637,8 @@
       "team": "Not specified",
       "role": "Participant",
       "description": "Completed AIKTC's Web Development Bootcamp, covering frontend and backend development fundamentals.",
-      "fileName": "Not provided (chat image)",
-      "source": "chat_image",
+      "fileName": "Web Dev Bootcamp Completion Cert.jpg",
+      "source": "drive",
       "displayOrder": 15,
       "portfolioVisible": true,
       "featured": false,
@@ -645,15 +648,18 @@
       "privacyFlags": [
         "full_name"
       ],
-      "caveat": "Completion is printed on the certificate. The completion date and original file were not supplied.",
-      "alt": null,
+      "caveat": "Completion is printed on the certificate. The completion date was not printed on the certificate.",
+      "alt": "AIKTC Web Development Bootcamp — Certificate of Completion — completion certificate",
       "asset": {
-        "status": "missing",
-        "preview": null,
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/aiktc-web-development-bootcamp.webp",
+          "width": 1360,
+          "height": 930,
+          "bytes": 82826
+        },
         "document": null,
-        "redacted": false,
-        "expectedPreview": "/achievements/previews/aiktc-web-development-bootcamp.webp",
-        "expectedDocument": "/achievements/docs/aiktc-web-development-bootcamp.jpg"
+        "redacted": false
       }
     },
     {

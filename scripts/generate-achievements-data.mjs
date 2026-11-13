@@ -37,9 +37,9 @@ const STATUS_LABELS = {
 
 const CAVEATS = {
   'uai-hawkathon-2026-judges-choice':
-    'Award is printed on the certificate. The event date and original file were not supplied.',
+    'Award is printed on the certificate. The event date was not printed on the certificate.',
   'aiktc-web-development-bootcamp':
-    'Completion is printed on the certificate. The completion date and original file were not supplied.',
+    'Completion is printed on the certificate. The completion date was not printed on the certificate.',
   'hacktoberfest-2026-completionist-plusplus':
     'Highest completion tier. The earlier Completionist certificate is supporting evidence only.',
   'hacktoon-1-finalist': 'Finalist status is printed on the certificate. No event date is printed.',

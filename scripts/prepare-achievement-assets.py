@@ -12,9 +12,9 @@ This script does three things and nothing else:
   3. Writes docs/achievements/asset-manifest.json with paths, dimensions,
      redaction notes and source filenames.
 
-Originals are read from --source and are never modified. The two certificates
-supplied as chat images have no source file; they are reported as missing and
-no image is fabricated for them.
+Originals are read from --source and are never modified. A record whose source
+file is absent from --source is reported as missing; no image is fabricated for
+it.
 
 Usage:
     python scripts/prepare-achievement-assets.py --source "C:\\path\\to\\certificates"
@@ -43,10 +43,11 @@ MANIFEST = os.path.join(ROOT, "docs", "achievements", "asset-manifest.json")
 ITEMS = [
     {
         "id": "uai-hawkathon-2026-judges-choice",
-        "source": None,
-        "note": "Supplied as a chat image. No file exists in the repository.",
-        "expectedPreview": "/achievements/previews/uai-hawkathon-2026-judges-choice.webp",
-        "expectedDocument": "/achievements/docs/uai-hawkathon-2026-judges-choice.jpg",
+        "source": "23-uai-hawkathon-judges-choice.jpg",
+        "kind": "image",
+        "crop": [0.02, 0.02, 0.98, 0.975],
+        "redactions": [],
+        "note": "Photo cropped to the certificate edge; EXIF stripped by re-encoding.",
     },
     {
         "id": "hacktoberfest-2026-completionist-plusplus",
@@ -172,10 +173,11 @@ ITEMS = [
     },
     {
         "id": "aiktc-web-development-bootcamp",
-        "source": None,
-        "note": "Supplied as a chat image. No file exists in the repository.",
-        "expectedPreview": "/achievements/previews/aiktc-web-development-bootcamp.webp",
-        "expectedDocument": "/achievements/docs/aiktc-web-development-bootcamp.jpg",
+        "source": "24-aiktc-web-development-bootcamp.jpg",
+        "kind": "image",
+        "crop": [0.022, 0.022, 0.978, 0.978],
+        "redactions": [],
+        "note": "Photo cropped to the certificate edge; EXIF stripped by re-encoding.",
     },
     {
         "id": "nationbuilding-online-quiz-2026",
