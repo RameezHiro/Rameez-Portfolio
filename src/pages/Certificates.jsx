@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import gallery from '../data/achievements.gallery.json';
+import AchievementPreview from '../components/achievements/AchievementPreview';
 import AchievementStats from '../components/achievements/AchievementStats';
 import AchievementsGallery from '../components/achievements/AchievementsGallery';
 import SectionLabel from '../components/ui/SectionLabel';
@@ -13,6 +15,17 @@ const PAGE_DESCRIPTION =
 // returns through the explicit back link.
 const Certificates = () => {
   const mainRef = useRef(null);
+  const [previewRecord, setPreviewRecord] = useState(null);
+
+  const featured = useMemo(
+    () =>
+      gallery.achievements
+        .filter((record) => record.portfolioVisible && record.featured)
+        .sort((a, b) => a.displayOrder - b.displayOrder),
+    []
+  );
+
+  const closePreview = useCallback(() => setPreviewRecord(null), []);
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -81,7 +94,13 @@ const Certificates = () => {
 
         <AchievementStats className="mt-10 md:mt-12" />
 
-        <AchievementsGallery showHeader={false} className="mt-4" />
+        <AchievementsGallery
+          onOpen={setPreviewRecord}
+          featuredRecords={featured}
+          className="mt-10 md:mt-12"
+        />
+
+        <AchievementPreview record={previewRecord} onClose={closePreview} />
       </main>
 
       <footer className="border-t border-ink/15">
