@@ -12,7 +12,11 @@ const CATEGORY_ORDER = gallery.categories.map((category) => category.name);
 
 const countLabel = (count) => `${count} ${count === 1 ? 'record' : 'records'}`;
 
-const AchievementsGallery = () => {
+const AchievementsGallery = ({
+  showHeader = true,
+  headingId = 'achievements-heading',
+  className,
+}) => {
   const [activeCategory, setActiveCategory] = useState(ALL);
   const [previewRecord, setPreviewRecord] = useState(null);
 
@@ -67,33 +71,41 @@ const AchievementsGallery = () => {
 
   return (
     <section
-      aria-labelledby="achievements-heading"
-      className="mt-16 md:mt-24"
+      aria-labelledby={headingId}
+      className={cn('mt-16 md:mt-24', className)}
     >
-      <SectionLabel index="Scene 07" label="The record" />
+      {showHeader ? (
+        <>
+          <SectionLabel index="Scene 07" label="The record" />
 
-      <MangaSpread gap="lg" className="mt-5">
-        <div className="col-span-12 md:col-span-7">
-          <h3
-            id="achievements-heading"
-            className="max-w-2xl font-display text-2xl font-bold leading-tight text-ink md:text-4xl"
-          >
-            A paper trail of <span className="text-sakura-text">battles</span>.
-          </h3>
-        </div>
-        <div className="col-span-12 md:col-span-5">
-          <p className="max-w-xl font-body text-sm leading-relaxed text-manga-gray md:text-base">
-            {gallery.counts.visible} records kept from hackathons, quizzes,
-            competitions, recognition and the occasional shirt. The{' '}
-            {featured.length} featured entries lead the chapter; the rest mark
-            the road.
-          </p>
-          <p className="mt-3 max-w-xl font-body text-xs leading-relaxed text-manga-gray md:text-sm">
-            Every entry is labelled by what it actually is. Participation is
-            never presented as a win, and a finalist is not a placement.
-          </p>
-        </div>
-      </MangaSpread>
+          <MangaSpread gap="lg" className="mt-5">
+            <div className="col-span-12 md:col-span-7">
+              <h3
+                id={headingId}
+                className="max-w-2xl font-display text-2xl font-bold leading-tight text-ink md:text-4xl"
+              >
+                A paper trail of <span className="text-sakura-text">battles</span>.
+              </h3>
+            </div>
+            <div className="col-span-12 md:col-span-5">
+              <p className="max-w-xl font-body text-sm leading-relaxed text-manga-gray md:text-base">
+                {gallery.counts.visible} records kept from hackathons, quizzes,
+                competitions, recognition and the occasional shirt. The{' '}
+                {featured.length} featured entries lead the chapter; the rest
+                mark the road.
+              </p>
+              <p className="mt-3 max-w-xl font-body text-xs leading-relaxed text-manga-gray md:text-sm">
+                Every entry is labelled by what it actually is. Participation is
+                never presented as a win, and a finalist is not a placement.
+              </p>
+            </div>
+          </MangaSpread>
+        </>
+      ) : (
+        <h2 id={headingId} className="sr-only">
+          The complete achievement record
+        </h2>
+      )}
 
       {showingAll && hero && (
         <div className="mt-10 md:mt-12">

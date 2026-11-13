@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Home from './pages/Home';
 import Journal from './pages/Journal';
@@ -7,6 +7,22 @@ import JournalPost from './pages/JournalPost';
 import TopNav from './components/navigation/TopNav';
 import ChapterRail from './components/navigation/ChapterRail';
 import NavigationMenu from './components/navigation/NavigationMenu'
+
+// The extended record is its own route: keep the archive and its assets out of
+// the initial portfolio bundle until a visitor asks for them.
+const Certificates = lazy(() => import('./pages/Certificates'));
+
+const RouteFallback = () => (
+  <div
+    role="status"
+    aria-live="polite"
+    className="flex min-h-screen items-center justify-center bg-paper px-6"
+  >
+    <p className="font-tech text-[10px] uppercase tracking-[0.24em] text-manga-gray">
+      Loading the record…
+    </p>
+  </div>
+);
 
 const TopNavBar = () => {
   const [activeSection, setActiveSection] = React.useState('');
@@ -469,6 +485,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route
+          path="/certificates"
+          element={
+            <Suspense fallback={<RouteFallback />}>
+              <Certificates />
+            </Suspense>
+          }
+        />
         <Route path="/journal" element={<Journal />} />
         <Route path="/journal/:slug" element={<JournalPost />} />
         <Route path="*" element={<div>404<br/>CHAPTER NOT FOUND</div>} />
