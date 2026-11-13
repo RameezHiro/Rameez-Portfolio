@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "rm -rf node_modules/.bin && npm install && npx vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "achievements:data": "node scripts/generate-achievements-data.mjs"
   },
   "type": "module",
   "dependencies": {

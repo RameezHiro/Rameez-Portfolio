@@ -6,11 +6,13 @@ import SakuraGrowth from '../shared/SakuraGrowth';
 import MangaPanel from '../ui/MangaPanel';
 import MangaSpread from '../ui/MangaSpread';
 import SectionLabel from '../ui/SectionLabel';
+import AchievementsGallery from '../achievements/AchievementsGallery';
 
 // Chapter 04 — BATTLE ARC. One hackathon, five beats: PROBLEM → IDEA →
-// BUILD → RESULT → LESSON. Claims are limited to the repository, the public
-// award record, and the university's event note. The prototype's gaps are
-// stated as plainly as its result. No invented metrics, teammates, or tests.
+// BUILD → RESULT → LESSON, followed by the wider achievement record. Claims
+// are limited to the repository, the public award record, and the university's
+// event note. The prototype's gaps are stated as plainly as its result. No
+// invented metrics, teammates, or tests.
 const FLOW = [
   {
     index: '01',
@@ -347,8 +349,8 @@ const Chapter04 = () => {
             </div>
           </div>
           <p className="mt-8 font-body text-xs leading-relaxed text-paper/60">
-            The same team was shortlisted for Hacktoon 1.0. No result is
-            recorded.
+            The same team was shortlisted for Hacktoon 1.0 and reached the
+            final. The certificate prints no event date.
           </p>
         </MangaPanel>
       </Reveal>
@@ -375,7 +377,12 @@ const Chapter04 = () => {
         </div>
       </Reveal>
 
-      {/* G. CLOSING — quiet panel, a held breath before the next arc */}
+      {/* G. RECORD — every portfolio-visible achievement, kept in order */}
+      <Reveal>
+        <AchievementsGallery />
+      </Reveal>
+
+      {/* H. CLOSING — quiet panel, a held breath before the next arc */}
       <Reveal className="mt-16 md:mt-24">
         <div className="border-t-2 border-ink pt-10 md:pt-14">
           <SectionLabel label="End of battles" />

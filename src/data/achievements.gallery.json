@@ -1,0 +1,999 @@
+{
+  "generatedAt": "2026-11-09",
+  "source": "docs/achievements/achievements.json",
+  "note": "Sanitised gallery derivative. Verification URLs, certificate IDs, badge IDs, private notes and manual-verification data are intentionally excluded.",
+  "counts": {
+    "total": 24,
+    "visible": 20,
+    "supporting": 4,
+    "featured": 3,
+    "byCategory": {
+      "Hackathons": 8,
+      "Quizzes": 4,
+      "Competitions": 2,
+      "Recognition & Awards": 4,
+      "Swags & Memorabilia": 2
+    }
+  },
+  "categories": [
+    {
+      "name": "Hackathons",
+      "count": 8
+    },
+    {
+      "name": "Quizzes",
+      "count": 4
+    },
+    {
+      "name": "Competitions",
+      "count": 2
+    },
+    {
+      "name": "Recognition & Awards",
+      "count": 4
+    },
+    {
+      "name": "Swags & Memorabilia",
+      "count": 2
+    }
+  ],
+  "achievements": [
+    {
+      "id": "uai-hawkathon-2026-judges-choice",
+      "title": "UAi Hawkathon 2026 — Judges' Choice Award",
+      "category": "Hackathons",
+      "organization": "Universal AI University (UAI)",
+      "event": "UAi Hawkathon 2026",
+      "achievementType": "Judges' Choice Award",
+      "claimType": "Award",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Judges' Choice Award",
+      "team": "Not specified",
+      "role": "Award recipient",
+      "description": "Received the Judges' Choice Award at UAi Hawkathon 2026.",
+      "fileName": "Not provided (chat image)",
+      "source": "chat_image",
+      "displayOrder": 1,
+      "portfolioVisible": true,
+      "featured": true,
+      "supportingDocument": false,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": "Award is printed on the certificate. The event date and original file were not supplied.",
+      "alt": null,
+      "asset": {
+        "status": "missing",
+        "preview": null,
+        "document": null,
+        "redacted": false,
+        "expectedPreview": "/achievements/previews/uai-hawkathon-2026-judges-choice.webp",
+        "expectedDocument": "/achievements/docs/uai-hawkathon-2026-judges-choice.jpg"
+      }
+    },
+    {
+      "id": "hacktoberfest-2026-completionist-plusplus",
+      "title": "Hacktoberfest 2026 — Completionist++",
+      "category": "Recognition & Awards",
+      "organization": "Hacktoberfest (MLH × DEV; presented by DigitalOcean)",
+      "event": "Hacktoberfest 2026",
+      "achievementType": "Completionist++ (highest completion tier)",
+      "claimType": "Completion",
+      "date": "2026-10-31",
+      "dateLabel": "31 Oct 2026",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Completed Hacktoberfest 2026 at the highest Completionist++ tier, shipping open-source contributions throughout October.",
+      "fileName": "Hacktoberfest 2026 Completionist++ Certificate.pdf",
+      "source": "drive",
+      "displayOrder": 2,
+      "portfolioVisible": true,
+      "featured": true,
+      "supportingDocument": false,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": "Highest completion tier. The earlier Completionist certificate is supporting evidence only.",
+      "alt": "Hacktoberfest 2026 — Completionist++ — completion certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/hacktoberfest-2026-completionist-plusplus.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 46546
+        },
+        "document": {
+          "src": "/achievements/docs/hacktoberfest-2026-completionist-plusplus.pdf",
+          "kind": "pdf",
+          "bytes": 62637
+        },
+        "redacted": false
+      }
+    },
+    {
+      "id": "hacktoon-1-finalist",
+      "title": "Hacktoon 1.0 — Finalist",
+      "category": "Hackathons",
+      "organization": "Anjuman-I-Islam's Kalsekar Technical Campus (AIKTC) — Dept. of CSE (AI & ML); Neuronix Club; ACM AIKTC",
+      "event": "Hacktoon 1.0",
+      "achievementType": "Finalist",
+      "claimType": "Finalist",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Finalist",
+      "team": "Not specified",
+      "role": "Not specified",
+      "description": "Selected as a finalist in AIKTC's Hacktoon 1.0 for skill, innovation, and collaborative spirit.",
+      "fileName": "Hacktoon 1.0 Finalist.pdf",
+      "source": "drive",
+      "displayOrder": 3,
+      "portfolioVisible": true,
+      "featured": true,
+      "supportingDocument": false,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": "Finalist status is printed on the certificate. No event date is printed.",
+      "alt": "Hacktoon 1.0 — Finalist — finalist certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/hacktoon-1-finalist.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 148840
+        },
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "amd-slingshot-ideathon-2026",
+      "title": "AMD Slingshot Campus Days Ideathon 2026 — Mumbai",
+      "category": "Hackathons",
+      "organization": "AMD India (powered by H2S)",
+      "event": "AMD Slingshot Campus Days Ideathon 2026 — Mumbai",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "2026-04-14",
+      "dateLabel": "14 Apr 2026",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Participated in AMD's Mumbai ideathon, exploring agentic workflows and rapid prototyping during AMD Slingshot Campus Days 2026.",
+      "fileName": "AMD Slingshot Ideathon",
+      "source": "drive",
+      "displayOrder": 4,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name",
+        "certificate_id"
+      ],
+      "caveat": "Certificate ID redacted in the public preview and PDF.",
+      "alt": "AMD Slingshot Campus Days Ideathon 2026 — Mumbai — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/amd-slingshot-ideathon-2026.webp",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 76362
+        },
+        "document": {
+          "src": "/achievements/docs/amd-slingshot-ideathon-2026.pdf",
+          "kind": "pdf",
+          "bytes": 906220
+        },
+        "redacted": true
+      }
+    },
+    {
+      "id": "omnirush-agentic-buildathon-2026",
+      "title": "Omnirush Agentic Buildathon 2026",
+      "category": "Hackathons",
+      "organization": "Omnirush (via Unstop)",
+      "event": "Omnirush Agentic Buildathon 2026",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "RameezHiro",
+      "role": "Participant",
+      "description": "Participated in Omnirush's Agentic Buildathon 2026 as Team RameezHiro.",
+      "fileName": "Omnirush Agentic Buildathon 2026 Participation Cert.pdf",
+      "source": "drive",
+      "displayOrder": 5,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "partial_manual_verification_required",
+      "statusLabel": "Detail pending",
+      "privacyFlags": [
+        "full_name",
+        "qr_code"
+      ],
+      "caveat": "Verification QR redacted in the public preview and PDF. Team name printed as Team RameezHiro.",
+      "alt": "Omnirush Agentic Buildathon 2026 — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/omnirush-agentic-buildathon-2026.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 59850
+        },
+        "document": {
+          "src": "/achievements/docs/omnirush-agentic-buildathon-2026.pdf",
+          "kind": "pdf",
+          "bytes": 213059
+        },
+        "redacted": true
+      }
+    },
+    {
+      "id": "ey-techathon-6-round-1",
+      "title": "EY Techathon 6.0 — Round 1: Executive Summary Submission",
+      "category": "Hackathons",
+      "organization": "EY (via Unstop)",
+      "event": "EY Techathon 6.0",
+      "achievementType": "Participation (Round 1)",
+      "claimType": "Participation",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Submitted an executive summary in Round 1 of EY Techathon 6.0, EY's technology challenge.",
+      "fileName": "EY Techathon Certificate",
+      "source": "drive",
+      "displayOrder": 6,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document_and_url",
+      "statusLabel": "Verified from document and link",
+      "privacyFlags": [
+        "full_name",
+        "qr_code",
+        "verification_url"
+      ],
+      "caveat": "Round 1 only. Verification QR redacted in the public preview and PDF.",
+      "alt": "EY Techathon 6.0 — Round 1: Executive Summary Submission — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/ey-techathon-6-round-1.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 46830
+        },
+        "document": {
+          "src": "/achievements/docs/ey-techathon-6-round-1.pdf",
+          "kind": "pdf",
+          "bytes": 173567
+        },
+        "redacted": true
+      }
+    },
+    {
+      "id": "uai-hawkathon-finale-2026",
+      "title": "International UAi Hawk-Athon — Finale",
+      "category": "Hackathons",
+      "organization": "Devnovate / Hack With India (finale at Universal AI University, Karjat)",
+      "event": "International UAi HAWK-ATHON — Finale",
+      "achievementType": "Finale recognition (rank field blank)",
+      "claimType": "Participation",
+      "date": "2026-03-12 – 2026-03-13",
+      "dateLabel": "12 Mar 2026 – 13 Mar 2026",
+      "position": "Not specified — the certificate reads 'team secured ______' with the rank left blank",
+      "team": "Not specified ('the team')",
+      "role": "Not specified",
+      "description": "Recognised for team performance at the International UAi Hawk-Athon finale, held at Universal AI University on 12–13 March 2026.",
+      "fileName": "Denovate UAI Hawkathon",
+      "source": "drive",
+      "displayOrder": 7,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "partial_manual_verification_required",
+      "statusLabel": "Detail pending",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": "The certificate’s result line is blank. This is a finale recognition, not a numbered result.",
+      "alt": "International UAi Hawk-Athon — Finale — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/uai-hawkathon-finale-2026.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 103760
+        },
+        "document": {
+          "src": "/achievements/docs/uai-hawkathon-finale-2026.pdf",
+          "kind": "pdf",
+          "bytes": 429199
+        },
+        "redacted": false
+      }
+    },
+    {
+      "id": "aiktc-internal-sih-2026",
+      "title": "AIKTC Internal SIH Hackathon 2026",
+      "category": "Hackathons",
+      "organization": "Anjuman-I-Islam's Kalsekar Technical Campus (AIKTC) — Dept. of Computer Engineering; Smart India Hackathon 2026 / MoE Innovation Cell",
+      "event": "AIKTC Internal SIH Hackathon 2026",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "2026-09-05",
+      "dateLabel": "5 Sept 2026",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Participated in AIKTC's Internal SIH Hackathon 2026, the college-level round of Smart India Hackathon.",
+      "fileName": "Internal SIH Participation Cert",
+      "source": "drive",
+      "displayOrder": 8,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": null,
+      "alt": "AIKTC Internal SIH Hackathon 2026 — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/aiktc-internal-sih-2026.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 173696
+        },
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "hacktoberfest-mumbai-hackday-2026",
+      "title": "Hacktoberfest 2026 Mumbai Hackday",
+      "category": "Hackathons",
+      "organization": "Team FAIR (Hacktoberfest Mumbai); partners include DigitalOcean, MLH, Paytm, Ultimez",
+      "event": "Hacktoberfest 2026 Mumbai Hackday",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "2026-10-11",
+      "dateLabel": "11 Oct 2026",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Participated in Hacktoberfest 2026 Mumbai Hackday at Paytm, Mumbai, organized by Team FAIR.",
+      "fileName": "Hacktoberfest-2026-Mumbai-Certificate-Rameez-Shaikh.pdf",
+      "source": "drive",
+      "displayOrder": 9,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name",
+        "certificate_id"
+      ],
+      "caveat": "Certificate ID redacted in the public preview and PDF.",
+      "alt": "Hacktoberfest 2026 Mumbai Hackday — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/hacktoberfest-mumbai-hackday-2026.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 63618
+        },
+        "document": {
+          "src": "/achievements/docs/hacktoberfest-mumbai-hackday-2026.pdf",
+          "kind": "pdf",
+          "bytes": 291141
+        },
+        "redacted": true
+      }
+    },
+    {
+      "id": "build-vs-break-2025",
+      "title": "Build vs Break 2025",
+      "category": "Competitions",
+      "organization": "Anjuman-I-Islam's Kalsekar Technical Campus (AIKTC) — Neuronix Club",
+      "event": "Build vs Break",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "2025-10-06",
+      "dateLabel": "6 Oct 2025",
+      "position": "Not specified",
+      "team": "Team AlgoVoid",
+      "role": "Participant",
+      "description": "Took part with Team AlgoVoid in AIKTC's Build vs Break event organized by the Neuronix Club.",
+      "fileName": "BvB Certificate",
+      "source": "drive",
+      "displayOrder": 10,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": null,
+      "alt": "Build vs Break 2025 — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/build-vs-break-2025.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 143880
+        },
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "national-data-science-olympiad-2026",
+      "title": "National Data Science Olympiad 2026",
+      "category": "Competitions",
+      "organization": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai — Pinnacle Excellence Conclave 2026 (via Unstop)",
+      "event": "National Data Science Olympiad — Pinnacle Excellence Conclave 2026",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Participated in the National Data Science Olympiad at SRMIST's Pinnacle Excellence Conclave 2026.",
+      "fileName": "National Data Science Olympiad",
+      "source": "drive",
+      "displayOrder": 11,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document_and_url",
+      "statusLabel": "Verified from document and link",
+      "privacyFlags": [
+        "full_name",
+        "qr_code",
+        "verification_url"
+      ],
+      "caveat": "Verification QR redacted in the public preview.",
+      "alt": "National Data Science Olympiad 2026 — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/national-data-science-olympiad-2026.webp",
+          "width": 1600,
+          "height": 1094,
+          "bytes": 64052
+        },
+        "document": null,
+        "redacted": true
+      }
+    },
+    {
+      "id": "quizoff-2026",
+      "title": "QuizOff 2026: India's Biggest AI Quiz",
+      "category": "Quizzes",
+      "organization": "CampusCrew (hosted on Unstop)",
+      "event": "QuizOff 2026: India's Biggest AI Quiz",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "2026-07-19",
+      "dateLabel": "19 Jul 2026",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Competed in CampusCrew's nationwide AI quiz, QuizOff 2026, hosted on Unstop.",
+      "fileName": "Campus Crew Quizoff",
+      "source": "drive",
+      "displayOrder": 12,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": "Top social-share banner cropped from the preview.",
+      "alt": "QuizOff 2026: India's Biggest AI Quiz — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/quizoff-2026.webp",
+          "width": 1600,
+          "height": 1024,
+          "bytes": 94694
+        },
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "elite-quiz-5",
+      "title": "Elite Quiz 5.0",
+      "category": "Quizzes",
+      "organization": "Elite Coders (powered by Unstop)",
+      "event": "Elite Quiz 5.0",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "2026-08-15",
+      "dateLabel": "15 Aug 2026",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Completed Elite Coders' Elite Quiz 5.0, an Independence Day quiz hosted on Unstop.",
+      "fileName": "Elite Quiz 5.0",
+      "source": "drive",
+      "displayOrder": 13,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document_and_url",
+      "statusLabel": "Verified from document and link",
+      "privacyFlags": [
+        "full_name",
+        "qr_code",
+        "verification_url"
+      ],
+      "caveat": "Verification QR redacted in the public preview.",
+      "alt": "Elite Quiz 5.0 — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/elite-quiz-5.webp",
+          "width": 1600,
+          "height": 1094,
+          "bytes": 96814
+        },
+        "document": null,
+        "redacted": true
+      }
+    },
+    {
+      "id": "omnikon-foundations-quiz-2026",
+      "title": "Omnikon AI & ML Challenge 2026 — Foundations Quiz",
+      "category": "Quizzes",
+      "organization": "Omnikon (via Unstop)",
+      "event": "Omnikon AI & ML Challenge 2026: Foundations Quiz",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Completed the Foundations Quiz in Omnikon's AI & ML Challenge 2026.",
+      "fileName": "Omnikon AI & ML Knowledge Challenge",
+      "source": "drive",
+      "displayOrder": 14,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document_and_url",
+      "statusLabel": "Verified from document and link",
+      "privacyFlags": [
+        "full_name",
+        "qr_code",
+        "verification_url"
+      ],
+      "caveat": "Verification QR redacted in the public preview and PDF.",
+      "alt": "Omnikon AI & ML Challenge 2026 — Foundations Quiz — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/omnikon-foundations-quiz-2026.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 64500
+        },
+        "document": {
+          "src": "/achievements/docs/omnikon-foundations-quiz-2026.pdf",
+          "kind": "pdf",
+          "bytes": 322978
+        },
+        "redacted": true
+      }
+    },
+    {
+      "id": "aiktc-web-development-bootcamp",
+      "title": "AIKTC Web Development Bootcamp — Certificate of Completion",
+      "category": "Recognition & Awards",
+      "organization": "Anjuman-I-Islam's Kalsekar Technical Campus (AIKTC) — Dept. of Computer Engineering",
+      "event": "Web Development Bootcamp",
+      "achievementType": "Certificate of Completion (learning credential)",
+      "claimType": "Completion",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Completed AIKTC's Web Development Bootcamp, covering frontend and backend development fundamentals.",
+      "fileName": "Not provided (chat image)",
+      "source": "chat_image",
+      "displayOrder": 15,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": "Completion is printed on the certificate. The completion date and original file were not supplied.",
+      "alt": null,
+      "asset": {
+        "status": "missing",
+        "preview": null,
+        "document": null,
+        "redacted": false,
+        "expectedPreview": "/achievements/previews/aiktc-web-development-bootcamp.webp",
+        "expectedDocument": "/achievements/docs/aiktc-web-development-bootcamp.jpg"
+      }
+    },
+    {
+      "id": "nationbuilding-online-quiz-2026",
+      "title": "NationBuilding Case Study Competition 2026 — Online Quiz Round",
+      "category": "Quizzes",
+      "organization": "Nation with NaMo (via Unstop)",
+      "event": "NationBuilding Case Study Competition 2026 — Online Quiz Round",
+      "achievementType": "Participation (Online Quiz Round)",
+      "claimType": "Participation",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Participated in the Online Quiz Round of the NationBuilding Case Study Competition 2026.",
+      "fileName": "National Building Certificate",
+      "source": "drive",
+      "displayOrder": 16,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "partial_manual_verification_required",
+      "statusLabel": "Detail pending",
+      "privacyFlags": [
+        "full_name",
+        "qr_code",
+        "verification_url"
+      ],
+      "caveat": "Online quiz round only. Verification QR redacted in the public preview and PDF.",
+      "alt": "NationBuilding Case Study Competition 2026 — Online Quiz Round — participation certificate",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/nationbuilding-online-quiz-2026.webp",
+          "width": 1600,
+          "height": 1131,
+          "bytes": 87956
+        },
+        "document": {
+          "src": "/achievements/docs/nationbuilding-online-quiz-2026.pdf",
+          "kind": "pdf",
+          "bytes": 859083
+        },
+        "redacted": true
+      }
+    },
+    {
+      "id": "hacktoberfest-2025-supercontributor",
+      "title": "Hacktoberfest 2025 — Supercontributor Badge",
+      "category": "Recognition & Awards",
+      "organization": "Hacktoberfest / Holopin",
+      "event": "Hacktoberfest 2025",
+      "achievementType": "Supercontributor badge",
+      "claimType": "Badge",
+      "date": "2025-10-27",
+      "dateLabel": "27 Oct 2025",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Badge recipient",
+      "description": "Earned the Hacktoberfest 2025 Supercontributor badge.",
+      "fileName": "Hacktoberfest Supercontributor",
+      "source": "drive",
+      "displayOrder": 17,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "verified_from_screenshot",
+      "statusLabel": "Screenshot record",
+      "privacyFlags": [
+        "badge_id",
+        "username",
+        "profile_avatar"
+      ],
+      "caveat": "Screenshot cropped to the badge artwork. Badge ID, account handle and avatar withheld.",
+      "alt": "Hacktoberfest 2025 — Supercontributor Badge — badge artwork",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/hacktoberfest-2025-supercontributor.webp",
+          "width": 1086,
+          "height": 1151,
+          "bytes": 43564
+        },
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "solution-challenge-build-with-ai-badge",
+      "title": "Google Solution Challenge — Build with AI Badge",
+      "category": "Recognition & Awards",
+      "organization": "Google Solution Challenge / Hack2Skill (H2S)",
+      "event": "Google Solution Challenge — Build with AI (India)",
+      "achievementType": "Participation badge",
+      "claimType": "Badge",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Not specified",
+      "description": "Earned the Google Solution Challenge 'Build with AI' badge for building a real-world solution.",
+      "fileName": "Solution Challenge Badge",
+      "source": "drive",
+      "displayOrder": 18,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "unverified_badge_or_photo",
+      "statusLabel": "Unverified from file",
+      "privacyFlags": [],
+      "caveat": "Generic badge with no printed name, date or edition. Ownership is not verifiable from the file alone.",
+      "alt": "Google Solution Challenge — Build with AI Badge — badge artwork",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/solution-challenge-build-with-ai-badge.webp",
+          "width": 1368,
+          "height": 1368,
+          "bytes": 62566
+        },
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "hacktoberfest-2025-tshirt",
+      "title": "Hacktoberfest 2025 T-shirt",
+      "category": "Swags & Memorabilia",
+      "organization": "Hacktoberfest (DigitalOcean + MLH)",
+      "event": "Hacktoberfest 2025",
+      "achievementType": "Physical swag",
+      "claimType": "Swag",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Not specified",
+      "description": "Received the official Hacktoberfest 2025 T-shirt, the program's contributor swag.",
+      "fileName": "Hacktoberfest T-shirt",
+      "source": "drive",
+      "displayOrder": 19,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "unverified_badge_or_photo",
+      "statusLabel": "Unverified from file",
+      "privacyFlags": [
+        "exif_device",
+        "exif_datetime"
+      ],
+      "caveat": "EXIF metadata removed from the published photo.",
+      "alt": "Hacktoberfest 2025 T-shirt — photograph of the item",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/hacktoberfest-2025-tshirt.webp",
+          "width": 1577,
+          "height": 1600,
+          "bytes": 186826
+        },
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "matiks-tshirt",
+      "title": "Matiks Community T-shirt",
+      "category": "Swags & Memorabilia",
+      "organization": "Matiks",
+      "event": "Not specified",
+      "achievementType": "Physical swag",
+      "claimType": "Swag",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Not specified",
+      "description": "Received a Matiks community T-shirt. The qualifying event is not documented in the folder.",
+      "fileName": "Matiks T-shirt",
+      "source": "drive",
+      "displayOrder": 20,
+      "portfolioVisible": true,
+      "featured": false,
+      "supportingDocument": false,
+      "status": "unverified_badge_or_photo",
+      "statusLabel": "Unverified from file",
+      "privacyFlags": [
+        "exif_device",
+        "exif_datetime"
+      ],
+      "caveat": "The qualifying event is not documented. EXIF metadata removed from the photo.",
+      "alt": "Matiks Community T-shirt — photograph of the item",
+      "asset": {
+        "status": "ready",
+        "preview": {
+          "src": "/achievements/previews/matiks-tshirt.webp",
+          "width": 1311,
+          "height": 1379,
+          "bytes": 88060
+        },
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "hacktoon-1-participation",
+      "title": "Hacktoon 1.0 — Participation",
+      "category": "Hackathons",
+      "organization": "Anjuman-I-Islam's Kalsekar Technical Campus (AIKTC) — Dept. of CSE (AI & ML); Neuronix Club; ACM AIKTC",
+      "event": "Hacktoon 1.0",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Participation certificate for AIKTC's Hacktoon 1.0; supporting evidence for the finalist entry.",
+      "fileName": "Hacktoon 1.0 Participation Cert",
+      "source": "drive",
+      "displayOrder": null,
+      "portfolioVisible": false,
+      "featured": false,
+      "supportingDocument": true,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": null,
+      "alt": null,
+      "asset": {
+        "status": "supporting",
+        "preview": null,
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "hacktoberfest-2026-completionist",
+      "title": "Hacktoberfest 2026 — Completionist",
+      "category": "Recognition & Awards",
+      "organization": "Hacktoberfest (MLH × DEV; presented by DigitalOcean)",
+      "event": "Hacktoberfest 2026",
+      "achievementType": "Completionist (superseded by Completionist++)",
+      "claimType": "Completion",
+      "date": "2026-10-15",
+      "dateLabel": "15 Oct 2026",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Earlier Hacktoberfest 2026 Completionist milestone; superseded by the Completionist++ certificate.",
+      "fileName": "Hacktoberfest-2026 Completionist Certificate.pdf",
+      "source": "drive",
+      "displayOrder": null,
+      "portfolioVisible": false,
+      "featured": false,
+      "supportingDocument": true,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": null,
+      "alt": null,
+      "asset": {
+        "status": "supporting",
+        "preview": null,
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "hacktoberfest-hack-day-mumbai-attendance-2026",
+      "title": "Hacktoberfest Hack Day Mumbai x FAIR — Attendance",
+      "category": "Hackathons",
+      "organization": "Hacktoberfest team (MLH × DEV; presented by DigitalOcean)",
+      "event": "Hacktoberfest Hack Day Mumbai x FAIR",
+      "achievementType": "Attendance (in person)",
+      "claimType": "Participation",
+      "date": "2026-10-11",
+      "dateLabel": "11 Oct 2026",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Attendee",
+      "description": "Certificate of attendance for Hacktoberfest Hack Day Mumbai x FAIR; supporting evidence for the Mumbai Hackday entry.",
+      "fileName": "Hacktoberfest Fest Certificate 2026.pdf",
+      "source": "drive",
+      "displayOrder": null,
+      "portfolioVisible": false,
+      "featured": false,
+      "supportingDocument": true,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": null,
+      "alt": null,
+      "asset": {
+        "status": "supporting",
+        "preview": null,
+        "document": null,
+        "redacted": false
+      }
+    },
+    {
+      "id": "uai-hawkathon-participation-2026",
+      "title": "UAi Hawkathon 2026 — Participation",
+      "category": "Hackathons",
+      "organization": "Universal AI University (UAI)",
+      "event": "UAi Hawkathon 2026",
+      "achievementType": "Participation",
+      "claimType": "Participation",
+      "date": "Not specified",
+      "dateLabel": "Date not printed",
+      "position": "Not specified",
+      "team": "Not specified",
+      "role": "Participant",
+      "description": "Participation certificate for Universal AI University's UAi Hawkathon 2026; may relate to the International UAi Hawk-Athon finale.",
+      "fileName": "UAI Hawkathon Participation Cert",
+      "source": "drive",
+      "displayOrder": null,
+      "portfolioVisible": false,
+      "featured": false,
+      "supportingDocument": true,
+      "status": "verified_from_document",
+      "statusLabel": "Verified from document",
+      "privacyFlags": [
+        "full_name"
+      ],
+      "caveat": null,
+      "alt": null,
+      "asset": {
+        "status": "supporting",
+        "preview": null,
+        "document": null,
+        "redacted": false
+      }
+    }
+  ]
+}
