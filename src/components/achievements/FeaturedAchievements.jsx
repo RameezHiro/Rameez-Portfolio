@@ -23,9 +23,9 @@ const FeaturedAchievements = ({ records, onOpen, className }) => {
   return (
     <div className={className}>
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t-2 border-ink pt-4">
-        <p className="font-tech text-[11px] uppercase tracking-[0.24em] text-manga-gray">
+        <h3 className="font-tech text-[11px] uppercase tracking-[0.24em] text-manga-gray">
           Featured records
-        </p>
+        </h3>
         <p className="font-tech text-[11px] uppercase tracking-[0.24em] text-manga-gray">
           01 — {String(records.length).padStart(2, '0')}
         </p>

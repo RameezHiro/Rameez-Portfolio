@@ -78,7 +78,7 @@ const Certificates = () => {
         tabIndex={-1}
         className="mx-auto max-w-6xl px-6 pb-20 pt-10 focus:outline-none md:px-8 md:pb-28 md:pt-16"
       >
-        <SectionLabel index="The record" label="Complete archive" />
+        <SectionLabel index="Archive" label="Every public record" />
         <h1 className="mt-4 font-display text-5xl font-bold leading-[0.9] tracking-tight text-ink sm:text-6xl md:text-8xl">
           THE <span className="text-sakura-text">RECORD</span>.
         </h1>

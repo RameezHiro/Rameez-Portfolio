@@ -26,16 +26,16 @@ const AchievementStats = ({ className }) => {
         <div
           key={stat.label}
           className={cn(
-            'flex items-baseline justify-between gap-4 px-1 py-5 sm:flex-col sm:items-start sm:gap-2 sm:px-6 sm:py-6',
+            'flex flex-row items-baseline justify-between gap-4 px-1 py-5 sm:flex-col-reverse sm:items-start sm:justify-end sm:gap-2 sm:px-6 sm:py-6',
             index > 0 && 'border-t border-ink/15 sm:border-l sm:border-t-0'
           )}
         >
-          <dd className="order-2 font-tech text-3xl font-bold leading-none tracking-tight text-ink sm:order-1 md:text-4xl">
-            {String(stat.value).padStart(2, '0')}
-          </dd>
-          <dt className="order-1 font-tech text-[10px] uppercase leading-none tracking-[0.2em] text-manga-gray sm:order-2">
+          <dt className="font-tech text-[10px] uppercase leading-none tracking-[0.2em] text-manga-gray">
             {stat.label}
           </dt>
+          <dd className="font-tech text-3xl font-bold leading-none tracking-tight text-ink md:text-4xl">
+            {String(stat.value).padStart(2, '0')}
+          </dd>
         </div>
       ))}
     </dl>
