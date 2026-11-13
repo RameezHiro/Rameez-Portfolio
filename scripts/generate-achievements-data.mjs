@@ -59,8 +59,6 @@ const CAVEATS = {
     'Online quiz round only. Verification QR redacted in the public preview and PDF.',
   'hacktoberfest-2025-supercontributor':
     'Screenshot cropped to the badge artwork. Badge ID, account handle and avatar withheld.',
-  'solution-challenge-build-with-ai-badge':
-    'Generic badge with no printed name, date or edition. Ownership is not verifiable from the file alone.',
   'hacktoberfest-2025-tshirt': 'EXIF metadata removed from the published photo.',
   'matiks-tshirt': 'The qualifying event is not documented. EXIF metadata removed from the photo.',
 };

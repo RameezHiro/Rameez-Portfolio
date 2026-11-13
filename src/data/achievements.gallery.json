@@ -3,15 +3,15 @@
   "source": "docs/achievements/achievements.json",
   "note": "Sanitised gallery derivative. Verification URLs, certificate IDs, badge IDs, private notes and manual-verification data are intentionally excluded.",
   "counts": {
-    "total": 24,
-    "visible": 20,
+    "total": 23,
+    "visible": 19,
     "supporting": 4,
     "featured": 3,
     "byCategory": {
       "Hackathons": 8,
       "Quizzes": 4,
       "Competitions": 2,
-      "Recognition & Awards": 4,
+      "Recognition & Awards": 3,
       "Swags & Memorabilia": 2
     }
   },
@@ -30,7 +30,7 @@
     },
     {
       "name": "Recognition & Awards",
-      "count": 4
+      "count": 3
     },
     {
       "name": "Swags & Memorabilia",
@@ -749,43 +749,6 @@
       }
     },
     {
-      "id": "solution-challenge-build-with-ai-badge",
-      "title": "Google Solution Challenge — Build with AI Badge",
-      "category": "Recognition & Awards",
-      "organization": "Google Solution Challenge / Hack2Skill (H2S)",
-      "event": "Google Solution Challenge — Build with AI (India)",
-      "achievementType": "Participation badge",
-      "claimType": "Badge",
-      "date": "Not specified",
-      "dateLabel": "Date not printed",
-      "position": "Not specified",
-      "team": "Not specified",
-      "role": "Not specified",
-      "description": "Earned the Google Solution Challenge 'Build with AI' badge for building a real-world solution.",
-      "fileName": "Solution Challenge Badge",
-      "source": "drive",
-      "displayOrder": 18,
-      "portfolioVisible": true,
-      "featured": false,
-      "supportingDocument": false,
-      "status": "unverified_badge_or_photo",
-      "statusLabel": "Unverified from file",
-      "privacyFlags": [],
-      "caveat": "Generic badge with no printed name, date or edition. Ownership is not verifiable from the file alone.",
-      "alt": "Google Solution Challenge — Build with AI Badge — badge artwork",
-      "asset": {
-        "status": "ready",
-        "preview": {
-          "src": "/achievements/previews/solution-challenge-build-with-ai-badge.webp",
-          "width": 1368,
-          "height": 1368,
-          "bytes": 62566
-        },
-        "document": null,
-        "redacted": false
-      }
-    },
-    {
       "id": "hacktoberfest-2025-tshirt",
       "title": "Hacktoberfest 2025 T-shirt",
       "category": "Swags & Memorabilia",
@@ -801,7 +764,7 @@
       "description": "Received the official Hacktoberfest 2025 T-shirt, the program's contributor swag.",
       "fileName": "Hacktoberfest T-shirt",
       "source": "drive",
-      "displayOrder": 19,
+      "displayOrder": 18,
       "portfolioVisible": true,
       "featured": false,
       "supportingDocument": false,
@@ -841,7 +804,7 @@
       "description": "Received a Matiks community T-shirt. The qualifying event is not documented in the folder.",
       "fileName": "Matiks T-shirt",
       "source": "drive",
-      "displayOrder": 20,
+      "displayOrder": 19,
       "portfolioVisible": true,
       "featured": false,
       "supportingDocument": false,

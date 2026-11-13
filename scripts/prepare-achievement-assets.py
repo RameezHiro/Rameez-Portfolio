@@ -200,12 +200,6 @@ ITEMS = [
         "note": "Cropped to the badge artwork; profile chrome, handle, badge ID and avatar removed.",
     },
     {
-        "id": "solution-challenge-build-with-ai-badge",
-        "source": "21-solution-challenge-badge.png",
-        "kind": "image",
-        "redactions": [],
-    },
-    {
         "id": "hacktoberfest-2025-tshirt",
         "source": "10-hacktoberfest-tshirt.jpeg",
         "kind": "image",
