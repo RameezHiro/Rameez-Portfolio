@@ -8,7 +8,7 @@ import SakuraGrowth from '../shared/SakuraGrowth';
 const SakuraTree = React.lazy(() => import('../SakuraTree/SakuraTree'));
 
 // FINAL — THE CURRENT ARC ENDS. The quiet culmination: the 2D ink sakura
-// of Chapters 01–08 becomes a real 3D tree here, followed by restrained
+// of Chapters 01–05 becomes a real 3D tree here, followed by restrained
 // closing copy, identity, status, and links.
 // Compatible with ChapterShell's chapter rendering contract (self-
 // contained, no props). Level-3 cinematic reveals here only — slow,

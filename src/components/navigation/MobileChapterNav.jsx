@@ -9,7 +9,7 @@ const MobileChapterNav = ({ activeChapterId, scrollToChapter }) => {
       className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-paper/95 backdrop-blur border-t border-ink/10 shadow-[0_-8px_24px_rgba(17,17,17,0.08)] safe-area-inset-bottom"
     >
       <div className="px-2 sm:px-4 py-3">
-        {/* Compact enough that all nine chapters fit without scrolling at
+        {/* Compact enough that the whole sequence fits without scrolling at
             320 px when the row shows numbers only. The labelled row at sm and
             up still scrolls as a fallback. */}
         <div

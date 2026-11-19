@@ -15,9 +15,6 @@ const EMBLEMS = {
   '03': { src: '/emblems/chapter-03.png', label: 'Chapter 03' },
   '04': { src: '/emblems/chapter-04.png', label: 'Chapter 04' },
   '05': { src: '/emblems/chapter-05.png', label: 'Chapter 05' },
-  '06': { src: '/emblems/chapter-06.png', label: 'Chapter 06' },
-  '07': { src: '/emblems/chapter-07.png', label: 'Chapter 07' },
-  '08': { src: '/emblems/chapter-08.png', label: 'Chapter 08' },
   FINAL: { src: '/emblems/final.png', label: 'Final chapter' },
 };
 
