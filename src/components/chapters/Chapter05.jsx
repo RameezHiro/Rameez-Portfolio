@@ -186,7 +186,7 @@ const StackLine = ({ items }) => (
 
 const Chapter05 = () => {
   const { scrollToChapter } = useChapterObserver();
-  const nextTitle = chaptersData.getChapterById('06')?.title || 'EVOLUTION';
+  const nextTitle = chaptersData.getChapterById('final')?.title || 'CURRENT ARC';
 
   return (
     <div>
@@ -542,10 +542,10 @@ const Chapter05 = () => {
           </MangaSpread>
           <div className="mt-8 flex md:mt-12 md:justify-end">
             <button
-              onClick={() => scrollToChapter('06')}
+              onClick={() => scrollToChapter('final')}
               className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-[0.25em] text-ink hover:text-sakura-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text"
             >
-              Next — Chapter 06 · {nextTitle}
+              Next — Final · {nextTitle}
               <span aria-hidden="true">↓</span>
             </button>
           </div>

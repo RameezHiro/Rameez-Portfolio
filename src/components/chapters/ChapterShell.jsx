@@ -6,9 +6,6 @@ import Chapter02 from './Chapter02';
 import Chapter03 from './Chapter03';
 import Chapter04 from './Chapter04';
 import Chapter05 from './Chapter05';
-import Chapter06 from './Chapter06';
-import Chapter07 from './Chapter07';
-import Chapter08 from './Chapter08';
 import Final from './Final';
 import TopNav from '../navigation/TopNav';
 import ChapterRail from '../navigation/ChapterRail';
@@ -94,12 +91,6 @@ const ChapterShell = () => {
                 <Chapter04 />
               ) : chapter.id === '05' ? (
                 <Chapter05 />
-              ) : chapter.id === '06' ? (
-                <Chapter06 />
-              ) : chapter.id === '07' ? (
-                <Chapter07 />
-              ) : chapter.id === '08' ? (
-                <Chapter08 />
               ) : chapter.id === 'final' ? (
                 <Final />
               ) : (
