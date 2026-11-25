@@ -188,3 +188,39 @@
     animation: none;
   }
 }
+
+/* Sakuga VFX contact button. The upstream component defaults to a
+   violet/lavender palette; these variables and the part override map it to
+   paper, ink and sakura so it reads as part of the same page. The drawn
+   effects are patched in public/sakuga-vfx/button.js. */
+.final-contact {
+  --sk-card: #18151a;
+  --sk-ink: #f7f4ef;
+  --sk-dim: #5c5c5c;
+  --sk-soft: #d96c8a;
+  --sk-pri: #d96c8a;
+  --sk-pri-ink: #111111;
+  --sk-acc: #d96c8a;
+  --sk-track: #d9d3c9;
+  --sk-r: 0px;
+  --sk-bw: 2px;
+  --sk-sh: 5px 5px 0 var(--sk-soft);
+  --sk-btn-sh: var(--sk-sh);
+  --sk-btn-line: #18151a;
+  --sk-alt-sh: var(--sk-sh);
+  --sk-alt-line: #18151a;
+  --sk-tick: #18151a;
+  --sk-fill: #d96c8a;
+  --sk-on-pri: #f7f4ef;
+}
+
+.final-contact sakuga-button::part(button) {
+  min-height: 48px;
+  padding: 17px 30px;
+  font-family: Inter, system-ui, sans-serif;
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}

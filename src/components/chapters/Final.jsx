@@ -13,11 +13,11 @@ const SakuraTree = React.lazy(() => import('../SakuraTree/SakuraTree'));
 // Compatible with ChapterShell's chapter rendering contract (self-
 // contained, no props). Level-3 cinematic reveals here only — slow,
 // once, and fully skipped under reduced motion.
+const CONTACT_EMAIL = 'yellowvoid22@gmail.com';
 const LINKS = [
   { label: 'GitHub', href: 'https://github.com/RameezHiro' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/shaikh-rameez-17b304336/' },
   { label: 'Resume', href: '/resume.pdf' },
-  { label: 'Contact', href: 'mailto:yellowvoid22@gmail.com' },
 ];
 
 // If the lazy chunk or WebGL initialization fails, keep the page readable
@@ -96,6 +96,103 @@ const FinalPetal = () => {
         />
       )}
     </svg>
+  );
+};
+
+// The one loud gesture in the finale. The Sakuga VFX script is fetched only
+// when the CTA is about to enter the viewport; until it defines the custom
+// element, the same action is a plain mailto link. If the script fails, the
+// link stays and nothing about the page breaks.
+const ContactButton = () => {
+  const hostRef = useRef(null);
+  const buttonRef = useRef(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const node = hostRef.current;
+    if (!node) return undefined;
+    let cancelled = false;
+
+    const activate = () => {
+      if (cancelled) return;
+
+      if (!('customElements' in window)) return;
+
+      if (customElements.get('sakuga-button')) {
+        setReady(true);
+        return;
+      }
+
+      const existing = document.querySelector('script[data-sakuga-button]');
+      const script = existing ?? document.createElement('script');
+
+      script.addEventListener('load', () => {
+        customElements.whenDefined('sakuga-button').then(() => {
+          if (!cancelled) setReady(true);
+        });
+      });
+
+      if (!existing) {
+        script.src = '/sakuga-vfx/button.js';
+        script.async = true;
+        script.dataset.sakugaButton = '';
+        script.addEventListener('error', () => {
+          console.warn('Sakuga contact button failed to load; keeping the plain mail link.');
+        });
+        document.body.appendChild(script);
+      }
+    };
+
+    if (typeof IntersectionObserver === 'undefined') {
+      activate();
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          activate();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '500px 0px' }
+    );
+
+    observer.observe(node);
+
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const element = buttonRef.current;
+    if (!ready || !element) return undefined;
+
+    const openMail = () => {
+      window.location.href = `mailto:${CONTACT_EMAIL}`;
+    };
+
+    element.addEventListener('click', openMail);
+    return () => element.removeEventListener('click', openMail);
+  }, [ready]);
+
+  return (
+    <div ref={hostRef} className="final-contact flex min-h-[56px] items-center justify-center">
+      {ready ? (
+        <sakuga-button ref={buttonRef}>Contact</sakuga-button>
+      ) : (
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          className="inline-flex min-h-[56px] items-center border-2 border-deep-ink bg-deep-ink px-[30px] py-[17px] font-body text-[13px] font-bold uppercase leading-[1.1] tracking-[0.2em] text-paper shadow-[5px_5px_0_#D96C8A] transition-colors hover:bg-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sakura-text focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+        >
+          Contact
+        </a>
+      )}
+    </div>
   );
 };
 
@@ -199,11 +296,12 @@ const Final = () => {
       </div>
     </Cinematic>
 
-    {/* 6. Links — restrained editorial text links */}
+    {/* 6. Contact — the one impact frame in the finale, then quiet links */}
     <Cinematic className="mt-12 md:mt-16" delay={0.15} duration={1.2}>
+      <ContactButton />
       <nav
         aria-label="Portfolio links"
-        className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+        className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
       >
         {LINKS.map((link) =>
           link.href ? (
